@@ -1,0 +1,36 @@
+<div class="container">
+
+	<!-- サクセスメッセージ -->
+	<p id="notice"><%= notice %></p>
+
+	<div class="row blog-show">
+		<div class="col-md-5 col-md-offset-1 blog_image">
+		<% if @blog.b_category == 1 %>
+			<%= attachment_image_tag @blog,:b_image,fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail" %>
+		<% elsif @blog.b_category == 2 %>
+			<%= attachment_image_tag @blog,:b_image,fallback:"elaine-casap-86020-unsplash.jpg",class: "img-responsive img-thumbnail" %>
+		<% else %>
+			<%= attachment_image_tag @blog,:b_image,fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail" %>
+		<% end %>
+		</div>
+		<div class="col-md-5">
+			<div class="headline">
+				<h4><%= @blog.b_title %></h4>
+				<p>ファーム：<%= link_to @f_user.farm,f_user_path(@f_user) %></p>
+				<p>
+					<span>投稿日：<%= @blog.created_at.strftime('%Y年%m月%d日') %></span>
+					<span class="blog-category"><%= @blog.b_category %></span>
+					<% if @f_user == current_f_user %>
+						<span>
+							&ensp;<%= link_to "",edit_blog_path(@blog),class: "glyphicon glyphicon-pencil"%>
+							&ensp;|&ensp;<%= link_to "",blog_path(@blog),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
+						</span>
+					<% end %>
+				</p>
+			</div>
+			<div class="blog-body">
+				<p><%= @blog.b_body %></p>
+		    </div>
+		</div>
+	</div>
+</div>

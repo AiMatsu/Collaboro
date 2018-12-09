@@ -1,0 +1,82 @@
+<div class="container">
+
+	<!-- -- カテゴリ/時期別タブボタン -- -->
+	<div class="row">
+		<h3><b>プロポーザル</b></h3>
+		<%= render 'proposals/tab_menu' %>
+	</div>
+
+	<div id="tab-contents" class="row">
+		<!-- -- All -- -->
+		<div id="tab-all" class="tab">
+			<% @requests.each do |request| %>
+			<%= render 'requests/requests_index',request:request %>
+			<% end %>
+		</div>
+
+		<!-- -- 春/3月~5月 -- -->
+		<div id="tab-spring" class="tab">
+			<% @requests_spring.each do |request| %>
+			<%= render 'requests/requests_index',request:request %>
+			<% end %>
+		</div>
+
+		<!-- -- 夏/6月~8月 -- -->
+		<div id="tab-summer" class="tab">
+			<% @requests_summer.each do |request| %>
+			<%= render 'requests/requests_index',request:request %>
+			<% end %>
+		</div>
+
+		<!-- -- 秋/9月~11月 -- -->
+		<div id="tab-autumn" class="tab">
+			<% @requests_autumn.each do |request| %>
+			<%= render 'requests/requests_index',request:request %>
+			<% end %>
+		</div>
+
+		<!-- -- 冬/12月~1月 -- -->
+		<div id="tab-winter" class="tab">
+			<% @requests_winter.each do |request| %>
+			<%= render 'requests/requests_index',request:request %>
+			<% end %>
+		</div>
+
+		<!-- -- 農作物出荷 -- -->
+		<div id="tab-shipment" class="tab">
+			<% @requests_shipment.each do |request| %>
+			<%= render 'requests/requests_index',request:request %>
+			<% end %>
+		</div>
+
+		<!-- -- 体験イベント -- -->
+		<div id="tab-event" class="tab">
+			<% @requests_event.each do |request| %>
+			<%= render 'requests/requests_index',request:request %>
+			<% end %>
+		</div>
+
+		<!-- -- その他 -- -->
+		<div id="tab-other" class="tab">
+			<% @requests_other.each do |request| %>
+			<%= render 'requests/requests_index',request:request %>
+			<% end %>
+		</div>
+	</div>
+
+</div>
+
+
+<!-- -- JS/TABU切り替え -- -->
+<script>
+	$(function(){
+		$('#tab-contents .tab[id != "tab-all"]').hide();
+		$('#tab-menu a').on('click', function() {
+			$("#tab-contents .tab").hide();
+			$("#tab-menu .active").removeClass("active");
+			$(this).addClass("active");
+			$($(this).attr("href")).show();
+			return false;
+		});
+	});
+</script>

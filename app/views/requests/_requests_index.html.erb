@@ -1,0 +1,9 @@
+<div class="col-md-3">
+	<div class="">
+		<%= request.r_category %><br>
+		<%= link_to request.r_title,request_path(request) %><br>
+		<%= request.r_location %><br>
+		<%= request.r_start_season.strftime('%Y年%m月') %>~<%= request.r_finish_season.strftime('%Y年%m月') %><br>
+		<%= link_to request.c_user.company,c_user_path(request.c_user)%><br>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="field ">
+	<%= f.label :p_title ,"◇ タイトル" %>
+	<%= f.text_field :p_title, class: "form-control" %>
+</div>
+
+<div class="field ">
+	<%= f.label :p_start_season, "◇ 出荷時期/開催時期" %><br />
+	<%= f.date_select :p_start_season, discard_day: true, class: "form-control" %>&emsp;〜&emsp;
+	<%= f.date_select :p_finish_season, discard_day: true, class: "form-control" %>
+</div>
+
+<div class="field ">
+	<%= f.label :p_location, "◇ 出荷元/開催地" %><br />
+	<%= f.select :p_location,[["北海道", "北海道"],["青森県", "青森県"],["岩手県","岩手県"]], class: "form-control" %><br />
+</div>
+
+<div class="field ">
+	<%= f.label :p_category, "◇ カテゴリー" %><br />
+	<%= f.select :p_category,[["農作物出荷", "0"],["体験/イベント", "1"],["その他","2"]],  class: "form-control" %><br />
+</div>
+
+<div class="field ">
+	<%= f.label :p_body, "◇ できること/提案内容" %>
+	<%= f.text_area :p_body, rows:"5", class: "form-control" %>
+</div>
+
+<div class="field ">
+	<%= f.label :p_image,"◇ 写真" %>
+	<%= f.attachment_field :p_image %>
+</div>

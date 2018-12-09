@@ -1,0 +1,15 @@
+<div class="col-md-3">
+	<div class="proposal_image">
+		<% if proposal.p_category == 1 %>
+		<%= link_to attachment_image_tag(proposal, :p_image, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail"),f_user_path(proposal.f_user) %>
+		<% else %>
+		<%= link_to attachment_image_tag(proposal, :p_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail"),f_user_path(proposal.f_user)  %>
+		<% end %>
+	</div>
+	<div class="">
+		<%= link_to proposal.f_user.farm,f_user_path(proposal.f_user)%><br>
+		<%= proposal.p_title %><br>
+		<%= proposal.p_location %><br>
+		<%= proposal.p_start_season.strftime('%Y年%m月') %>~<%= proposal.p_finish_season.strftime('%Y年%m月') %><br>
+	</div>
+</div>

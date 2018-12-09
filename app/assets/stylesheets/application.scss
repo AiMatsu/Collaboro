@@ -1,0 +1,79 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:  border-box;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/*------header------*/
+header {
+	height: 70px;
+	width: 100%;
+}
+.header-left {
+	height: 70px;
+	float: left;
+	text-align: center;
+	line-height: 70px;
+}
+.logo {
+    float: left;
+	font-size: 18px;
+	font-weight: bold;
+    color: black;
+}
+.header-right {
+  	float: right;
+}
+.nav-list-item {
+	float: left;
+	padding: 0 10px;
+	list-style: none;
+	text-align: center;
+	line-height: 70px;
+	font-size: 14px;
+}
+.nav-list-item a{
+    color: black;
+}
+/*------見出し関連------*/
+#tab-menu .active,
+#tab-c-menu .active,
+#tab-b-menu .active{
+  background: #FFCDD2;
+  color: #000;
+}
+.item-title {
+padding: 0.25em 0.5em;
+color: #494949;
+background: transparent;
+border-left: solid 5px #7db4e6;
+
+}
+
+

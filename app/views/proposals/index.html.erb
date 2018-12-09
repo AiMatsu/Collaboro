@@ -1,0 +1,82 @@
+<div class="container">
+
+	<!-- -- カテゴリ/時期別タブボタン -- -->
+	<div class="row">
+		<h3><b>プロポーザル</b></h3>
+		<%= render 'proposals/tab_menu' %>
+	</div>
+
+	<div id="tab-contents" class="row">
+		<!-- -- All -- -->
+		<div id="tab-all" class="tab">
+			<% @proposals.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+
+		<!-- -- 春/3月~5月 -- -->
+		<div id="tab-spring" class="tab">
+			<% @proposals_spring.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+
+		<!-- -- 夏/6月~8月 -- -->
+		<div id="tab-summer" class="tab">
+			<% @proposals_summer.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+
+		<!-- -- 秋/9月~11月 -- -->
+		<div id="tab-autumn" class="tab">
+			<% @proposals_autumn.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+
+		<!-- -- 冬/12月~1月 -- -->
+		<div id="tab-winter" class="tab">
+			<% @proposals_winter.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+
+		<!-- -- 農作物出荷 -- -->
+		<div id="tab-shipment" class="tab">
+			<% @proposals_shipment.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+
+		<!-- -- 体験イベント -- -->
+		<div id="tab-event" class="tab">
+			<% @proposals_event.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+
+		<!-- -- その他 -- -->
+		<div id="tab-other" class="tab">
+			<% @proposals_other.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+	</div>
+
+</div>
+
+
+<!-- -- JS/TABU切り替え -- -->
+<script>
+	$(function(){
+		$('#tab-contents .tab[id != "tab-all"]').hide();
+		$('#tab-menu a').on('click', function() {
+			$("#tab-contents .tab").hide();
+			$("#tab-menu .active").removeClass("active");
+			$(this).addClass("active");
+			$($(this).attr("href")).show();
+			return false;
+		});
+	});
+</script>

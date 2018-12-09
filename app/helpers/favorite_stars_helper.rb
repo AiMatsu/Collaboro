@@ -1,0 +1,2 @@
+module FavoriteStarsHelper
+end

@@ -1,0 +1,26 @@
+<div class="welcome">
+	<div class="row">
+		<div class="col-md-7 top-image">
+			<p>Collaboro!</p>
+			<div class="circle circle-1"></div>
+			<div class="circle circle-2"></div>
+			<div class="circle circle-3"></div>
+
+		</div>
+		<div class="col-md-4 link-btn">
+			<div class="for-farmer">
+				<P>農家の方へ</P>
+				<%= link_to "新規登録",new_f_user_registration_path,class: "btn btn-block btn-default" %><br>
+				<%= link_to "ログイン",new_f_user_session_path,class: "btn btn-block btn-default" %>
+			</div>
+			<div class="for-company">
+				<P>企業の方へ</P>
+				<%= link_to "新規登録",new_c_user_registration_path,class: "btn btn-block btn-default" %><br>
+				<%= link_to "ログイン",new_c_user_session_path,class: "btn btn-block btn-default" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

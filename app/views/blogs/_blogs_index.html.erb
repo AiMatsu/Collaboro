@@ -1,0 +1,16 @@
+<div class="col-md-3">
+	<div class="blog_image">
+		<% if blog.b_category == 1 %>
+		<%= link_to attachment_image_tag(blog, :b_image, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail"),blog_path(blog) %>
+		<% elsif blog.b_category == 2 %>
+		<%= link_to attachment_image_tag(blog, :b_image, fallback:"elaine-casap-86020-unsplash.jpg",class: "img-responsive img-thumbnail"),blog_path(blog)  %>
+		<% else %>
+		<%= link_to attachment_image_tag(blog, :b_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail"),blog_path(blog)  %>
+		<% end %>
+	</div>
+	<div class="">
+		<%= link_to blog.f_user.farm,f_user_path(blog.f_user)%><br>
+		<%= blog.b_title %>
+		<%= blog.created_at.strftime('%Y年%m月%d日') %>
+	</div>
+</div>
