@@ -1,0 +1,58 @@
+// Place all the styles related to the root controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*------top page ------*/
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+/* Positioning */
+/*.welcome {
+	height: 1000px;
+	background-image: image-url("Photoelly055_TP_V.jpg");
+	background-size: cover;
+}*/
+.top-image {
+	padding: 30px;
+	position: relative;
+}
+.top-image p,
+.circle {
+	position: absolute;
+}
+
+.top-image p {
+	font: 50px/1.2 'Courgette', cursive;
+	color: #fff;
+	text-align: top;
+	top: 220px;
+	left: 30%;
+	z-index: 1;
+}
+.circle {
+	width: 450px;
+	height: 450px;
+	left: 15%;
+	mix-blend-mode: multiply;
+}
+
+/* Circles */
+.circle-1 {
+	background: #00E676;
+	border-radius: 30% 70% 30% 70%/50%;
+	animation: border-animation 7s infinite linear;
+}
+.circle-2 {
+	background: #ddd;
+	border-radius: 70% 20%/20% 70%;
+}
+.circle-3 {
+	background: #FDD835;
+	border-radius: 60% 30%/30% 60%;
+	animation: border-animation 5s infinite linear;
+}
+
+/* Animation */
+@keyframes border-animation {
+	to { transform: rotate(360deg); }
+}

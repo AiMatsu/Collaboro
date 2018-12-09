@@ -1,15 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Collaboro</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+    <header class="container clearfix">
+      <div class="header-left">
+        <%= link_to "Collaboro",blogs_path ,class: "logo"%>
+      </div>
+      <ul class="header-right nav-list">
+        <% if f_user_signed_in? %>
+          <li class="nav-list-item">
+            <%= link_to "マイファーム",f_user_path(current_f_user.id) %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "コラボ先を探す", requests_path %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "商談ルーム",chatroom_path(current_f_user.id) %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "旬ネタ",blogs_path %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "ログアウト",destroy_f_user_session_path,method: :delete %>
+          </li>
+        <% elsif c_user_signed_in? %>
+          <li class="nav-list-item">
+            <%= link_to "マイページ",c_user_path(current_c_user.id) %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "コラボ先を探す", proposals_path %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "商談ルーム",chatroom_path(current_c_user.id) %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "旬ネタ",blogs_path %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "ログアウト",destroy_c_user_session_path,method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-list-item">
+            <%= link_to  "農家の方はこちら",new_f_user_session_path %>
+          </li>
+          <li class="nav-list-item">
+            <%= link_to "企業の方はこちら", new_c_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+
+    <div class="main">
     <%= yield %>
+  </div>
   </body>
 </html>

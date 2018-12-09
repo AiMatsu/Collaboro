@@ -1,0 +1,163 @@
+<div class="container">
+	<% if @user == current_f_user %>
+		<h3><b>マイファーム</b></h3>
+	<% else %>
+		<h3><%= @user.farm %></h3>
+	<% end %>
+
+	<!-- サクセスメッセージ -->
+	<p id="notice"><%= notice %></p>
+
+	<!-- -- 固定 情報別タブボタン-- -->
+	<div class="row">
+		<div class="farm-name col-md-6">
+		</div>
+		<div id="tab-menu" class="col-md-6 clearfix" >
+			<a href="#tab-info" class="btn col-md-4">基本情報</a>
+			<a href="#tab-crops" class="btn col-md-4">作物情報</a>
+			<a href="#tab-blogs" class="btn col-md-4">旬ネタ</a>
+		</div>
+	</div>
+
+	<div id="tab-contents">
+		<!-- -- 基本情報 -- -->
+		<div id="tab-info" class="tab">
+			<div class="row item">
+				<p class="item-title">基本情報</p>
+				<div class="col-md-4">
+					<%= attachment_image_tag @user, :image, fallback: "farmer.png" ,class: "img-responsive img-thumbnail"%>
+				</div>
+				<div class="col-md-8">
+					<table class="table table-hover">
+						<tr>
+							<th width="30%">◇&emsp;ファーム名</th>
+							<td width="70%"><%= @user.farm %></td>
+						</tr>
+						<tr>
+							<th width="30%">◇&emsp;担当者名</th>
+							<td width="70%"><%= @user.name %></td>
+						</tr>
+						<tr>
+							<th width="30%">◇&emsp;ファーム紹介</th>
+							<td width="70%"><%= @user.profile %></td>
+						</tr>
+						<tr>
+							<th width="30%">◇&emsp;ファームのHP</th>
+							<td width="70%"><%= @user.hp_url %></td>
+						</tr>
+						<tr>
+							<th width="30%">◇&emsp;所在地</th>
+							<td width="70%"><%= @user. address %></td>
+						</tr>
+						<tr>
+							<th width="30%">◇&emsp;連絡の取りやすい時間</th>
+							<td width="70%"><%= @user.conv_time %></td>
+						</tr>
+					</table>
+					<div class="link-btn">
+						<% if @user == current_f_user %>
+							<%= link_to "基本情報を編集する",edit_f_user_path(current_f_user),class: "btn btn-default col-md-7 " %>
+							<%= link_to "退会する",f_user_path(@user), method: :delete, data: { confirm: '本当に退会しますか？'} ,class: "btn btn-default col-md-4 col-md-offset-1" %>
+						<% elsif  @c_user  %>
+							<%= link_to "担当者と連絡を取る",chatroom_path(current_c_user),class: "btn btn-block btn-default" %>
+						<% else %>
+							<%= link_to "担当者と連絡を取る",chatroom_path(current_f_user),class: "btn btn-block btn-default" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="map row item">
+				<p class="item-title">地図</p>
+			</div>
+		</div>
+		
+
+		<!-- -- 作物情報 -- -->
+		<div id="tab-crops" class="tab">
+			<div class="item">
+				<p class="item-title">作物カレンダー</p>
+			</div>
+			<div class="item">
+				<p class="item-title">
+					ファームからのプロポーザル
+					<span class="link-btn">
+						<% if @user == current_f_user %>
+						&emsp;<%= link_to "",new_proposal_path,class: "glyphicon glyphicon-pencil" %>
+						<% end %>
+					</span>
+				</p>
+				<!-- プロポーザル -->
+				<% @proposals.each do |proposal| %>
+				<div class=" row f_user_proposal">
+					<div class="col-md-3 proposal-image">
+						<% if proposal.p_category == 1 %>
+						<%= attachment_image_tag proposal, :p_image, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail" %>
+						<% else %>
+						<%= attachment_image_tag proposal, :p_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail" %>
+						<% end %>
+					</div>
+					<div class="col-md-9">
+						<div class="proposal-headline">
+							<h4><%= proposal.p_title %></h4>
+							<p>
+								<span class="proposal-category"><%= proposal.p_category %></span>
+								<%= proposal.f_user.farm%>
+								<% if @user == current_f_user %>
+									<span>
+										&ensp;<%= link_to "",edit_proposal_path(proposal),class: "glyphicon glyphicon-pencil" %>
+										&ensp;|&ensp;<%= link_to "",proposal_path(proposal),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
+									</span><br>
+								<% end %>
+							</p>
+						</div>
+						<div class="proposal-show">
+							<p>
+								・出荷時期/開催時期
+								&emsp;<%= proposal.p_start_season.strftime('%Y年%m月') %>&ensp;~&ensp;<%= proposal.p_finish_season.strftime('%Y年%m月') %>
+							</p>
+							<p>・出荷元/開催地&emsp;<%= proposal.p_location %></p>
+							<p>・提案内容<br><%= proposal.p_body %></p>
+						</div>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+
+
+		<!-- -- 旬ネタ -- -->
+		<div id="tab-blogs" class="tab">
+			<div class="item">
+				<p class="item-title">
+					ファーム旬ネタ
+					<span class="link-btn">
+					<% if @user == current_f_user %>
+						&emsp;<%= link_to "",new_blog_path,class: "glyphicon glyphicon-pencil" %>
+					<% end %>
+					</span>
+				</p>
+				<div class=" row f_user_blogs">
+				<% @blogs.each do |blog| %>
+				<%= render 'blogs/blogs_index',blog:blog %>
+				<% end %>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+<!-- -- JS/TABU切り替え -- -->
+<script>
+	$(function(){
+		$('#tab-contents .tab[id != "tab-info"]').hide();
+		$('#tab-menu a').on('click', function() {
+			$("#tab-contents .tab").hide();
+			$("#tab-menu .active").removeClass("active");
+			$(this).addClass("active");
+			$($(this).attr("href")).show();
+			return false;
+		});
+	});
+</script>

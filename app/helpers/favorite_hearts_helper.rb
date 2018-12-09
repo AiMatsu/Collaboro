@@ -1,0 +1,2 @@
+module FavoriteHeartsHelper
+end

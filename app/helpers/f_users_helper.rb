@@ -1,0 +1,2 @@
+module FUsersHelper
+end
