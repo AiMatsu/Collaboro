@@ -29,11 +29,20 @@
   display: block;
   clear: both;
 }
+.main {
+	margin:70px auto;
+}
 
 /*------header------*/
 header {
 	height: 70px;
 	width: 100%;
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: white;
 }
 .header-left {
 	height: 70px;

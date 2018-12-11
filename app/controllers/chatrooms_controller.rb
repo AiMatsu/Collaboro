@@ -1,24 +1,21 @@
 class ChatroomsController < ApplicationController
 
-	before_action :user_chatroom, only:[:show]
-
-	# def create
-	# end
-
-	# def update
-	# end
-
 	def show
+		@chatroom = Chatroom.find(params[:id])
+		@f_user = FUser.find(@chatroom.f_user.id)
+		@c_user = CUser.find(@chatroom.c_user.id)
+		@message_new = Message.new
+		@messages = @chatroom.messages
+
 	end
 
 	def index
+		@f_user = current_f_user
+		@c_user = current_c_user
+		if @f_user
+			@chatrooms = @f_user.chatrooms.reverse_order
+		elsif @c_user
+			@chatrooms = @c_user.chatrooms.reverse_order
+		end
 	end
-
-	def user_chatroom
-	      if Chatroom.where(f_user_id: params[:id]).exists?
-	      else
-	        @chatroom = Chatroom.new(f_user_id: params[:id])
-	        @chatroom.save
-	      end
-    end
 end

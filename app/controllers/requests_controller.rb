@@ -36,9 +36,9 @@ class RequestsController < ApplicationController
 		@requests = Request.all.reverse_order
 
 		# カテゴリー別
-		@requests_shipment = Request.where(r_category: "0").reverse_order
-		@requests_event = Request.where(r_category: "1").reverse_order
-		@requests_other = Request.where(r_category: "2").reverse_order
+		@requests_shipment = Request.where(category: "0").reverse_order
+		@requests_event = Request.where(category: "1").reverse_order
+		@requests_other = Request.where(category: "2").reverse_order
 
 		# 月別
 		@requests_spring = []
@@ -47,11 +47,11 @@ class RequestsController < ApplicationController
 		@requests_winter = []
 
 		@requests.each do |r|
-			if r.r_start_season.month == 3 || r.r_start_season.month == 4 || r.r_start_season.month == 5
+			if r.start_season.month == 3 || r.start_season.month == 4 || r.start_season.month == 5
 				@requests_spring.push(r)
-			elsif r.r_start_season.month == 6 || r.r_start_season.month == 7 || r.r_start_season.month == 8
+			elsif r.start_season.month == 6 || r.start_season.month == 7 || r.start_season.month == 8
 	 			@requests_summer.push(r)
-	 		elsif r.r_start_season.month == 9 || r.r_start_season.month == 10 || r.r_start_season.month == 11
+	 		elsif r.start_season.month == 9 || r.start_season.month == 10 || r.start_season.month == 11
 	 			@requests_autumn.push(r)
 	 		else
 	 			@requests_winter.push(r)
@@ -68,7 +68,7 @@ class RequestsController < ApplicationController
 
 	private
 	def request_params
-		params.require(:request).permit(:r_title, :r_body, :r_location, :r_category, :r_status, :r_start_season, :r_finish_season, )
+		params.require(:request).permit(:title, :body, :location, :category, :status, :start_season, :finish_season, )
 	end
 
 end

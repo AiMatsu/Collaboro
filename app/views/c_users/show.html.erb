@@ -62,9 +62,7 @@
 							<%= link_to "基本情報を編集する",edit_c_user_path(current_c_user),class: "btn btn-default col-md-7 " %>
 							<%= link_to "退会する",c_user_path(@user), method: :delete, data: { confirm: '本当に退会しますか？'} ,class: "btn btn-default col-md-4 col-md-offset-1" %>
 						<% elsif  @f_user  %>
-							<%= link_to "担当者と連絡を取る",chatroom_path(current_f_user),class: "btn btn-block btn-default" %>
-						<% else %>
-							<%= link_to "担当者と連絡を取る",chatroom_path(current_c_user),class: "btn btn-block btn-default" %>
+							<%= link_to "担当者と連絡を取る",chatroom_path(@chatroom),class: "btn btn-block btn-default" %>
 						<% end %>
 					</div>
 				</div>
