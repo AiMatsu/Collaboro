@@ -14,19 +14,22 @@ Rails.application.routes.draw do
 	}
      # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-    resources :f_users, except: [:new] do
+    resources :f_users, except: [:new, :create] do
   	 	resource :favorite_stars, only: [:create, :destroy]
+      # resources :chatrooms, only: [ :show, :index]
   	end
 
-  	resources :c_users, except: [:new] do
+  	resources :c_users, except: [:new, :create] do
   		resource :favorite_hearts, only: [:create, :destroy]
+      # resources :chatrooms, only: [ :show, :index]
   	end
+
+    resources :chatrooms, only: [ :show, :index] do
+      resources :messages, only: [:create]
+    end
 
   	resources :proposals
   	resources :requests
   	resources :crops_calendars
   	resources :blogs
-  	resources :chatrooms, only: [:create, :update, :show, :index]
-  	resources :messages, only: [:new, :create, :index]
-
 end

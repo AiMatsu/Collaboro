@@ -1,0 +1,30 @@
+<div class="container">
+	<h3 class="glyphicon glyphicon-comment">商談ルーム</h3>
+		<% @chatrooms.each do |chatroom|%>
+		<div class="current_user_chatroom row">
+			<table class="table table-hover">
+				<tr>
+				<% if @f_user %>
+					<td class="col-md-1">
+						<%= attachment_image_tag(@c_user, :image, fallback: "company.png" ,class: "img-responsive img-thumbnail") %>
+					</td>
+					<td class="col-md-11">
+				 		<b><%= link_to "#{chatroom.c_user.company} / #{chatroom.c_user.name} さん",chatroom_path(chatroom)%></b><br>
+				 		<%= render 'messages/last_message',chatroom:chatroom %>
+				 	</td>
+				 <% else %>
+				 	<td class="col-md-1">
+				 		<%= attachment_image_tag(@f_user, :image, fallback: "farmer.png" ,class: "img-responsive img-thumbnail") %>
+				 	</td>
+				 	<td class="col-md-11">
+				 		<b><%= link_to "#{chatroom.f_user.farm} / #{chatroom.f_user.name} さん",chatroom_path(chatroom)%></b><br>
+				 		<%= render 'messages/last_message',chatroom:chatroom %>
+				 	</td>
+				 <% end %>
+		 		</tr>
+		 	</table>
+		 </div>
+		<% end %>
+</div>
+
+

@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
   end
 
   create_table "chatrooms", force: :cascade do |t|
-    t.integer "f_user_id", null: false
     t.integer "c_user_id", null: false
+    t.integer "f_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -103,35 +103,35 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
 
   create_table "messages", force: :cascade do |t|
     t.text "text", null: false
-    t.integer "messenger", null: false
     t.integer "chatroom_id", null: false
+    t.boolean "f_user", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "proposals", force: :cascade do |t|
     t.integer "f_user_id", null: false
-    t.string "p_title", null: false
-    t.text "p_body", null: false
+    t.string "title", null: false
+    t.text "body", null: false
     t.text "p_image_id"
-    t.string "p_location", null: false
-    t.datetime "p_start_season", null: false
-    t.datetime "p_finish_season", null: false
-    t.integer "p_category", default: 0, null: false
-    t.integer "p_status", default: 0, null: false
+    t.string "location", null: false
+    t.datetime "start_season", null: false
+    t.datetime "finish_season", null: false
+    t.integer "category", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
     t.integer "c_user_id", null: false
-    t.string "r_title", null: false
-    t.text "r_body", null: false
-    t.string "r_location", null: false
-    t.datetime "r_start_season", null: false
-    t.datetime "r_finish_season", null: false
-    t.integer "r_category", default: 0, null: false
-    t.integer "r_status", default: 0, null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.string "location", null: false
+    t.datetime "start_season", null: false
+    t.datetime "finish_season", null: false
+    t.integer "category", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

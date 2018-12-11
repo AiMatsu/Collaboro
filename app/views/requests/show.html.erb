@@ -6,9 +6,9 @@
 	<div class="row request-show">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="request-headline">
-				<h4><%= @request.r_title %></h4>
+				<h4><%= @request.title %></h4>
 				<p>
-					<span class="request-category"><%= @request.r_category %></span>
+					<span class="request-category"><%= @request.category %></span>
 					<%= @request.c_user.company%>
 					<% if @c_user == current_c_user %>
 					<span>
@@ -21,10 +21,10 @@
 			<div class="request-show">
 				<p>
 					・希望時期
-					&emsp;<%= @request.r_start_season.strftime('%Y年%m月') %>&ensp;~&ensp;<%= @request.r_finish_season.strftime('%Y年%m月') %>
+					&emsp;<%= @request.start_season.strftime('%Y年%m月') %>&ensp;~&ensp;<%= @request.finish_season.strftime('%Y年%m月') %>
 				</p>
-				<p>・出荷先/開催地&emsp;<%= @request.r_location %></p>
-				<p>・リクエスト内容<br><%= @request.r_body %></p>
+				<p>・出荷先/開催地&emsp;<%= @request.location %></p>
+				<p>・リクエスト内容<br><%= @request.body %></p>
 			</div>
 		</div>
 	</div>
