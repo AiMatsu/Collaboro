@@ -78,7 +78,7 @@ gem 'paranoia', '~> 2.3', '>= 2.3.1'
 # gem 'ransack'
 
 # gem 'gmaps4rails'
-# gem "geocoder"
+gem "geocoder"
 
 gem 'pry-rails'
 
