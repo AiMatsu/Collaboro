@@ -5,7 +5,7 @@ class CUser < ApplicationRecord
            :recoverable, :rememberable, :validatable
 
     has_many :requests, dependent: :destroy
-    has_many :proposals, dependent: :destroy
+    has_many :proposals, through: :favorite_hearts
     has_many :favorite_hearts, dependent: :destroy
     has_many :chatrooms, dependent: :destroy
     # has_many :messages, dependent: :destroy

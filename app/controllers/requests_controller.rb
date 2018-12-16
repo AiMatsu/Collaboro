@@ -30,10 +30,27 @@ class RequestsController < ApplicationController
 	def show
 		@request = Request.find(params[:id])
 		@c_user = @request.c_user
+
+		# #favorite_starsに登録した人一覧
+		@favorited_users = []
+		@favorites = FavoriteStar.where(request_id: @request).reverse_order
+		@favorites.each do |f|
+			@favorited_user = FUser.find_by(id: f.f_user_id)
+			@favorited_users.push(@favorited_user)
+		end
 	end
 
 	def index
+
 		@requests = Request.all.reverse_order
+
+		#favorite_starsに登録したやつ
+		@favorites = FavoriteStar.where("f_user_id = ?", current_f_user).reverse_order
+		@requests_fav = []
+		@favorites.each do |f|
+			@request = Request.find_by(id: f.request_id)
+			@requests_fav.push(@request)
+		end
 
 		# カテゴリー別
 		@requests_shipment = Request.where(category: "0").reverse_order
@@ -64,6 +81,10 @@ class RequestsController < ApplicationController
 		if request.destroy
 			redirect_to c_user_path(current_c_user),notice:"リクエストを削除しました！"
 	    end
+	end
+
+	def search
+		@requests = Request.page(params[:page]).reverse_order.search(params[:search])
 	end
 
 	private

@@ -2,6 +2,64 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*------------------------------------*/
+/*                index               */
+/*------------------------------------*/
+.chatUserList a {
+	display: block;
+	color: black;
+	font-size: 20px;
+	text-decoration: none;
+}
+.lastMessage {
+	font-size: 15px;
+}
+.lastMessage span {
+	font-size: 12px;
+	color: #555;
+}
+
+/*------------------------------------*/
+/*                show                */
+/*------------------------------------*/
+
+.chatUserName a{
+	color :black;
+}
+.chatUserBelogs {
+	font-size: 15px;
+}
+
+/*- - - - メッセージ入力フォーム - - - -*/
+.message-form {
+	padding: 5px 10px;
+	margin: 10px 0;
+}
+.message-form a{
+	font-size: 15px;
+}
+.message-send {
+	display: block;
+    width: 100%;
+    margin: 5px auto;
+    padding: 3px 0;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 3px;
+    border: solid 1px #ddd;
+    text-align: center;
+    background-color: white;
+}
+/*.message-send:hover {
+	color:white;
+	background-color: #ef255f;
+}*/
+
+/*- - - - メッセージ - - - -*/
+.messages {
+	overflow-y: scroll;
+	height: 65vh;
+}
 .balloon-right:before,{
 	content: "";
 	position: absolute;
@@ -9,7 +67,7 @@
 	left: 100%;
  	margin-top: 0px;
 	border: 10px solid transparent;
-	border-left: 15px solid #e0edff;
+	border-left: 15px solid #eaffd0;/* #faffb8*/
 }
 .balloon-left:before{
 	content: "";
@@ -21,7 +79,7 @@
 	border-right: 15px solid #EFEBE9;
 }
 .balloon-right{
-	background: #e0edff;
+	background: #eaffd0;/* #faffb8*/
 }
 .balloon-left{
 	background: #EFEBE9;
@@ -30,7 +88,7 @@
 .balloon-left {
  	position: relative;
 	display: inline-block;
- 	margin: 3px 15px 3px 0;
+ 	margin: 5px 15px 5px 0;
 	padding: 7px 10px;
 	min-width: 120px;
  	max-width: 100%;
@@ -49,3 +107,4 @@
 	padding: 0;
 	font-size: 10px;
 }
+

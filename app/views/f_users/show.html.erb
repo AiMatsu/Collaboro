@@ -1,18 +1,16 @@
 <div class="container">
-	<% if @user == current_f_user %>
-		<h3><b>マイファーム</b></h3>
-	<% else %>
-		<h3><%= @user.farm %></h3>
-	<% end %>
+	<h3><i class="fas fa-home"></i>&ensp;
+		<% if @user == current_f_user %>マイファーム
+		<% else %><%= @user.farm %>
+		<% end %>
+	</h3>
 
 	<!-- サクセスメッセージ -->
 	<p id="notice"><%= notice %></p>
 
-	<!-- -- 固定 情報別タブボタン-- -->
+	<!-- - - 情報別タブボタン- - -->
 	<div class="row">
-		<div class="farm-name col-md-6">
-		</div>
-		<div id="tab-menu" class="col-md-6 clearfix" >
+		<div id="tab-menu" class="col-md-6 col-md-offset-6 clearfix" >
 			<a href="#tab-info" class="btn col-md-4">基本情報</a>
 			<a href="#tab-crops" class="btn col-md-4">作物情報</a>
 			<a href="#tab-blogs" class="btn col-md-4">旬ネタ</a>
@@ -20,11 +18,12 @@
 	</div>
 
 	<div id="tab-contents">
-		<!-- -- 基本情報 -- -->
+		<!-- - - 基本情報 - - -->
 		<div id="tab-info" class="tab">
-			<div class="row item">
-				<p class="item-title">基本情報</p>
-				<div class="col-md-4">
+			<!-- 基本情報 -->
+			<div class="basic row item">
+				<p class="item-title color-base">基本情報</p>
+				<div class="col-md-4 ">
 					<%= attachment_image_tag @user, :image, fallback: "farmer.png" ,class: "img-responsive img-thumbnail"%>
 				</div>
 				<div class="col-md-8">
@@ -39,7 +38,7 @@
 						</tr>
 						<tr>
 							<th width="30%">◇&emsp;ファーム紹介</th>
-							<td width="70%"><%= @user.profile %></td>
+							<td width="70%"><%= simple_format(@user.profile) %></td>
 						</tr>
 						<tr>
 							<th width="30%">◇&emsp;ファームのHP</th>
@@ -56,35 +55,196 @@
 					</table>
 					<div class="link-btn">
 						<% if @user == current_f_user %>
-							<%= link_to "基本情報を編集する",edit_f_user_path(current_f_user),class: "btn btn-default col-md-7 " %>
-							<%= link_to "退会する",f_user_path(@user), method: :delete, data: { confirm: '本当に退会しますか？'} ,class: "btn btn-default col-md-4 col-md-offset-1" %>
+							<%= link_to "基本情報を編集する",
+								edit_f_user_path(current_f_user),
+								class: "btn btn-default col-md-7 " %>
+							<%= link_to "退会する",f_user_path(@user),
+								method: :delete, data: { confirm: '本当に退会しますか？'} ,
+								class: "btn btn-default col-md-4 col-md-offset-1" %>
 						<% elsif  @user != current_f_user && @c_user  %>
-							<%= link_to "担当者と連絡を取る",chatroom_path(@chatroom),class: "btn btn-block btn-default" %>
+							<%= link_to "担当者と連絡を取る",
+								chatroom_path(@chatroom),
+								class: "btn btn-block btn-default" %>
 						<% end %>
 					</div>
 				</div>
 			</div>
 			<div class="map row item">
-				<p class="item-title">地図</p>
+				<p class="item-title color-base">地図</p>
 			</div>
 		</div>
-		
 
-		<!-- -- 作物情報 -- -->
+
+		<!-- - - 作物情報 - - -->
 		<div id="tab-crops" class="tab">
-			<div class="item">
-				<p class="item-title">作物カレンダー</p>
+			<!-- 収穫カレンダー -->
+			<div class="calenders row item">
+				<p class="item-title color-base">
+					作物カレンダー
+					<span class="link-btn">
+					<% if @user == current_f_user %>
+						&emsp;<%= link_to "",new_crops_calendar_path,class: "far fa-plus-square" %>
+					<% end %>
+					</span>
+			    </p>
+				<div class="col-md-12 col-sm-12">
+				    <% if @crops_calendars.empty? %>
+					    <p align="center">
+						※ 登録されている作物はありません ※
+					　　 </p>
+					<% else %>
+						<table class="">
+				    		<thead>
+				    			<tr>
+				    				<th class="crop">作物名</th>
+				    				<th class="month">1月</th>
+				    				<th class="month">2月</th>
+				    				<th class="month">3月</th>
+				    				<th class="month">4月</th>
+				    				<th class="month">5月</th>
+				    				<th class="month">6月</th>
+				    				<th class="month">7月</th>
+				    				<th class="month">8月</th>
+				    				<th class="month">9月</th>
+				    				<th class="month">10月</th>
+				    				<th class="month">11月</th>
+				    				<th class="month">12月</th>
+				    			</tr>
+				    		</thead>
+
+				    		<tbody>
+				    			<% @crops_calendars.each do |cc| %>
+				    			<tr>
+				    				<th class="crop"><%= cc.crops %></th>
+				    				<%if cc.Jan == 2%>
+				    				<td class="bestSeason""></td>
+				    				<%elsif cc.Jan == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Feb == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Feb == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Mar == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Mar == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Apr == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Apr == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.May == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.May == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Jun == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Jun == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Jul == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Jul == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Aug == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Aug == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Sep == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Sep == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Oct == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Oct == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Nov == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Nov == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<%if cc.Dec == 2%>
+				    				<td class="bestSeason"></td>
+				    				<%elsif cc.Dec == 1%>
+				    				<td class="season"></td>
+				    				<% else %>
+				    				<td></td>
+				    				<% end %>
+
+				    				<% if @f_user == current_f_user %>
+				    				<td class="cc-edit">
+				    					<%= link_to "",
+				    						edit_crops_calendar_path(cc),
+				    						class: "glyphicon glyphicon-pencil" %>
+				    					<%= link_to "",
+					    					crops_calendar_path(cc),
+					    					method: :delete, data: { confirm: '本当に削除しますか？'} ,
+					    					class: "glyphicon glyphicon-trash" %>
+				    				</td>
+				    				<% end %>
+				    			</tr>
+				    			<% end %>
+				    		</tbody>
+				    	</table>
+				    	<p align="right" class="cc-color">
+				    		<span class="bestSeason"></span>&ensp;BestSeason&emsp;
+				    		<span class="season"></span>&ensp;Season
+				    	</p>
+				    </div>
+				<% end %>
 			</div>
-			<div class="item">
-				<p class="item-title">
+
+			<!-- プロポーザル -->
+			<div class="row item">
+				<p class="item-title color-base">
 					ファームからのプロポーザル
 					<span class="link-btn">
 						<% if @user == current_f_user %>
-						&emsp;<%= link_to "",new_proposal_path,class: "glyphicon glyphicon-pencil" %>
+						&emsp;<%= link_to "",new_proposal_path,class: "far fa-plus-square" %>
 						<% end %>
 					</span>
 				</p>
-				<!-- プロポーザル -->
 				<% @proposals.each do |proposal| %>
 				<div class=" row f_user_proposal">
 					<div class="col-md-3 proposal-image">
@@ -95,6 +255,8 @@
 						<% end %>
 					</div>
 					<div class="col-md-9">
+						<!-- bookmarkマーク -->
+						<%= render 'favorite_hearts/bookmarks',proposal:proposal %>
 						<div class="proposal-headline">
 							<h4><%= proposal.title %></h4>
 							<p>
@@ -123,14 +285,14 @@
 		</div>
 
 
-		<!-- -- 旬ネタ -- -->
+		<!-- - - 旬ネタ - - -->
 		<div id="tab-blogs" class="tab">
 			<div class="item">
-				<p class="item-title">
+				<p class="item-title color-base">
 					ファーム旬ネタ
 					<span class="link-btn">
 					<% if @user == current_f_user %>
-						&emsp;<%= link_to "",new_blog_path,class: "glyphicon glyphicon-pencil" %>
+						&emsp;<%= link_to "",new_blog_path,class: "far fa-plus-square" %>
 					<% end %>
 					</span>
 				</p>
@@ -146,7 +308,7 @@
 </div>
 
 
-<!-- -- JS/TABU切り替え -- -->
+<!-- - - JS/TABU切り替え - - -->
 <script>
 	$(function(){
 		$('#tab-contents .tab[id != "tab-info"]').hide();

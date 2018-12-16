@@ -28,10 +28,30 @@ class ProposalsController < ApplicationController
 	end
 
 	def show
+		@proposal = Proposal.find(params[:id])
+		@f_user = @proposal.f_user
+
+		# #favorite_heartsに登録した人一覧
+		@favorited_users = []
+		@favorited = FavoriteHeart.where(proposal_id: @proposal).reverse_order
+		@favorited.each do |f|
+			@favorited_user = CUser.find_by(id: f.c_user_id)
+			@favorited_users.push(@favorited_user)
+		end
 	end
 
 	def index
+
 		@proposals = Proposal.all.reverse_order
+	
+		#favorite_heartsに登録したやつ
+		@favorites = FavoriteHeart.where("c_user_id = ?", current_c_user).reverse_order
+		@proposals_fav = []
+		@favorites.each do |f|
+			@proposal = Proposal.find_by(id: f.proposal_id)
+			@proposals_fav.push(@proposal)
+		end
+
 
 		# カテゴリー別
 		@proposals_shipment = Proposal.where(category: "0").reverse_order
@@ -62,6 +82,10 @@ class ProposalsController < ApplicationController
 		if proposal.destroy
 			redirect_to f_user_path(current_f_user),notice:"プロポーザルを削除しました！"
 	    end
+	end
+
+	def search
+		@proposals = Proposal.all.reverse_order.search(params[:search])
 	end
 
 	private

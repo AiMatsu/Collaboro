@@ -1,3 +1,145 @@
 // Place all the styles related to the Blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*- - - show - - -*/
+.color0 {
+	border-left: solid 5px #f30;
+}
+.color1 {
+	border-left: solid 5px #f90;
+}
+.color2 {
+	border-left: solid 5px #3cc;
+}
+.color3 {
+	border-left: solid 5px #0c0;
+}
+
+.blog-show .item-title {
+	margin-bottom: 20px;
+}
+.blog-body {
+	overflow-y: scroll;
+	min-height: 200px;
+	max-height: 450px;
+	margin: 5px;
+	padding: 5px;
+}
+.blog-name,
+.blog-info {
+	margin: 0px;
+	padding: 5px;
+	border-top: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
+}
+.blog-info i {
+	color: #996
+}
+
+
+/*- - - index - - -*/
+.blogCard {
+	width: 100%;
+	border: solid 1px #ddd;
+	margin: 10px auto;
+}
+.blogCard-image  img{
+	width: 96%;
+	margin: 5px auto;
+	max-height: 180px;
+	object-fit: cover;
+	overflow: hidden;
+}
+.blogCard-thum{
+	width: 96%;
+	margin: 5px auto;
+}
+.blogCard-title {
+	text-align: center;
+    overflow: hidden;
+	height: 50px;
+}
+.blogCard-info {
+	color: #996;
+	font-size: 10px;
+	overflow: hidden;
+}
+
+/* - -indexのリボン- - */
+.ribbon_box {
+    position: relative;
+  }
+.blogCard-ribbon{
+    display: inline-block;
+    position: absolute;
+    top: 14px;
+    left: 0;
+    box-sizing: border-box;
+    padding: 0 15px;
+    margin-left: 15px;
+    height: 20px;
+    line-height: 20px;
+    color: white;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+}
+.blogCard-ribbon:before {
+	position: absolute;
+    content: '';
+    left: -7px;
+    border: none;
+    height: 29px;
+    width: 8px;
+    border-radius: 5px 0 0 5px;
+}
+.blogCard-ribbon:after {
+    position: absolute;
+    content: '';
+    bottom: -7px;
+    left: -5px;
+    border: none;
+    height: 7px;
+    width: 5px;
+    border-radius: 5px 0 0 5px;
+} 
+/* - - カテゴリー= 収穫 - -*/
+.ribbon0 {
+    background: #f30;
+}
+.ribbon0:before {
+    background: #f30;
+}
+.ribbon0:after {
+    background: #930;
+}
+/* - - カテゴリー= レシピ - -*/
+.ribbon1 {
+    background: #f90;
+}
+.ribbon1:before {
+    background: #f90;
+}
+.ribbon1:after {
+    background: #960;
+}
+/* - - カテゴリー= コラボ情報 - -*/
+.ribbon2 {
+    background: #3cc;
+}
+.ribbon2:before {
+    background: #3cc;
+}
+.ribbon2:after {
+    background: #36c;
+}
+/* - - カテゴリー= その他 - -*/
+.ribbon3 {
+    background: #0c0;
+}
+.ribbon3:before {
+    background: #0c0;
+}
+.ribbon3:after {
+    background: #060;
+}
+

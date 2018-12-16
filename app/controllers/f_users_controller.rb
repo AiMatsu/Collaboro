@@ -23,6 +23,8 @@ class FUsersController < ApplicationController
 		if @user != current_f_user && @c_user
 			@chatroom = Chatroom.find_by(f_user_id: @user.id ,c_user_id: @c_user)
 	    end
+	    @crops_calendars = @user.crops_calendars
+
 	end
 
 	def index
@@ -36,7 +38,7 @@ class FUsersController < ApplicationController
 
 	private
 	def f_user_params
-		params.require(:f_user).permit(:name, :image, :farm, :profile, :hp_url,:email, :tell, :post_code, :address, :conv_time, :password,:encrypted_password)
+		params.require(:f_user).permit(:name, :image, :farm, :profile, :hp_url, :tell, :post_code, :address, :conv_time, )
 	end
 
 

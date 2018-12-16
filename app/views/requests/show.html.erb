@@ -6,6 +6,24 @@
 	<div class="row request-show">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="request-headline">
+				<div class="star">
+					<% if current_f_user%>
+						<% if @request.favorited_by?(current_f_user) %>
+						<%= link_to request_favorite_stars_path(@request), method: :delete do %>
+							<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: orangered;"></span>
+							<%= @request.favorite_stars.count %>
+							<% end %>
+						<% else %>
+							<%= link_to request_favorite_stars_path(@request), method: :post do %>
+							<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
+							<%= @request.favorite_stars.count %>
+							<% end %>
+						<% end %>
+					<% else%>
+						<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
+						<%= @request.favorite_stars.count %>
+					<% end %>
+				</div>
 				<h4><%= @request.title %></h4>
 				<p>
 					<span class="request-category"><%= @request.category %></span>
@@ -28,4 +46,25 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- favorite(bookmark) した人一覧-->
+	<% if @c_user == current_c_user %>
+	<div class="row favorited-users">
+		<p class="item-title color-base col-md-offset-1">
+			<span class="glyphicon glyphicon-bookmark"aria-hidden="true" style="color: orangered;"> </span>しているユーザー
+		</p>
+		<table class="table table-hover">
+			<% @favorited_users.each do |favorited_user| %>
+			<tr class="col-md-offset-1 col-md-10">
+				<td class="col-md-1 col-md-offset-1">
+					<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "farmer.png" ,class: "img-responsive img-thumbnail") %>
+				</td>
+				<td class="col-md-10">
+					<b><%= link_to "#{favorited_user.farm} / #{favorited_user.name}",f_user_path(favorited_user) %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<% end %>
 </div>

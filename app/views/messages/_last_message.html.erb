@@ -1,6 +1,8 @@
-<% if chatroom.messages.empty? %>
-	    ※ まだトークがありません ※
-<% else %>
-		<%= chatroom.messages.last.text %><br>
-		<%= chatroom.messages.last.created_at.strftime('%m月%d日 %H:%M') %>
-<% end %>
+<p class="lastMessage">
+	<% if chatroom.messages.empty? %>
+		    ※ まだトークがありません ※
+	<% else %>
+			<%= chatroom.messages.last.text %><br>
+			<span><%= chatroom.messages.last.created_at.strftime('%m月%d日 %H:%M') %></span>
+	<% end %>
+</p>

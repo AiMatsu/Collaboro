@@ -12,4 +12,7 @@
 		<%= proposal.location %><br>
 		<%= proposal.start_season.strftime('%Y年%m月') %>~<%= proposal.finish_season.strftime('%Y年%m月') %><br>
 	</div>
+
+	<!-- bookmarkマーク -->
+	<%= render 'favorite_hearts/bookmarks',proposal:proposal %>
 </div>
