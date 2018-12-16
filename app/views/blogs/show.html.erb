@@ -3,34 +3,54 @@
 	<!-- サクセスメッセージ -->
 	<p id="notice"><%= notice %></p>
 
-	<div class="row blog-show">
-		<div class="col-md-5 col-md-offset-1 blog_image">
-		<% if @blog.b_category == 1 %>
-			<%= attachment_image_tag @blog,:b_image,fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail" %>
-		<% elsif @blog.b_category == 2 %>
-			<%= attachment_image_tag @blog,:b_image,fallback:"elaine-casap-86020-unsplash.jpg",class: "img-responsive img-thumbnail" %>
-		<% else %>
-			<%= attachment_image_tag @blog,:b_image,fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail" %>
-		<% end %>
-		</div>
-		<div class="col-md-5">
-			<div class="headline">
-				<h4><%= @blog.b_title %></h4>
-				<p>ファーム：<%= link_to @f_user.farm,f_user_path(@f_user) %></p>
-				<p>
-					<span>投稿日：<%= @blog.created_at.strftime('%Y年%m月%d日') %></span>
-					<span class="blog-category"><%= @blog.b_category %></span>
-					<% if @f_user == current_f_user %>
-						<span>
-							&ensp;<%= link_to "",edit_blog_path(@blog),class: "glyphicon glyphicon-pencil"%>
-							&ensp;|&ensp;<%= link_to "",blog_path(@blog),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
-						</span>
+	<div class="row ">
+		<div class="col-md-10 col-md-offset-1">
+			<!-- ブログのタイトル -->
+			<% if @blog.b_category == "収穫情報" %>
+			<h4 class=" item-title color0">
+			<% elsif @blog.b_category == "レシピ紹介" %>
+			<h4 class=" item-title color1">
+			<% elsif @blog.b_category == "コラボ情報" %>
+			<h4 class=" item-title color2">
+			<% else %>
+			<h4 class=" item-title colo3">
+			<% end %>
+			<%= @blog.b_title %>
+			</h4>
+
+			<!-- ブログの詳細内容 -->
+			<div class=" blog-show">
+				<div class="col-md-6 blog_image">
+					<% if @blog.b_category == "レシピ紹介" %>
+						<%= attachment_image_tag @blog,:b_image,fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive" %>
+					<% elsif @blog.b_category == "コラボ情報" %>
+						<%= attachment_image_tag @blog,:b_image,fallback:"elaine-casap-86020-unsplash.jpg",class: "img-responsive" %>
+					<% else %>
+						<%= attachment_image_tag @blog,:b_image,fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive" %>
 					<% end %>
-				</p>
+				</div>
+				<div class="col-md-6 blog_detail">
+					<div class="blog-name">
+						<i class="fas fa-home"></i>&emsp;
+						<%= link_to @f_user.farm,f_user_path(@f_user) %>
+					</div>
+					<div class="blog-body">
+						<%= simple_format(@blog.b_body) %>
+				    </div>
+					<div class=" blog-info">
+						<span>
+							<i class="fas fa-layer-group"></i>&emsp;<%= @blog.b_category %>&emsp;&emsp;
+							<i class="fas fa-clock"></i>&emsp;<%= @blog.created_at.strftime('%Y年%m月%d日') %>
+							<% if @f_user == current_f_user %>
+								<span>&emsp;||&emsp;
+									&ensp;<%= link_to "",edit_blog_path(@blog),class: "glyphicon glyphicon-pencil"%>
+									&ensp;|&ensp;<%= link_to "",blog_path(@blog),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
+								</span>
+							<% end %>
+						</span>
+					</div>
+				</div>
 			</div>
-			<div class="blog-body">
-				<p><%= @blog.b_body %></p>
-		    </div>
 		</div>
 	</div>
 </div>

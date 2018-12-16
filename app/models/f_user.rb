@@ -6,6 +6,7 @@ class FUser < ApplicationRecord
 
     has_many :blogs, dependent: :destroy
     has_many :proposals, dependent: :destroy
+    has_many :requests, through: :favorite_stars
     has_many :favorite_stars, dependent: :destroy
     has_many :crops_calendars, dependent: :destroy
     has_many :chatrooms, dependent: :destroy

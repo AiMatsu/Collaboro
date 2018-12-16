@@ -1,10 +1,15 @@
 <div class="container">
 
-	<!-- -- カテゴリ/時期別タブボタン -- -->
 	<div class="row">
 		<h3><b>プロポーザル</b></h3>
+
+		<!-- 検索フォーム -->
+		<%= render 'proposals/search_form' %>
+
+		<!-- タブメニュー -->
 		<%= render 'proposals/tab_menu' %>
 	</div>
+
 
 	<div id="tab-contents" class="row">
 		<!-- -- All -- -->
@@ -59,6 +64,13 @@
 		<!-- -- その他 -- -->
 		<div id="tab-other" class="tab">
 			<% @proposals_other.each do |proposal| %>
+			<%= render 'proposals/proposals_index',proposal:proposal %>
+			<% end %>
+		</div>
+
+		<!-- -- 登録済 -- -->
+		<div id="tab-fav" class="tab">
+			<% @proposals_fav.each do |proposal| %>
 			<%= render 'proposals/proposals_index',proposal:proposal %>
 			<% end %>
 		</div>

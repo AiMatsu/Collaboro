@@ -19,58 +19,66 @@
 
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing:  border-box;
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing:  border-box;
 }
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
+
 .main {
-	margin:70px auto;
+	margin:70px auto 20px auto;
 }
 
 /*------header------*/
 header {
-	height: 70px;
+	height: 60px;
 	width: 100%;
-	position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    background-color: white;
+  margin-bottom: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: white;
+  border-top: solid 1px #085F63;
+  border-bottom: solid 1px #085F63;
 }
 .header-left {
-	height: 70px;
+	height: 60px;
 	float: left;
 	text-align: center;
-	line-height: 70px;
+	line-height: 60px;
 }
 .logo {
-    float: left;
-	font-size: 18px;
-	font-weight: bold;
-    color: black;
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
 }
 .header-right {
-  	float: right;
+ float: right;
 }
 .nav-list-item {
 	float: left;
 	padding: 0 10px;
 	list-style: none;
 	text-align: center;
-	line-height: 70px;
+	line-height: 60px;
 	font-size: 14px;
 }
 .nav-list-item a{
-    color: black;
+  color: black;
 }
-/*------見出し関連------*/
+/*------ submitボタン ------*/
+.actions {
+  margin: 10px auto;
+}
+/*------タブメニュー/ タイトル関連------*/
 #tab-menu .active,
 #tab-c-menu .active,
 #tab-b-menu .active{
@@ -78,11 +86,17 @@ header {
   color: #000;
 }
 .item-title {
-padding: 0.25em 0.5em;
-color: #494949;
-background: transparent;
-border-left: solid 5px #7db4e6;
-
+  padding: 0.25em 0.5em;
+  color: #494949;
+  background: transparent;
 }
-
+.color-base {
+  border-left: solid 5px #7db4e6;
+}
+h3 {
+  padding: 0px 10px;
+  margin: 10px 0 15px 0;
+  display: inline-block;
+  font-weight: bold;
+}
 

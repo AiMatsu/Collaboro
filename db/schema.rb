@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
     t.datetime "remember_created_at"
     t.string "company", null: false
     t.string "name", null: false
-    t.string "industry", default: "選択してください", null: false
+    t.string "industry", null: false
     t.text "image_id"
     t.text "profile"
     t.text "hp_url"
@@ -57,8 +57,18 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
   create_table "crops_calendars", force: :cascade do |t|
     t.integer "f_user_id", null: false
     t.string "crops", null: false
-    t.datetime "season"
-    t.datetime "bestSeason", null: false
+    t.integer "Jan", default: 0, null: false
+    t.integer "Feb", default: 0, null: false
+    t.integer "Mar", default: 0, null: false
+    t.integer "Apr", default: 0, null: false
+    t.integer "May", default: 0, null: false
+    t.integer "Jun", default: 0, null: false
+    t.integer "Jul", default: 0, null: false
+    t.integer "Aug", default: 0, null: false
+    t.integer "Sep", default: 0, null: false
+    t.integer "Oct", default: 0, null: false
+    t.integer "Nov", default: 0, null: false
+    t.integer "Dec", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,6 +102,8 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
     t.integer "proposal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["c_user_id"], name: "index_favorite_hearts_on_c_user_id"
+    t.index ["proposal_id"], name: "index_favorite_hearts_on_proposal_id"
   end
 
   create_table "favorite_stars", force: :cascade do |t|
@@ -99,6 +111,8 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
     t.integer "request_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["f_user_id"], name: "index_favorite_stars_on_f_user_id"
+    t.index ["request_id"], name: "index_favorite_stars_on_request_id"
   end
 
   create_table "messages", force: :cascade do |t|
