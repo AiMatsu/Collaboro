@@ -36,7 +36,7 @@
 
 				<div class="field ">
 					<%= f.label :industry,"◇ 業種" %><br />
-					<%= f.select :industry,[["飲食店", "飲食店"],["メーカー", "メーカー"],["旅行","旅行"],["広告","広告"],["イベント","イベント"],["その他","その他"]], autofocus: true,class: "form-control" %><br />
+					<%= render 'c_users/industry_select',f:f %>
 				</div>
 
 				<div class="field ">

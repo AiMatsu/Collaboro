@@ -1,9 +1,29 @@
 <div class="col-md-3">
 	<div class="">
-		<%= request.r_category %><br>
-		<%= link_to request.r_title,request_path(request) %><br>
-		<%= request.r_location %><br>
-		<%= request.r_start_season.strftime('%Y年%m月') %>~<%= request.r_finish_season.strftime('%Y年%m月') %><br>
+		<%= request.category %><br>
+		<%= link_to request.title,request_path(request) %><br>
+		<%= request.location %><br>
+		<%= request.start_season.strftime('%Y年%m月') %>~<%= request.finish_season.strftime('%Y年%m月') %><br>
 		<%= link_to request.c_user.company,c_user_path(request.c_user)%><br>
+		<div class="index_star">
+			<% if current_f_user%>
+				<% if request.favorited_by?(current_f_user) %>
+					<%= link_to request_favorite_stars_path(request), method: :delete do %>
+					<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: orangered;"></span>
+					<%= request.favorite_stars.count %>
+					<% end %>
+				<% else %>
+					<%= link_to request_favorite_stars_path(request), method: :post do %>
+					<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
+					<%= request.favorite_stars.count %>
+					<% end %>
+				<% end %>
+			<% else%>
+				<%= link_to request_path(request), method: :get do %>
+					<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
+					<%= request.favorite_stars.count %>
+					<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>

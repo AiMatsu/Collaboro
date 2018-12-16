@@ -1,0 +1,98 @@
+<div class="container">
+
+	<!--  商談相手  -->
+	<div class="chatUser">
+
+		<h3 class="chatUserName">
+			<% if @f_user == current_f_user %>
+				<%= link_to c_user_path(@c_user) do %>
+					<i class="fas fa-comments"></i>&emsp;
+					<%= @c_user.name %>
+					<span class="chatUserBelogs"> <%= @c_user.company %></span>
+				<% end %>
+			<% elsif @c_user == current_c_user %>
+				<%= link_to f_user_path(@f_user) do %>
+					<i class="fas fa-comments"></i>&emsp;
+					<%= @f_user.name %>
+					<span class="chatUserBelogs"> <%= @f_user.farm %></span>
+				<% end %>
+			<% end %>
+		</h3>
+
+		<span>
+			<%= link_to chatrooms_path do %>
+			  	<span class="chatUserBelogs">  |  Exit</span>&nbsp;
+			  	<span class="glyphicon glyphicon-log-out"></span>
+		    <% end %>
+		</span>
+
+	</div>
+
+
+
+
+	<!-- -- メッセージ一覧 -- -->
+	<div class="messages ">
+		<% if @messages.empty? %>
+			<p align="center">
+				※ まだトークがありません。下記のフォームからメッセージを送信してください。 ※
+			</p>
+		<% end %>
+		<% @messages.each do |message|%>
+			<div class="row">
+				<% if current_f_user %>
+					<!-- チャット相手からのメッセージ -->
+					<% if message.f_user == false %>
+						<div class="col-md-1 col-md-offset-1 col-sm-1">
+							<%= render 'messages/c_user_image',c_user:@c_user %>
+						</div>
+						<div class="balloon-left col-md-7 col-sm-8">
+							<%= render 'messages/messages',message:message %>
+						</div>
+					<!-- 自分が送ったメッセージ -->
+					<% else %>
+						<div class="balloon-right col-md-offset-3 col-md-7 col-sm-8 col-sm-offset-2">
+							<%= render 'messages/messages',message:message %>
+						</div>
+						<div class="col-md-1 col-sm-1">
+							<%= render 'messages/f_user_image',f_user:@f_user %>
+						</div>
+					<% end %>
+				<% elsif current_c_user %>
+				　　<!-- チャット相手からのメッセージ -->
+					<% if message.f_user == true %>
+						<div class="col-md-1 col-md-offset-1 col-sm-1">
+							<%= render 'messages/f_user_image',f_user:@f_user %>
+						</div>
+						<div class="balloon-left col-md-7 col-sm-8">
+							<%= render 'messages/messages',message:message %>
+						</div>
+					<!-- 自分が送ったメッセージ -->
+					<% else %>
+						<div class="balloon-right col-md-offset-3 col-md-7 col-sm-8 col-sm-offset-2">
+							<%= render 'messages/messages',message:message %>
+						</div>
+						<div class="col-md-1 col-sm-1">
+							<%= render 'messages/c_user_image',c_user:@c_user %>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+
+	<!-- -- メッセージ入力欄 -- -->
+	<div class="message-form form-group row">
+		<%= form_for @message_new,url:chatroom_messages_path(@chatroom) do |f| %>
+			<div class="field">
+				<%= f.label :text, "◆ メッセージ入力" %>
+				<%= f.text_area :text, rows:"2", class: "form-control" %>
+			</div>
+			<p>
+				<%= button_tag(type: 'submit', class: "message-send") do %>
+				<span class="glyphicon glyphicon-send"></span>&emsp;送信
+				<% end %>
+			</p>
+		<% end %>
+	</div>
+</div>

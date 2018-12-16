@@ -1,25 +1,25 @@
 <div class="field ">
-	<%= f.label :r_title ,"◇ タイトル" %>
-	<%= f.text_field :r_title, class: "form-control" %>
+	<%= f.label :title ,"◇ タイトル" %>
+	<%= f.text_field :title, class: "form-control" %>
 </div>
 
 <div class="field ">
-	<%= f.label :r_start_season, "◇ 希望時期" %><br />
-	<%= f.date_select :r_start_season, discard_day: true, class: "form-control" %>&emsp;〜&emsp;
-	<%= f.date_select :r_finish_season, discard_day: true, class: "form-control" %>
+	<%= f.label :start_season, "◇ 希望時期" %><br />
+	<%= f.date_select :start_season, discard_day: true, class: "form-control" %>&emsp;〜&emsp;
+	<%= f.date_select :finish_season, discard_day: true, class: "form-control" %>
 </div>
 
 <div class="field ">
-	<%= f.label :r_location, "◇ 出荷先/開催地" %><br />
-	<%= f.select :r_location,[["北海道", "北海道"],["青森県", "青森県"],["岩手県","岩手県"]], class: "form-control" %><br />
+	<%= f.label :location, "◇ 出荷先/開催地" %><br />
+	<%= render 'layouts/location_select',f:f %>
 </div>
 
 <div class="field ">
-	<%= f.label :r_category, "◇ カテゴリー" %><br />
-	<%= f.select :r_category,[["農作物出荷", "0"],["体験/イベント", "1"],["その他","2"]],  class: "form-control" %><br />
+	<%= f.label :category, "◇ カテゴリー" %><br />
+	<%= f.select :category,[["農作物出荷", "0"],["体験/イベント", "1"],["その他","2"]],  class: "form-control" %><br />
 </div>
 
 <div class="field ">
-	<%= f.label :r_body, "◇ 希望内容/相談内容" %>
-	<%= f.text_area :r_body, rows:"5", class: "form-control" %>
+	<%= f.label :body, "◇ 希望内容/相談内容" %>
+	<%= f.text_area :body, rows:"5", class: "form-control" %>
 </div>

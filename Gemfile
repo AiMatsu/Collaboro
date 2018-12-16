@@ -73,7 +73,7 @@ gem 'bootstrap-sass'
 
 gem 'paranoia', '~> 2.3', '>= 2.3.1'
 
-# gem 'kaminari'
+gem 'kaminari'
 # gem 'rails-i18n'
 # gem 'ransack'
 

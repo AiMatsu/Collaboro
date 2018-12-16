@@ -7,7 +7,7 @@
 		</div>
 		<div id="tab-menu" class="col-md-6 clearfix" >
 			<a href="#tab-harvest" class="btn col-md-2">収穫情報</a>
-			<a href="#tab-recipe" class="btn col-md-2">レシピ</a>
+			<a href="#tab-recipe" class="btn col-md-2">レシピ情報</a>
 			<a href="#tab-collabo" class="btn col-md-2">コラボ情報</a>
 			<a href="#tab-other" class="btn col-md-2">その他</a>
 			<a href="#tab-all" class="btn col-md-2 col-md-offset-1">ALL</a>
@@ -21,6 +21,8 @@
 			<%= render 'blogs/blogs_index',blog:blog %>
 			<% end %>
 		</div>
+		
+		
 		<!-- -- 収穫情報 -- -->
 		<div id="tab-harvest" class="tab">
 			<% @blogs_harvest.each do |blog| %>

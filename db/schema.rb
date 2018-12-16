@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
     t.datetime "remember_created_at"
     t.string "company", null: false
     t.string "name", null: false
-    t.string "industry", default: "選択してください", null: false
+    t.string "industry", null: false
     t.text "image_id"
     t.text "profile"
     t.text "hp_url"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
   end
 
   create_table "chatrooms", force: :cascade do |t|
-    t.integer "f_user_id", null: false
     t.integer "c_user_id", null: false
+    t.integer "f_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,8 +57,18 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
   create_table "crops_calendars", force: :cascade do |t|
     t.integer "f_user_id", null: false
     t.string "crops", null: false
-    t.datetime "season"
-    t.datetime "bestSeason", null: false
+    t.integer "Jan", default: 0, null: false
+    t.integer "Feb", default: 0, null: false
+    t.integer "Mar", default: 0, null: false
+    t.integer "Apr", default: 0, null: false
+    t.integer "May", default: 0, null: false
+    t.integer "Jun", default: 0, null: false
+    t.integer "Jul", default: 0, null: false
+    t.integer "Aug", default: 0, null: false
+    t.integer "Sep", default: 0, null: false
+    t.integer "Oct", default: 0, null: false
+    t.integer "Nov", default: 0, null: false
+    t.integer "Dec", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,6 +102,8 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
     t.integer "proposal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["c_user_id"], name: "index_favorite_hearts_on_c_user_id"
+    t.index ["proposal_id"], name: "index_favorite_hearts_on_proposal_id"
   end
 
   create_table "favorite_stars", force: :cascade do |t|
@@ -99,39 +111,41 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
     t.integer "request_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["f_user_id"], name: "index_favorite_stars_on_f_user_id"
+    t.index ["request_id"], name: "index_favorite_stars_on_request_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.text "text", null: false
-    t.integer "messenger", null: false
     t.integer "chatroom_id", null: false
+    t.boolean "f_user", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "proposals", force: :cascade do |t|
     t.integer "f_user_id", null: false
-    t.string "p_title", null: false
-    t.text "p_body", null: false
+    t.string "title", null: false
+    t.text "body", null: false
     t.text "p_image_id"
-    t.string "p_location", null: false
-    t.datetime "p_start_season", null: false
-    t.datetime "p_finish_season", null: false
-    t.integer "p_category", default: 0, null: false
-    t.integer "p_status", default: 0, null: false
+    t.string "location", null: false
+    t.datetime "start_season", null: false
+    t.datetime "finish_season", null: false
+    t.integer "category", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
     t.integer "c_user_id", null: false
-    t.string "r_title", null: false
-    t.text "r_body", null: false
-    t.string "r_location", null: false
-    t.datetime "r_start_season", null: false
-    t.datetime "r_finish_season", null: false
-    t.integer "r_category", default: 0, null: false
-    t.integer "r_status", default: 0, null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.string "location", null: false
+    t.datetime "start_season", null: false
+    t.datetime "finish_season", null: false
+    t.integer "category", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

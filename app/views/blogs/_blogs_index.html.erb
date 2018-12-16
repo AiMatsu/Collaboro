@@ -1,16 +1,42 @@
-<div class="col-md-3">
-	<div class="blog_image">
-		<% if blog.b_category == 1 %>
-		<%= link_to attachment_image_tag(blog, :b_image, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail"),blog_path(blog) %>
-		<% elsif blog.b_category == 2 %>
-		<%= link_to attachment_image_tag(blog, :b_image, fallback:"elaine-casap-86020-unsplash.jpg",class: "img-responsive img-thumbnail"),blog_path(blog)  %>
-		<% else %>
-		<%= link_to attachment_image_tag(blog, :b_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail"),blog_path(blog)  %>
-		<% end %>
-	</div>
-	<div class="">
-		<%= link_to blog.f_user.farm,f_user_path(blog.f_user)%><br>
-		<%= blog.b_title %>
-		<%= blog.created_at.strftime('%Y年%m月%d日') %>
+<div class="col-md-3 col-sm-6">
+	<div class="blogCard">
+
+		<!-- 画像 -->
+		<div style="text-align:center" class="blogCard-image ribbon-box">
+
+			<% if blog.b_category == "収穫情報" %>
+			<!-- リボン -->
+			<span class="blogCard-ribbon ribbon0"><%= blog.b_category%></span>
+			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive "),blog_path(blog)  %>
+			<% elsif blog.b_category == "レシピ紹介" %>
+			<!-- リボン -->
+			<span class="blogCard-ribbon ribbon1"><%= blog.b_category%></span>
+			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive "),blog_path(blog) %>
+
+			<% elsif blog.b_category == "コラボ情報" %>
+			<!-- リボン -->
+			<span class="blogCard-ribbon ribbon2"><%= blog.b_category%></span>
+			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"elaine-casap-86020-unsplash.jpg",class: "img-responsive "),blog_path(blog)  %>
+
+			<% else %>
+			<!-- リボン -->
+			<span class="blogCard-ribbon ribbon3"><%= blog.b_category%></span>
+			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450,  fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive "),blog_path(blog)  %>
+			<% end %>
+		</div>
+
+		<!-- サムネイル -->
+		<div class="blogCard-thum">
+			<div class="blogCard-title">
+				<h5>
+					<%= link_to blog_path(blog) do%>
+					<%= truncate(blog.b_title, :omission => "...") %>
+					<% end %>
+				</h5>
+			</div>
+			<div class="blogCard-info">
+				<span class=""><i class="fas fa-home"></i>&emsp;<%= link_to blog.f_user.farm,f_user_path(blog.f_user)%><br><i class="fas fa-clock"></i>&emsp;<%= blog.created_at.strftime('%Y年%m月%d日') %></span>
+				</div>
+			</div>
 	</div>
 </div>

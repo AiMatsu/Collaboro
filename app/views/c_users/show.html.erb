@@ -1,28 +1,28 @@
 <div class="container">
-	<% if @user == current_c_user %>
-		<h3><b>マイページ</b></h3>
-	<% else %>
-		<h3><%= @user.company %></h3>
-	<% end %>
+	<h3><i class="fas fa-home"></i>&ensp;
+		<% if @user == current_c_user %>マイページ
+		<% else %><%= @user.company %>
+		<% end %>
+	</h3>
 
 	<!-- サクセスメッセージ -->
 	<p id="notice"><%= notice %></p>
 
-	<!-- -- 共通 -- -->
+	<!-- - - 情報別タブボタン- - -->
 	<div class="row">
-		<div class="company-name col-md-6">
-		</div>
-		<div id="tab-menu" class="col-md-6 clearfix" >
+		<div class="row">
+		<div id="tab-menu" class="col-md-6 col-md-offset-6 clearfix" >
 			<a href="#tab-info" class="btn col-md-4 col-md-offset-4">基本情報</a>
 			<a href="#tab-request" class="btn col-md-4">コラボリクエスト</a>
 		</div>
 	</div>
 
 	<div id="tab-contents">
-		<!-- -- 基本情報 -- -->
+		<!-- - - 基本情報 - - -->
 		<div id="tab-info" class="tab">
-			<div class="row item">
-				<p class="item-title">基本情報</p>
+			<!-- 基本情報 -->
+			<div class="basic row item">
+				<p class="item-title color-base">基本情報</p>
 				<div class="col-md-4">
 					<%= attachment_image_tag @user, :image, fallback: "company.png" ,class: "img-responsive img-thumbnail"%>
 				</div>
@@ -42,7 +42,7 @@
 						</tr>
 						<tr>
 							<th width="30%">◇&emsp;企業紹介</th>
-							<td width="70%"><%= @user.profile %></td>
+							<td width="70%"><%= simple_format(@user.profile) %></td>
 						</tr>
 						<tr>
 							<th width="30%">◇&emsp;企業のHP</th>
@@ -59,12 +59,14 @@
 					</table>
 					<div class="link-btn">
 						<% if @user == current_c_user %>
-							<%= link_to "基本情報を編集する",edit_c_user_path(current_c_user),class: "btn btn-default col-md-7 " %>
-							<%= link_to "退会する",c_user_path(@user), method: :delete, data: { confirm: '本当に退会しますか？'} ,class: "btn btn-default col-md-4 col-md-offset-1" %>
+							<%= link_to "基本情報を編集する",
+								edit_c_user_path(current_c_user),
+								class: "btn btn-default col-md-7 " %>
+							<%= link_to "退会する",c_user_path(@user),
+								method: :delete, data: { confirm: '本当に退会しますか？'} ,
+								class: "btn btn-default col-md-4 col-md-offset-1" %>
 						<% elsif  @f_user  %>
-							<%= link_to "担当者と連絡を取る",chatroom_path(current_f_user),class: "btn btn-block btn-default" %>
-						<% else %>
-							<%= link_to "担当者と連絡を取る",chatroom_path(current_c_user),class: "btn btn-block btn-default" %>
+							<%= link_to "担当者と連絡を取る",chatroom_path(@chatroom),class: "btn btn-block btn-default" %>
 						<% end %>
 					</div>
 				</div>
@@ -79,23 +81,24 @@
 				frameborder="0" style="border:0"
 				src=<%= "https://www.google.com/maps/embed/v1/search?key=AIzaSyCBmiOl7x8qmCn5uaDjzU2cJgvNBeZfWfA=#{@user.address}" %> allowfullscreen>
 			　　　</iframe>
+
 			</div>
 		</div>
 
 		<!-- -- コラボリクエスト -- -->
 		<div id="tab-request" class="tab">
-			<div class="item">
-				<p class="item-title">
+			<div class="row item">
+				<p class="item-title color-base">
 					コラボリクエスト
 					<span class="link-btn">
 					<% if @user == current_c_user %>
-						&emsp;<%= link_to "",new_request_path,class: "glyphicon glyphicon-pencil" %>
+						&emsp;<%= link_to "",new_request_path,class: "far fa-plus-square" %>
 					<% end %>
 					</span>
 				</p>
 				<div class=" row c_user_requests">
 				<% @requests.each do |request| %>
-				<%= render 'requests/requests_index',request:request %>
+				<%= render 'requests/requests_index',request: request %>
 				<% end %>
 				</div>
 			</div>

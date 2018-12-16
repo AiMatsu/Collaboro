@@ -8,10 +8,10 @@ class CUser < ApplicationRecord
     after_validation :geocode, if: :address_changed?
 
     has_many :requests, dependent: :destroy
-    has_many :blogs, dependent: :destroy
-    has_many :proposals, dependent: :destroy
+    has_many :proposals, through: :favorite_hearts
     has_many :favorite_hearts, dependent: :destroy
     has_many :chatrooms, dependent: :destroy
+    # has_many :messages, dependent: :destroy
 
     attachment :image
 
