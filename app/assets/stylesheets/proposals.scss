@@ -2,6 +2,106 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*------------------------------------*/
+/*                index               */
+/*------------------------------------*/
+/*----------- カード -----------*/
+
+.proposalCard {
+	width: 100%;
+	border: solid 1px #ddd;
+	margin: 10px auto;
+    background-color: white;
+    border-radius: 5px
+}
+.proposalCard-image  img{
+	width: 96%;
+	height: 170px;
+	margin: 3px auto 3px auto;
+	object-fit: cover;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.proposalCard-image:hover img {
+    -webkit-transform:scale(1.03);
+    -moz-transform:scale(1.03);
+     transform:scale(1.03);
+     transition: 0.3s ;
+}
+.proposalCard-thum{
+	padding: 5px  10px 10px 10px;
+	height: 140px;
+	box-sizing: border-box;
+	position: relative;
+}
+.content h4 {
+	text-align: center;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+.proposalCard-thum .proposalCard-user {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+}
+.proposalCard-thum .bookmark {
+	position: absolute;
+	font-size:20px;
+	right: 10px;
+	bottom: 10px;
+}
+/*----------- カートのリボン -----------*/
+.ribbon_box {
+    position: relative;
+  }
+.proposalCard-ribbon{
+    display: inline-block;
+    position: absolute;
+    top: 160px;
+    left: -1px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    height: 20px;
+    line-height: 20px;
+    color: white;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+}
+.proposalCard-ribbon:before {
+	position: absolute;
+    content: '';
+    left: -7px;
+    border: none;
+    height: 29px;
+    width: 8px;
+    border-radius: 5px 0 0 5px;
+}
+.proposalCard-ribbon:after {
+    position: absolute;
+    content: '';
+    bottom: -7px;
+    left: -5px;
+    border: none;
+    height: 7px;
+    width: 5px;
+    border-radius: 5px 0 0 5px;
+}
+
+
+/*------------------------------------*/
+/*                show               */
+/*------------------------------------*/
+/*----------- カード -----------*/
 .proposal_show {
-	margin : 20px auto;
+    background-color: white;
+    border-radius: 5px;
+    border:solid 1px #ddd;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+.proposal-headline .bookmark {
+	font-size: 20px;
+}
+.favorited-users {
+	margin: 20px auto;
 }

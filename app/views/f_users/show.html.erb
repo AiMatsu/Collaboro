@@ -11,7 +11,7 @@
 	<!-- - - 情報別タブボタン- - -->
 	<div class="row">
 		<div id="tab-menu" class="col-md-6 col-md-offset-6 clearfix" >
-			<a href="#tab-info" class="btn col-md-4">基本情報</a>
+			<a href="#tab-info" class="active btn col-md-4">基本情報</a>
 			<a href="#tab-crops" class="btn col-md-4">作物情報</a>
 			<a href="#tab-blogs" class="btn col-md-4">旬ネタ</a>
 		</div>
@@ -251,42 +251,12 @@
 						<% end %>
 					</span>
 				</p>
-				<% @proposals.each do |proposal| %>
+
 				<div class=" row f_user_proposal">
-					<div class="col-md-3 proposal-image">
-						<% if proposal.category == 1 %>
-						<%= attachment_image_tag proposal, :p_image, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail" %>
-						<% else %>
-						<%= attachment_image_tag proposal, :p_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail" %>
-						<% end %>
-					</div>
-					<div class="col-md-9">
-						<!-- bookmarkマーク -->
-						<%= render 'favorite_hearts/bookmarks',proposal:proposal %>
-						<div class="proposal-headline">
-							<h4><%= proposal.title %></h4>
-							<p>
-								<span class="proposal-category"><%= proposal.category %></span>
-								<%= proposal.f_user.farm%>
-								<% if @user == current_f_user %>
-									<span>
-										&ensp;<%= link_to "",edit_proposal_path(proposal),class: "glyphicon glyphicon-pencil" %>
-										&ensp;|&ensp;<%= link_to "",proposal_path(proposal),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
-									</span><br>
-								<% end %>
-							</p>
-						</div>
-						<div class="proposal-show">
-							<p>
-								・出荷時期/開催時期
-								&emsp;<%= proposal.start_season.strftime('%Y年%m月') %>&ensp;~&ensp;<%= proposal.finish_season.strftime('%Y年%m月') %>
-							</p>
-							<p>・出荷元/開催地&emsp;<%= proposal.location %></p>
-							<p>・提案内容<br><%= proposal.body %></p>
-						</div>
-					</div>
-				</div>
+				<% @proposals.each do |proposal| %>
+					<%= render 'proposals/proposals_index',proposal:proposal %>
 				<% end %>
+				</div>
 			</div>
 		</div>
 

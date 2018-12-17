@@ -8,7 +8,7 @@ class ProposalsController < ApplicationController
 		proposal = Proposal.new(proposal_params)
 		proposal.f_user_id = current_f_user.id
 		if proposal.save
-			redirect_to f_user_path(current_f_user),notice:'プロポーザルを追加しました！'
+			redirect_to proposal_path(proposal),notice:'プロポーザルを追加しました！'
 		else
 			render :new
 		end
@@ -21,7 +21,7 @@ class ProposalsController < ApplicationController
 	def update
 		proposal = Proposal.find(params[:id])
 		if proposal.update(proposal_params)
-			redirect_to f_user_path(current_f_user),notice:'プロポーザル内容を変更しました！'
+			redirect_to proposal_path(proposal),notice:'プロポーザル内容を変更しました！'
 		else
 			render :edit
 		end
