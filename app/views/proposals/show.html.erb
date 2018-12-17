@@ -4,43 +4,47 @@
 	<p id="notice"><%= notice %></p>
 
 	<!-- puroposal -->
-	<div class=" row proposal_show">
-		<!-- 画像 -->
-		<div class="col-md-3 col-md-offset-1 proposal-image">
-			<% if @proposal.category == 1 %>
-			<%= attachment_image_tag @proposal, :p_image, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail" %>
-			<% else %>
-			<%= attachment_image_tag @proposal, :p_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail" %>
-			<% end %>
-		</div>
-		<!-- 詳細内容 -->
-		<div class="col-md-8">
-
-			<%= render 'favorite_hearts/bookmarks',proposal:@proposal %>
-
-			<div class="proposal-headline">
-				<h4><%= @proposal.title %></h4>
-				<p>
-					<span class="proposal-category"><%= @proposal.category %></span>
-					<%= @proposal.f_user.farm%>
+	<div class=" row">
+		<div class="col-md-12 proposal_show">
+			
+			<!-- 詳細内容 -->
+			<div class="col-md-7 col-md-offset-1">
+				<div class="proposal-headline">
+					<%= render 'favorite_hearts/bookmarks',proposal:@proposal %>
+					<h3><%= @proposal.title %></h3>
 					<% if @f_user == current_f_user %>
-					<span>
-						&ensp;<%= link_to "",edit_proposal_path(@proposal),class: "glyphicon glyphicon-pencil" %>
-						&ensp;|&ensp;<%= link_to "",proposal_path(@proposal),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
-					</span><br>
+						<span>
+							&ensp;<%= link_to "",edit_proposal_path(@proposal),class: "glyphicon glyphicon-pencil" %>
+							&ensp;|&ensp;<%= link_to "",proposal_path(@proposal),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
+						</span><br>
 					<% end %>
-				</p>
+				</div>
+				<div class="proposal-content">
+					<p class="proposal-category"><%= @proposal.category %></p>
+					<p>
+						<strong><i class="fas fa-map-marker-alt"></i>&ensp;出荷元/開催地</strong>&emsp;<%= @proposal.location %>
+					</p>
+					<p><strong><i class="fas fa-calendar-alt"></i>&ensp;出荷時期/開催時期</strong>
+						&emsp;<%= @proposal.start_season.strftime('%Y年%m月') %>&ensp;~&ensp;<%= @proposal.finish_season.strftime('%Y年%m月') %></p>
+					<p><strong><i class="far fa-clipboard"></i>&ensp;提案内容</strong><br><%= simple_format(@proposal.body) %></p>
+					<p>
+						<i class="fas fa-home"></i>&ensp;<%= link_to @proposal.f_user.farm,f_user_path(@proposal.f_user)%>
+					</p>
+				</div>
 			</div>
-			<div class="proposal-detail">
-				<p>
-					・出荷時期/開催時期
-					&emsp;<%= @proposal.start_season.strftime('%Y年%m月') %>&ensp;~&ensp;<%= @proposal.finish_season.strftime('%Y年%m月') %>
-				</p>
-				<p>・出荷元/開催地&emsp;<%= @proposal.location %></p>
-				<p>・提案内容<br><%= @proposal.body %></p>
+			<!-- 画像 -->
+			<div class="col-md-3 proposal-image">
+				<% if @proposal.category == 1 %>
+				<%= attachment_image_tag @proposal, :p_image, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive img-thumbnail" %>
+				<% else %>
+				<%= attachment_image_tag @proposal, :p_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive img-thumbnail" %>
+				<% end %>
 			</div>
 		</div>
+
+		<%= link_to '戻る', :back ,class: "col-md-1 col-md-offset-11 btn  btn-default btn-xs"%>
 	</div>
+
 
 	<!-- favorite(bookmark) した人一覧-->
 	<% if @f_user == current_f_user %>

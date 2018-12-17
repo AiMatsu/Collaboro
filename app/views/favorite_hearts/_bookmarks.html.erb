@@ -4,18 +4,16 @@
 		<% if proposal.favorited_by?(current_c_user) %>
 			<%= link_to proposal_favorite_hearts_path(proposal), method: :delete do %>
 			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: red;"></span>
-			<%= proposal.favorite_hearts.count %>
 			<% end %>
 		<% else %>
 			<%= link_to proposal_favorite_hearts_path(proposal), method: :post do %>
 			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
-			<%= proposal.favorite_hearts.count %>
 			<% end %>
 		<% end %>
 	<% else%>
 	<!-- farmeｒ でログインしている場合 -->
 		<%= link_to proposal_path(proposal), method: :get do %>
-		<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: black;"></span>
+		<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #996;"></span>
 		<%= proposal.favorite_hearts.count %>
 		<% end %>
 	<% end %>

@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*- - - show - - -*/
+/*------------------------------------*/
+/*                show                */
+/*------------------------------------*/
 .color0 {
 	border-left: solid 5px #f30;
 }
@@ -37,12 +39,15 @@
 	color: #996
 }
 
-
-/*- - - index - - -*/
+/*------------------------------------*/
+/*                index               */
+/*------------------------------------*/
+/*----------- カード -----------*/
 .blogCard {
 	width: 100%;
 	border: solid 1px #ddd;
 	margin: 10px auto;
+    background-color: white;
 }
 .blogCard-image  img{
 	width: 96%;
@@ -50,6 +55,12 @@
 	max-height: 180px;
 	object-fit: cover;
 	overflow: hidden;
+}
+.blogCard-image:hover img {
+    -webkit-transform:scale(1.03);
+    -moz-transform:scale(1.03);
+     transform:scale(1.03);
+     transition: 0.3s ;
 }
 .blogCard-thum{
 	width: 96%;
@@ -66,14 +77,14 @@
 	overflow: hidden;
 }
 
-/* - -indexのリボン- - */
+/*----------- indexのリボン -----------*/
 .ribbon_box {
     position: relative;
   }
 .blogCard-ribbon{
     display: inline-block;
     position: absolute;
-    top: 14px;
+    top: 185px;
     left: 0;
     box-sizing: border-box;
     padding: 0 15px;
@@ -82,6 +93,7 @@
     line-height: 20px;
     color: white;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+    z-index: 10;
 }
 .blogCard-ribbon:before {
 	position: absolute;
@@ -101,8 +113,8 @@
     height: 7px;
     width: 5px;
     border-radius: 5px 0 0 5px;
-} 
-/* - - カテゴリー= 収穫 - -*/
+}
+/*---- カテゴリー 収穫 ----*/
 .ribbon0 {
     background: #f30;
 }
@@ -112,7 +124,7 @@
 .ribbon0:after {
     background: #930;
 }
-/* - - カテゴリー= レシピ - -*/
+/*---- カテゴリー レシピ ----*/
 .ribbon1 {
     background: #f90;
 }
@@ -122,7 +134,7 @@
 .ribbon1:after {
     background: #960;
 }
-/* - - カテゴリー= コラボ情報 - -*/
+/*---- カテゴリー コラボ情報 ----*/
 .ribbon2 {
     background: #3cc;
 }
@@ -132,7 +144,7 @@
 .ribbon2:after {
     background: #36c;
 }
-/* - - カテゴリー= その他 - -*/
+/*---- カテゴリー その他 ----*/
 .ribbon3 {
     background: #0c0;
 }

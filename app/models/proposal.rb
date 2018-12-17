@@ -6,6 +6,8 @@ class Proposal < ApplicationRecord
 
 	attachment :p_image
 
+	enum category: { "農作物出荷": 0, "体験/イベント": 1, "その他": 2 }
+
 	def favorited_by?(c_user)
         favorite_hearts.where(c_user_id: c_user.id).exists?
     end
@@ -16,7 +18,7 @@ class Proposal < ApplicationRecord
 	    else
 	      all #全て表示。#Proposal.は省略
 	    end
-	  end
+	end
 
 
 end
