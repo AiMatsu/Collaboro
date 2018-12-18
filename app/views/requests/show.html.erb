@@ -3,48 +3,29 @@
 	<!-- サクセスメッセージ -->
 	<p id="notice"><%= notice %></p>
 
-	<div class="row request-show">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="request-headline">
-				<div class="star">
-					<% if current_f_user%>
-						<% if @request.favorited_by?(current_f_user) %>
-						<%= link_to request_favorite_stars_path(@request), method: :delete do %>
-							<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: orangered;"></span>
-							<%= @request.favorite_stars.count %>
-							<% end %>
-						<% else %>
-							<%= link_to request_favorite_stars_path(@request), method: :post do %>
-							<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
-							<%= @request.favorite_stars.count %>
-							<% end %>
-						<% end %>
-					<% else%>
-						<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
-						<%= @request.favorite_stars.count %>
-					<% end %>
-				</div>
-				<h4><%= @request.title %></h4>
-				<p>
-					<span class="request-category"><%= @request.category %></span>
-					<%= @request.c_user.company%>
-					<% if @c_user == current_c_user %>
-					<span>
-						&ensp;<%= link_to "",edit_request_path(@request),class: "glyphicon glyphicon-pencil" %>
-						&ensp;|&ensp;<%= link_to "",request_path(@request),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
-					</span><br>
-					<% end %>
-				</p>
+	<div class="row">
+		<% if @c_user != current_c_user %>
+			<h3 class="item-title color-base"><%= link_to @request.c_user.company,c_user_path(@request.c_user)%>&ensp;からのプロポーザル</h3>
+		<% end %>
+		<div class="request-show col-md-12">
+			<%= render 'favorite_stars/bookmarks',request:@request %>
+			<!-- 詳細内容 -->
+			<div class="col-md-10 col-md-offset-1">
+				<h3><%= @request.title %></h3>
+				<p class="request-category"><%= @request.category %></p>
+
+				<p><i class="fas fa-calendar-alt"></i>&ensp;希望時期&emsp;<%= @request.start_season.strftime('%Y年%m月') %>&ensp;~&ensp;<%= @request.finish_season.strftime('%Y年%m月') %></p>
+				<p><i class="fas fa-map-marker-alt"></i>&ensp;出荷先/開催地&emsp;<%= @request.location %></p>
+				<p><i class="far fa-clipboard"></i>&ensp;リクエスト内容<br><%= simple_format(@request.body) %></p>
 			</div>
-			<div class="request-show">
-				<p>
-					・希望時期
-					&emsp;<%= @request.start_season.strftime('%Y年%m月') %>&ensp;~&ensp;<%= @request.finish_season.strftime('%Y年%m月') %>
-				</p>
-				<p>・出荷先/開催地&emsp;<%= @request.location %></p>
-				<p>・リクエスト内容<br><%= @request.body %></p>
-			</div>
+			<% if @c_user == current_c_user %>
+				<span class="pro-edit-link">
+					&ensp;<%= link_to "",edit_request_path(@request),class: "glyphicon glyphicon-pencil" %>
+					&ensp;|&ensp;<%= link_to "",request_path(@request),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
+				</span><br>
+			<% end %>
 		</div>
+		<%= link_to '戻る', :back ,class: "col-md-1 col-md-offset-11 btn  btn-default btn-xs"%>
 	</div>
 
 	<!-- favorite(bookmark) した人一覧-->

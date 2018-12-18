@@ -10,8 +10,8 @@
 			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
 			<% end %>
 		<% end %>
-	<% else%>
 	<!-- farmeｒ でログインしている場合 -->
+	<% else%>
 		<%= link_to proposal_path(proposal), method: :get do %>
 		<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #996;"></span>
 		<%= proposal.favorite_hearts.count %>
