@@ -1,29 +1,31 @@
-<div class="col-md-3">
-	<div class="">
-		<%= request.category %><br>
-		<%= link_to request.title,request_path(request) %><br>
-		<%= request.location %><br>
-		<%= request.start_season.strftime('%Y年%m月') %>~<%= request.finish_season.strftime('%Y年%m月') %><br>
-		<%= link_to request.c_user.company,c_user_path(request.c_user)%><br>
-		<div class="index_star">
-			<% if current_f_user%>
-				<% if request.favorited_by?(current_f_user) %>
-					<%= link_to request_favorite_stars_path(request), method: :delete do %>
-					<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: orangered;"></span>
-					<%= request.favorite_stars.count %>
-					<% end %>
-				<% else %>
-					<%= link_to request_favorite_stars_path(request), method: :post do %>
-					<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
-					<%= request.favorite_stars.count %>
-					<% end %>
+<div class="col-md-4 col-sm-6">
+	<div class="requestCard ribbon_box">
+		<!-- リボン -->
+		<% if request.category == "農作物出荷" %>
+		<span class="requestCard-ribbon ribbon0"><%= request.category%></span>
+		<% elsif request.category == "体験/イベント" %>
+		<span class="requestCard-ribbon ribbon2"><%= request.category%></span>
+		<% else %>
+		<span class="requestCard-ribbon ribbon3"><%= request.category%></span>
+		<% end %>
+		<!-- リクエスト概要 -->
+		<div class="request-content">
+			<h4>
+				<%= link_to request_path(request) do%>
+				<%= truncate(request.title, :omission => "...",:length => 35) %>
 				<% end %>
-			<% else%>
-				<%= link_to request_path(request), method: :get do %>
-					<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
-					<%= request.favorite_stars.count %>
-					<% end %>
-			<% end %>
+			</h4>
+			<p>
+				<span class="item"><i class="fas fa-map-marker-alt"></i>&ensp;出荷先/開催地</span>&emsp;
+				<b><%= request.location %></b><br>
+				<span class="item"><i class="fas fa-calendar-alt"></i>&ensp;希望時期</span>&emsp;&emsp;&emsp;&emsp;
+				<b><%= request.start_season.strftime('%Y年%m月') %>~<%= request.finish_season.strftime('%Y年%m月') %></b>
+			</p>
 		</div>
+		<div class="requestCard-user">
+			<i class="fas fa-home"></i>&ensp;<%= link_to request.c_user.company,c_user_path(request.c_user)%>
+		</div>
+		<!-- bookmarkマーク -->
+		<%= render 'favorite_stars/bookmarks',request:request %>
 	</div>
 </div>

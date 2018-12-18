@@ -22,11 +22,11 @@
 			<div class=" blog-show">
 				<div class="col-md-6 blog_image">
 					<% if @blog.b_category == "レシピ紹介" %>
-						<%= attachment_image_tag @blog,:b_image,fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive" %>
+						<%= attachment_image_tag @blog,:b_image,fallback:"recipe.jpg",class: "img-responsive" %>
 					<% elsif @blog.b_category == "コラボ情報" %>
-						<%= attachment_image_tag @blog,:b_image,fallback:"elaine-casap-86020-unsplash.jpg",class: "img-responsive" %>
+						<%= attachment_image_tag @blog,:b_image,fallback:"collabo.png",class: "img-responsive" %>
 					<% else %>
-						<%= attachment_image_tag @blog,:b_image,fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive" %>
+						<%= attachment_image_tag @blog,:b_image,fallback:"Vegetables.png",class: "img-responsive" %>
 					<% end %>
 				</div>
 				<div class="col-md-6 blog_detail">

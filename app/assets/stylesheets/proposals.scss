@@ -2,9 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 /*------------------------------------*/
 /*                index               */
 /*------------------------------------*/
+.pro-main-visual{
+    width: 100%;
+    height: 350px;
+    background-image: image-url("agriculture-corn-cornfield-1112080.jpg");
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+}
+.pro-main-visual-content {
+    height: 300px;
+    text-align: center;
+    padding-top: 140px;
+}
+.pro-main-visual-text {
+    letter-spacing: 2px;
+    color: white;
+    font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+}
+
 /*----------- カード -----------*/
 
 .proposalCard {
@@ -91,17 +111,36 @@
 /*------------------------------------*/
 /*                show               */
 /*------------------------------------*/
-/*----------- カード -----------*/
 .proposal_show {
     background-color: white;
     border-radius: 5px;
     border:solid 1px #ddd;
-    padding: 20px 0;
+    padding: 10px 0;
     box-sizing: border-box;
+    position: relative;
 }
-.proposal-headline .bookmark {
-	font-size: 20px;
+.proposal_show .bookmark {
+    font-size: 20px;
+    position: absolute;
+    top: 30px;
+    left: 30px;
 }
-.favorited-users {
-	margin: 20px auto;
+.proposal-image {
+    margin: 20px auto;
 }
+.pro-edit-link {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+}
+
+
+
+
+/*------------------------------------*/
+/*                search               */
+/*------------------------------------*/
+.search {
+    display: inline-block;
+}
+

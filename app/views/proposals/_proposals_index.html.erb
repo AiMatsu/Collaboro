@@ -2,16 +2,16 @@
 	<div class="proposalCard">
 		<div class="proposalCard-image ribbon_box">
 
-			<!-- 画像 -->
+			<!-- 画像 & リボン-->
 			<% if proposal.category == "農作物出荷" %>
 				<span class="proposalCard-ribbon ribbon0"><%= proposal.category%></span>
-				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive"),proposal_path(proposal)  %>
+				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"Vegetables.png",class: "img-responsive"),proposal_path(proposal)  %>
 			<% elsif proposal.category == "体験/イベント" %>
 				<span class="proposalCard-ribbon ribbon2"><%= proposal.category%></span>
-				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"katie-smith-104748-unsplash.jpg",class: "img-responsive"),proposal_path(proposal) %>
+				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"Experience.png",class: "img-responsive"),proposal_path(proposal) %>
 			<% else %>
 				<span class="proposalCard-ribbon ribbon3"><%= proposal.category%></span>
-				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"food-freshness-healthy-1367243.jpg",class: "img-responsive"),proposal_path(proposal)  %>
+				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"Vegetables.png",class: "img-responsive"),proposal_path(proposal)  %>
 			<% end %>
 		</div>
 
@@ -25,10 +25,10 @@
 					<% end %>
 				</h4>
 				<p>
-					<span class="item"><i class="fas fa-map-marker-alt"></i>&ensp;出荷元/開催地</span>&emsp;&emsp;&emsp;&ensp;
-					<b><%= proposal.location %></b><br>
 					<span class="item"><i class="fas fa-calendar-alt"></i>&ensp;出荷時期/開催時期</span>&emsp;
-					<b><%= proposal.start_season.strftime('%Y年%m月') %>~<%= proposal.finish_season.strftime('%Y年%m月') %></b>
+					<b><%= proposal.start_season.strftime('%Y年%m月') %>~<%= proposal.finish_season.strftime('%Y年%m月') %></b><br>
+					<span class="item"><i class="fas fa-map-marker-alt"></i>&ensp;出荷元/開催地</span>&emsp;&emsp;&emsp;&ensp;
+					<b><%= proposal.location %></b>
 				</p>
 			</div>
 			<div class="proposalCard-user">

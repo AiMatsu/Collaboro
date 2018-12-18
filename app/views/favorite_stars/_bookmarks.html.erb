@@ -1,0 +1,20 @@
+<div class="bookmark">
+	<!-- farmeｒ でログインしている場合 -->
+	<% if current_f_user%>
+		<% if request.favorited_by?(current_f_user) %>
+			<%= link_to request_favorite_stars_path(request), method: :delete do %>
+			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: red;"></span>
+			<% end %>
+		<% else %>
+			<%= link_to request_favorite_stars_path(request), method: :post do %>
+			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
+			<% end %>
+		<% end %>
+	<!-- company でログインしている場合 -->
+	<% else%>
+		<%= link_to request_path(request), method: :get do %>
+		<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #996;"></span>
+		<%= request.favorite_stars.count %>
+		<% end %>
+	<% end %>
+</div>
