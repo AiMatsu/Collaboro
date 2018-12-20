@@ -14,7 +14,11 @@ class FUser < ApplicationRecord
     has_many :crops_calendars, dependent: :destroy
     has_many :chatrooms, dependent: :destroy
 
-    # has_many :messages, dependent: :destroy
+    validates :farm      ,presence: true
+    validates :name      ,presence: true
+    validates :tell      ,presence: true
+    validates :post_code ,presence: true ,numericality: { only_integer: true } ,length: {maximum: 7}
+    validates :address   ,presence: true
 
     attachment :image
 

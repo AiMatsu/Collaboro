@@ -9,7 +9,7 @@
 <div class="container ">
 
 	<div class="row">
-		<h3><b>プロポーザル</b></h3>
+		<h3 class=" index-headline"><b>プロポーザル</b></h3>
 
 		<!-- 検索フォーム -->
 		<%= render 'proposals/search_form' %>
@@ -86,6 +86,12 @@
 
 </div>
 
+<span id="back">
+	<a href="#">
+		<%= image_tag('arrow.png') %>
+	</a>
+</span>
+
 
 <!-- -- JS/TABU切り替え -- -->
 <script>
@@ -96,6 +102,12 @@
 			$("#tab-menu .active").removeClass("active");
 			$(this).addClass("active");
 			$($(this).attr("href")).show();
+			return false;
+		});
+		$('#back a').on('click',function(){
+			$('body, html').animate({
+				scrollTop:0
+			}, 300);
 			return false;
 		});
 	});

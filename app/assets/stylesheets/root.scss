@@ -13,8 +13,9 @@
 	background-size: cover;
 }*/
 .top-image {
-	padding: 30px;
+	padding: 50px;
 	position: relative;
+	height:450px;
 }
 .top-image p,
 .circle {
@@ -26,13 +27,14 @@
 	color: #fff;
 	text-align: top;
 	top: 220px;
-	left: 30%;
+	left: 50%;
+	transform:translate(-50%);
 	z-index: 1;
 }
 .circle {
 	width: 450px;
 	height: 450px;
-	left: 15%;
+	left: 34%;
 	mix-blend-mode: multiply;
 }
 

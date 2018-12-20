@@ -11,9 +11,9 @@
 	<!-- - - 情報別タブボタン- - -->
 	<div class="row">
 		<div id="tab-menu" class="col-md-6 col-md-offset-6 clearfix" >
-			<a href="#tab-info" class="active btn col-md-4">基本情報</a>
-			<a href="#tab-crops" class="btn col-md-4">作物情報</a>
-			<a href="#tab-blogs" class="btn col-md-4">旬ネタ</a>
+			<a href="#tab-info" class="tab-btn active btn col-md-4">基本情報</a>
+			<a href="#tab-crops" class="tab-btn btn col-md-4">作物情報</a>
+			<a href="#tab-blogs" class="tab-btn btn col-md-4">旬ネタ</a>
 		</div>
 	</div>
 
@@ -94,10 +94,8 @@
 					</span>
 			    </p>
 				<div class="col-md-12 col-sm-12">
-				    <% if @crops_calendars.empty? %>
-					    <p align="center">
-						※ 登録されている作物はありません ※
-					　　 </p>
+					<% if @crops_calendars.empty? %>
+						<p align="center">※ 登録されている作物はありません ※</p>
 					<% else %>
 						<table class="">
 				    		<thead>
@@ -237,8 +235,8 @@
 				    		<span class="bestSeason"></span>&ensp;BestSeason&emsp;
 				    		<span class="season"></span>&ensp;Season
 				    	</p>
-				    </div>
-				<% end %>
+					<% end %>
+				</div>
 			</div>
 
 			<!-- プロポーザル -->
@@ -253,9 +251,13 @@
 				</p>
 
 				<div class=" row f_user_proposal">
-				<% @proposals.each do |proposal| %>
-					<%= render 'proposals/proposals_index',proposal:proposal %>
-				<% end %>
+					<% if @proposals.empty? %>
+						<p align="center">※ ファームからのプロポーザルはまだありません ※</p>
+					<% else %>
+						<% @proposals.each do |proposal| %>
+							<%= render 'proposals/proposals_index',proposal:proposal %>
+						<% end %>
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -263,19 +265,23 @@
 
 		<!-- - - 旬ネタ - - -->
 		<div id="tab-blogs" class="tab">
-			<div class="item">
+			<div class="row item">
 				<p class="item-title color-base">
 					ファーム旬ネタ
 					<span class="link-btn">
 					<% if @user == current_f_user %>
-						&emsp;<%= link_to "",new_blog_path,class: "far fa-plus-square" %>
+						&emsp;<%= link_to "",new_blog_path, class: "far fa-plus-square" %>
 					<% end %>
 					</span>
 				</p>
-				<div class=" row f_user_blogs">
-				<% @blogs.each do |blog| %>
-				<%= render 'blogs/blogs_index',blog:blog %>
-				<% end %>
+				<div class="row f_user_blogs">
+					<% if @blogs.empty? %>
+						<p align="center">※ 投稿されている旬ネタはありません ※</p>
+					<% else %>
+						<% @blogs.each do |blog| %>
+						<%= render 'blogs/blogs_index',blog:blog %>
+						<% end %>
+					<% end %>
 				</div>
 			</div>
 		</div>

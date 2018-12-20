@@ -4,53 +4,57 @@
 	<p id="notice"><%= notice %></p>
 
 	<div class="row ">
-		<div class="col-md-10 col-md-offset-1">
-			<!-- ブログのタイトル -->
-			<% if @blog.b_category == "収穫情報" %>
-			<h4 class=" item-title color0">
-			<% elsif @blog.b_category == "レシピ紹介" %>
-			<h4 class=" item-title color1">
-			<% elsif @blog.b_category == "コラボ情報" %>
-			<h4 class=" item-title color2">
-			<% else %>
-			<h4 class=" item-title colo3">
-			<% end %>
-			<%= @blog.b_title %>
-			</h4>
+		<div class="blog-box col-md-12">
+			<div class="col-md-10 col-md-offset-1">
+				<!-- ブログのタイトル -->
+				<% if @blog.b_category == "収穫情報" %>
+				<h4 class=" item-title color0">
+				<% elsif @blog.b_category == "レシピ紹介" %>
+				<h4 class=" item-title color1">
+				<% elsif @blog.b_category == "コラボ情報" %>
+				<h4 class=" item-title color2">
+				<% else %>
+				<h4 class=" item-title colo3">
+				<% end %>
+				<%= @blog.b_title %>
+				</h4>
 
-			<!-- ブログの詳細内容 -->
-			<div class=" blog-show">
-				<div class="col-md-6 blog_image">
-					<% if @blog.b_category == "レシピ紹介" %>
-						<%= attachment_image_tag @blog,:b_image,fallback:"recipe.jpg",class: "img-responsive" %>
-					<% elsif @blog.b_category == "コラボ情報" %>
-						<%= attachment_image_tag @blog,:b_image,fallback:"collabo.png",class: "img-responsive" %>
-					<% else %>
-						<%= attachment_image_tag @blog,:b_image,fallback:"Vegetables.png",class: "img-responsive" %>
-					<% end %>
-				</div>
-				<div class="col-md-6 blog_detail">
-					<div class="blog-name">
-						<i class="fas fa-home"></i>&emsp;
-						<%= link_to @f_user.farm,f_user_path(@f_user) %>
+				<!-- ブログの詳細内容 -->
+				<div class=" blog-show">
+					<div class="col-md-6 blog_image">
+						<% if @blog.b_category == "レシピ紹介" %>
+							<%= attachment_image_tag @blog,:b_image,fallback:"recipe.jpg",class: "img-responsive" %>
+						<% elsif @blog.b_category == "コラボ情報" %>
+							<%= attachment_image_tag @blog,:b_image,fallback:"collabo.png",class: "img-responsive" %>
+						<% else %>
+							<%= attachment_image_tag @blog,:b_image,fallback:"Vegetables.png",class: "img-responsive" %>
+						<% end %>
 					</div>
-					<div class="blog-body">
-						<%= simple_format(@blog.b_body) %>
-				    </div>
-					<div class=" blog-info">
-						<span>
-							<i class="fas fa-layer-group"></i>&emsp;<%= @blog.b_category %>&emsp;&emsp;
-							<i class="fas fa-clock"></i>&emsp;<%= @blog.created_at.strftime('%Y年%m月%d日') %>
-							<% if @f_user == current_f_user %>
-								<span>&emsp;||&emsp;
-									&ensp;<%= link_to "",edit_blog_path(@blog),class: "glyphicon glyphicon-pencil"%>
-									&ensp;|&ensp;<%= link_to "",blog_path(@blog),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
-								</span>
-							<% end %>
-						</span>
+					<div class="col-md-6 blog_detail">
+						<div class="blog-name">
+							<i class="fas fa-home"></i>&emsp;
+							<%= link_to @f_user.farm,f_user_path(@f_user) %>
+						</div>
+						<div class="blog-body">
+							<%= simple_format(@blog.b_body) %>
+					    </div>
+						<div class=" blog-info">
+							<span>
+								<i class="fas fa-layer-group"></i>&emsp;<%= @blog.b_category %>&emsp;&emsp;
+								<i class="fas fa-clock"></i>&emsp;<%= @blog.created_at.strftime('%Y年%m月%d日') %>
+								<% if @f_user == current_f_user %>
+									<span>&emsp;||&emsp;
+										&ensp;<%= link_to "",edit_blog_path(@blog),class: "glyphicon glyphicon-pencil"%>
+										&ensp;|&ensp;<%= link_to "",blog_path(@blog),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
+									</span>
+								<% end %>
+							</span>
+						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
+
 </div>

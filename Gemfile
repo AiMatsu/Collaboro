@@ -72,12 +72,8 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 
 gem 'paranoia', '~> 2.3', '>= 2.3.1'
-
 gem 'kaminari'
-# gem 'rails-i18n'
-# gem 'ransack'
-
-# gem 'gmaps4rails'
+gem 'rails-i18n'
 gem "geocoder"
 
 gem 'pry-rails'

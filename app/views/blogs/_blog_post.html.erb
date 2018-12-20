@@ -1,3 +1,15 @@
+<!-- エラーメッセージ -->
+<% if @blog.errors.any? %>
+	<div id="error_explanation" class="alert alert-danger">
+		<ul>
+			<%= @blog.errors.count %>件のエラーが発生しました。
+			<% @blog.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
 <div class="field ">
 	<%= f.label :b_title ,"◇ タイトル" %>
 	<%= f.text_field :b_title, class: "form-control" %>

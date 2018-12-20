@@ -15,9 +15,7 @@
   text-align: center;
   padding-top: 90px;
   padding-left: 50px;
- 
 }
-
 .blog-main-visual-text {
     letter-spacing: 2px;
     color: white;
@@ -27,38 +25,45 @@
 /*------------------------------------*/
 /*                show                */
 /*------------------------------------*/
-.color0 {
-	border-left: solid 5px #f30;
-}
-.color1 {
-	border-left: solid 5px #f90;
-}
-.color2 {
-	border-left: solid 5px #3cc;
-}
-.color3 {
-	border-left: solid 5px #0c0;
+
+.blog-box {
+    background-color: white;
+    border-radius: 5px;
+    padding :20px 0 ;
 }
 
 .blog-show .item-title {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 .blog-body {
 	overflow-y: scroll;
-	min-height: 200px;
+	min-height: 300px;
 	max-height: 450px;
 	margin: 5px;
 	padding: 5px;
 }
+
 .blog-name,
 .blog-info {
-	margin: 0px;
 	padding: 5px;
 	border-top: solid 1px #ddd;
 	border-bottom: solid 1px #ddd;
 }
 .blog-info i {
 	color: #996
+}
+/*----------titleの色/カテゴリー別--------*/
+.color0 {
+    border-left: solid 5px #f30;
+}
+.color1 {
+    border-left: solid 5px #f90;
+}
+.color2 {
+    border-left: solid 5px #3cc;
+}
+.color3 {
+    border-left: solid 5px #0c0;
 }
 
 /*------------------------------------*/
