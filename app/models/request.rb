@@ -6,6 +6,12 @@ class Request < ApplicationRecord
 
 	enum category: { "農作物出荷": 0, "体験/イベント": 1, "その他": 2 }
 
+	validates :title         ,presence: true
+	validates :body          ,presence: true
+	validates :location      ,presence: true
+	validates :start_season  ,presence: true
+	validates :finish_season ,presence: true
+
 	def favorited_by?(f_user)
         favorite_stars.where(f_user_id: f_user.id).exists?
     end

@@ -36,8 +36,8 @@ Rails.application.routes.draw do
 
   	resources :crops_calendars,except: [:show]
   	resources :blogs
-    resources :f_users, except: [:new, :create]
-    resources :c_users, except: [:new, :create]
+    resources :f_users, except: [:new, :create,:index]
+    resources :c_users, except: [:new, :create,:index]
 
 
   end

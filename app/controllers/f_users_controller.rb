@@ -1,5 +1,7 @@
 class FUsersController < ApplicationController
 
+	before_action :login_user
+	before_action :correct_user ,except: [:show]
 	before_action :room_user
 
 	def edit
@@ -27,8 +29,6 @@ class FUsersController < ApplicationController
 
 	end
 
-	def index
-	end
 
 	def destroy
 		user = FUser.find(params[:id])
@@ -48,6 +48,18 @@ class FUsersController < ApplicationController
         	Chatroom.find_or_create_by(f_user_id: @f_user.id ,c_user_id: current_c_user.id)
         end
     end
+
+    def login_user
+		if f_user_signed_in? || c_user_signed_in?
+		else
+		 redirect_to root_path
+		end
+	end
+
+    def correct_user
+		@user = FUser.with_deleted.find(params[:id])
+		redirect_to root_path unless @user == current_f_user
+	end
 
 end
 

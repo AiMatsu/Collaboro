@@ -1,4 +1,15 @@
 <%= form_for (crops_calendar) do |f|%>
+<!-- エラーメッセージ -->
+	<% if @crops_calendar.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<ul>
+				<%= @crops_calendar.errors.count %>件のエラーが発生しました。
+				<% @crops_calendar.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 <div class="row">
 	<div class="col-md-10 col-md-offset-1 col-sm-12">
 

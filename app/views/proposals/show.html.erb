@@ -20,7 +20,7 @@
 			</div>
 			<!-- 画像 -->
 			<div class="col-md-3 proposal-image">
-				<% if @proposal.category == 1 %>
+				<% if @proposal.category == "体験/イベント" %>
 				<%= attachment_image_tag @proposal, :p_image, fallback:"Experience.png",class: "img-responsive img-thumbnail" %>
 				<% else %>
 				<%= attachment_image_tag @proposal, :p_image, fallback:"Vegetables.png",class: "img-responsive img-thumbnail" %>

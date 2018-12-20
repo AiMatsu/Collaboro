@@ -1,14 +1,17 @@
 class ProposalsController < ApplicationController
 
+	before_action :login_user
+	before_action :correct_user ,only:[:edit,:update,:destroy]
+
 	def new
 		@proposal = Proposal.new
 	end
 
 	def create
-		proposal = Proposal.new(proposal_params)
-		proposal.f_user_id = current_f_user.id
-		if proposal.save
-			redirect_to proposal_path(proposal),notice:'プロポーザルを追加しました！'
+		@proposal = Proposal.new(proposal_params)
+		@proposal.f_user_id = current_f_user.id
+		if @proposal.save
+			redirect_to proposal_path(@proposal),notice:'プロポーザルを追加しました！'
 		else
 			render :new
 		end
@@ -19,9 +22,9 @@ class ProposalsController < ApplicationController
 	end
 
 	def update
-		proposal = Proposal.find(params[:id])
-		if proposal.update(proposal_params)
-			redirect_to proposal_path(proposal),notice:'プロポーザル内容を変更しました！'
+		@proposal = Proposal.find(params[:id])
+		if @proposal.update(proposal_params)
+			redirect_to proposal_path(@proposal),notice:'プロポーザル内容を変更しました！'
 		else
 			render :edit
 		end
@@ -91,6 +94,18 @@ class ProposalsController < ApplicationController
 	private
 	def proposal_params
 		params.require(:proposal).permit(:title, :body, :p_image, :location, :category, :status, :start_season, :finish_season, )
+	end
+
+	def login_user
+		if f_user_signed_in? || c_user_signed_in?
+		else
+		 redirect_to root_path
+		end
+	end
+
+	def correct_user
+		@user = Proposal.find(params[:id]).f_user
+		redirect_to root_path unless @user == current_f_user
 	end
 
 end

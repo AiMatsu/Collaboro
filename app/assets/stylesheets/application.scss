@@ -36,14 +36,6 @@
 
 body {
     background-image: image-url("004-Fantasy-Paper.png");
-    /*background-image: image-url("004-polished-wood.png");*/
-    /*background-image: image-url("004.jpg");*/
-    /*background-image: image-url("005-wood-grain.png");*/
-    /*background-image: image-url("017-Subtle-light-patterns-Vol04.png");*/
-    /*background-image: image-url("019-Subtle-light-patterns-Vol04.png");*/
-    /*background-image: image-url("020-Subtle-light-patterns-Vol04.png");*/
-    /*background-image: image-url("04-polish-wood.png");*/
-    /*background-image: image-url("05-Cork.png");*/
 }
 
 /*------header------*/
@@ -87,16 +79,41 @@ header {
 .nav-list-item a{
   color: black;
 }
+/*------ 各indexのTOPへ戻るボタン ------*/
+#back{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+#back img{
+  width: 50px;
+}
+
 /*------ submitボタン ------*/
+
 .actions {
   margin: 10px auto;
 }
 /*------タブメニュー/ タイトル関連------*/
+#tab-menu {
+  margin-top: 20px;
+}
 #tab-menu .active,
 #tab-c-menu .active,
 #tab-b-menu .active{
-  background: #FFCDD2;
+  background: rgba(255, 255, 255, 0.2);
   color: #000;
+  border-bottom: solid 4px rgba(255, 255, 255, 0.1);
+  box-shadow: 2px -4px 14px rgba(0, 0, 0, 0.1);
+}
+.tab-btn {
+  text-decoration: none;
+  color: #004D40;
+  border: solid 1px #80CBC4;
+  border-radius: 15px 15px 0 0;
+  transition: .3s;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 .item-title {
   padding: 0.25em 0.5em;
@@ -107,10 +124,11 @@ header {
   border-left: solid 5px #7db4e6;
 }
 h3 {
-  display: inline-block;
   font-weight: bold;
 }
-
+.index-headline {
+  display: inline-block;
+}
 /*------ bookmark(fav)関連 ------*/
 .bookmark {
   display: inline-block;

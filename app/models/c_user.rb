@@ -11,7 +11,13 @@ class CUser < ApplicationRecord
     has_many :proposals, through: :favorite_hearts
     has_many :favorite_hearts, dependent: :destroy
     has_many :chatrooms, dependent: :destroy
-    # has_many :messages, dependent: :destroy
+
+    validates :company   ,presence: true
+    validates :name      ,presence: true
+    validates :tell      ,presence: true
+    validates :post_code ,presence: true ,numericality: { only_integer: true } ,length: {maximum: 7}
+    validates :address   ,presence: true
+    validates :industry  ,presence: true
 
     attachment :image
 

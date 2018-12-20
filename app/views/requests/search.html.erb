@@ -2,15 +2,14 @@
 
 	<div class="row">
 		<h3><b>コラボリクエスト [<%= "#{params[:search]}" %>] 検索結果</b></h3>
-
 		<!-- 検索フォーム -->
 		<%= render 'requests/search_form' %>
+	</div>
 
-
+	<div class="row">
 		<!-- 検索結果一覧 -->
 		<% @requests.each do |request| %>
 			<%= render 'requests/requests_index',request:request %>
 		<% end %>
-
 	</div>
 </div>

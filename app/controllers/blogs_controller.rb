@@ -1,14 +1,17 @@
 class BlogsController < ApplicationController
 
+	before_action :login_user ,except:[:index,:show]
+	before_action :correct_user ,only:[:edit,:update,:destroy]
+
 	def new
 		@blog = Blog.new
 	end
 
 	def create
-		blog = Blog.new(blog_params)
-		blog.f_user_id = current_f_user.id
-		if blog.save
-			redirect_to blog_path(blog), notice:'旬ネタを投稿しました！'
+		@blog = Blog.new(@blog_params)
+		@blog.f_user_id = current_f_user.id
+		if @blog.save
+			redirect_to blog_path(@blog), notice:'旬ネタを投稿しました！'
 		else
 			render :new
 		end
@@ -19,9 +22,9 @@ class BlogsController < ApplicationController
 	end
 
 	def update
-		blog = Blog.find(params[:id])
-		if blog.update(blog_params)
-			redirect_to blog_path(blog), notice:'旬ネタを変更しました！'
+		@blog = Blog.find(params[:id])
+		if @blog.update(blog_params)
+			redirect_to blog_path(@blog), notice:'旬ネタを変更しました！'
 		else
 			render :edit
 		end
@@ -43,7 +46,7 @@ class BlogsController < ApplicationController
 	def destroy
 		blog = Blog.find(params[:id])
 		if blog.destroy
-			redirect_to blogs_path, notice:'旬ネタを削除しました！'
+			redirect_to f_user_path(blog.f_user), notice:'旬ネタを削除しました！'
 		else
 			render :show
 	    end
@@ -52,6 +55,18 @@ class BlogsController < ApplicationController
 	private
 	def blog_params
 		params.require(:blog).permit(:f_user_id,:b_title,:b_category,:b_body,:b_image)
+	end
+
+	def login_user
+		if f_user_signed_in? || c_user_signed_in?
+		else
+		 redirect_to root_path
+		end
+	end
+
+	def correct_user
+		@user = Blog.find(params[:id]).f_user
+		redirect_to root_path unless @user == current_f_user
 	end
 end
 

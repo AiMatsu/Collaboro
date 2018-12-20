@@ -19,11 +19,11 @@
 			<h3><b>旬ネタ情報</b></h3>
 		</div>
 		<div id="tab-menu" class="col-md-6 clearfix" >
-			<a href="#tab-harvest" class="btn col-md-2">収穫情報</a>
-			<a href="#tab-recipe" class="btn col-md-2">レシピ情報</a>
-			<a href="#tab-collabo" class="btn col-md-2">コラボ情報</a>
-			<a href="#tab-other" class="btn col-md-2">その他</a>
-			<a href="#tab-all" class="active btn col-md-2 col-md-offset-1">ALL</a>
+			<a href="#tab-harvest" class="tab-btn btn col-md-2">収穫情報</a>
+			<a href="#tab-recipe" class="tab-btn btn col-md-2">レシピ情報</a>
+			<a href="#tab-collabo" class="tab-btn btn col-md-2">コラボ情報</a>
+			<a href="#tab-other" class="tab-btn btn col-md-2">その他</a>
+			<a href="#tab-all" class="tab-btn active btn col-md-2 col-md-offset-1">ALL</a>
 		</div>
 	</div>
 
@@ -34,8 +34,6 @@
 			<%= render 'blogs/blogs_index',blog:blog %>
 			<% end %>
 		</div>
-		
-		
 		<!-- -- 収穫情報 -- -->
 		<div id="tab-harvest" class="tab">
 			<% @blogs_harvest.each do |blog| %>
@@ -62,9 +60,13 @@
 		</div>
 	</div>
 </div>
+<span id="back">
+	<a href="#">
+		<%= image_tag('arrow.png') %>
+	</a>
+</span>
 
-
-<!-- -- JS/TABU切り替え -- -->
+<!-- -- JS/TABU切り替え/top戻るボタン -- -->
 <script>
 	$(function(){
 		$('#tab-contents .tab[id != "tab-all"]').hide();
@@ -75,5 +77,12 @@
 			$($(this).attr("href")).show();
 			return false;
 		});
+		$('#back a').on('click',function(){
+			$('body, html').animate({
+				scrollTop:0
+			}, 300);
+			return false;
+		});
 	});
+
 </script>

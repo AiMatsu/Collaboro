@@ -1,14 +1,17 @@
 class RequestsController < ApplicationController
 
+	before_action :login_user
+	before_action :correct_user ,only:[:edit,:update,:destroy]
+
 	def new
 		@request = Request.new
 	end
 
 	def create
-		request = Request.new(request_params)
-		request.c_user_id = current_c_user.id
-		if request.save
-			redirect_to c_user_path(current_c_user),notice:'リクエストを追加しました！'
+		@request = Request.new(request_params)
+		@request.c_user_id = current_c_user.id
+		if @request.save
+			redirect_to request_path(@request),notice:'リクエストを追加しました！'
 		else
 			render :new
 		end
@@ -19,9 +22,9 @@ class RequestsController < ApplicationController
 	end
 
 	def update
-		request = Request.find(params[:id])
-		if request.update(request_params)
-			redirect_to c_user_path(current_c_user),notice:'リクエスト内容を変更しました！'
+		@request = Request.find(params[:id])
+		if @request.update(request_params)
+			redirect_to request_path(@request),notice:'リクエスト内容を変更しました！'
 		else
 			render :edit
 		end
@@ -90,6 +93,18 @@ class RequestsController < ApplicationController
 	private
 	def request_params
 		params.require(:request).permit(:title, :body, :location, :category, :status, :start_season, :finish_season, )
+	end
+
+	def login_user
+		if f_user_signed_in? || c_user_signed_in?
+		else
+		 redirect_to root_path
+		end
+	end
+
+	def correct_user
+		@user = Request.find(params[:id]).c_user
+		redirect_to root_path unless @user == current_c_user
 	end
 
 end

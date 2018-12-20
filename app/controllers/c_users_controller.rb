@@ -1,5 +1,7 @@
 class CUsersController < ApplicationController
 
+	before_action :login_user
+	before_action :correct_user ,except: [:show]
 	before_action :room_user
 
 	def edit
@@ -24,9 +26,6 @@ class CUsersController < ApplicationController
 		end
 	end
 
-	def index
-	end
-
 	def destroy
 		user = CUser.find(params[:id])
 		user.destroy
@@ -45,5 +44,17 @@ class CUsersController < ApplicationController
         else
     	end
     end
+
+    def login_user
+		if f_user_signed_in? || c_user_signed_in?
+		else
+		 redirect_to root_path
+		end
+	end
+
+    def correct_user
+		@user = CUser.with_deleted.find(params[:id])
+		redirect_to root_path unless @user == current_c_user
+	end
 
 end

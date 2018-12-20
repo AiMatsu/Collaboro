@@ -8,6 +8,13 @@ class Proposal < ApplicationRecord
 
 	enum category: { "農作物出荷": 0, "体験/イベント": 1, "その他": 2 }
 
+	validates :title         ,presence: true
+	validates :body          ,presence: true
+	validates :location      ,presence: true
+	validates :start_season  ,presence: true
+	validates :finish_season ,presence: true
+
+
 	def favorited_by?(c_user)
         favorite_hearts.where(c_user_id: c_user.id).exists?
     end
