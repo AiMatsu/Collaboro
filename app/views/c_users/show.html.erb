@@ -6,20 +6,20 @@
 	</h3>
 
 	<!-- サクセスメッセージ -->
-	<p id="notice"><%= notice %></p>
+	<%= notice %>
 
 	<!-- - - 情報別タブボタン- - -->
 	<div class="row">
 		<div class="row">
 		<div id="tab-menu" class="col-md-6 col-md-offset-6 clearfix" >
-			<a href="#tab-info" class="tab-btn active btn col-md-4 col-md-offset-4">基本情報</a>
+			<a href="#tab-all" class="tab-btn active btn col-md-4 col-md-offset-4">基本情報</a>
 			<a href="#tab-request" class="tab-btn btn col-md-4">コラボリクエスト</a>
 		</div>
 	</div>
 
 	<div id="tab-contents">
 		<!-- - - 基本情報 - - -->
-		<div id="tab-info" class="tab">
+		<div id="tab-all" class="tab">
 			<!-- 基本情報 -->
 			<div class="basic row item">
 				<p class="item-title color-base">基本情報</p>
@@ -108,16 +108,4 @@
 </div>
 
 
-<!-- -- JS/TABU切り替え -- -->
-<script>
-	$(function(){
-		$('#tab-contents .tab[id != "tab-info"]').hide();
-		$('#tab-menu a').on('click', function() {
-			$("#tab-contents .tab").hide();
-			$("#tab-menu .active").removeClass("active");
-			$(this).addClass("active");
-			$($(this).attr("href")).show();
-			return false;
-		});
-	});
-</script>
+

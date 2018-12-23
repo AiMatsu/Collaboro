@@ -1,2 +1,53 @@
-<%= simple_format(message.text) %>
-<span><%= message.created_at.strftime('%m月%d日 %H:%M') %></span>
+<% if @messages.empty? %>
+	<p align="center">
+		※ まだトークがありません。下記のフォームからメッセージを送信してください。 ※
+	</p>
+<% end %>
+<% @messages.each do |message|%>
+	<div class="row">
+		<% if current_f_user %>
+			<!-- チャット相手からのメッセージ -->
+			<% if message.f_user == false %>
+				<div class="col-md-1 col-md-offset-1 col-sm-1">
+					<%= render 'messages/c_user_image',c_user:@c_user %>
+				</div>
+				<div class="balloon-left col-md-7 col-sm-8">
+					<%= simple_format(message.text) %>
+					<span><%= message.created_at.strftime('%m月%d日 %H:%M') %></span>
+				</div>
+			<!-- 自分が送ったメッセージ -->
+			<% else %>
+				<div class="balloon-right col-md-offset-3 col-md-7 col-sm-8 col-sm-offset-2">
+					<%= simple_format(message.text) %>
+					<span><%= message.created_at.strftime('%m月%d日 %H:%M') %></span>
+				</div>
+				<div class="col-md-1 col-sm-1">
+					<%= render 'messages/f_user_image',f_user:@f_user %>
+				</div>
+			<% end %>
+		<% elsif current_c_user %>
+		　　<!-- チャット相手からのメッセージ -->
+			<% if message.f_user == true %>
+				<div class="col-md-1 col-md-offset-1 col-sm-1">
+					<%= render 'messages/f_user_image',f_user:@f_user %>
+				</div>
+				<div class="balloon-left col-md-7 col-sm-8">
+					<%= simple_format(message.text) %>
+					<span><%= message.created_at.strftime('%m月%d日 %H:%M') %></span>
+				</div>
+			<!-- 自分が送ったメッセージ -->
+			<% else %>
+				<div class="balloon-right col-md-offset-3 col-md-7 col-sm-8 col-sm-offset-2">
+					<%= simple_format(message.text) %>
+					<span><%= message.created_at.strftime('%m月%d日 %H:%M') %></span>
+				</div>
+				<div class="col-md-1 col-sm-1">
+					<%= render 'messages/c_user_image',c_user:@c_user %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>
+<div id="last"></div>
+
+

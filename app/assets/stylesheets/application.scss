@@ -37,7 +37,9 @@
 body {
     background-image: image-url("004-Fantasy-Paper.png");
 }
-
+a:hover {
+  color: red;
+}
 /*------header------*/
 header {
 	height: 60px;
@@ -135,5 +137,12 @@ h3 {
 }
 .favorited-users {
   margin: 20px auto;
+}
+
+.bookmark-1 {
+  color: red;
+}
+.bookmark-0 {
+  color: #ddd;
 }
 

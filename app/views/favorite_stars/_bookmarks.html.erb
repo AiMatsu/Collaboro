@@ -2,12 +2,12 @@
 	<!-- farmeｒ でログインしている場合 -->
 	<% if current_f_user%>
 		<% if request.favorited_by?(current_f_user) %>
-			<%= link_to request_favorite_stars_path(request), method: :delete do %>
-			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: red;"></span>
+			<%= link_to request_favorite_stars_path(request), method: :delete, class: "bm",remote: true do %>
+			<span class="glyphicon glyphicon-bookmark bookmark-1 <%= request.id %>" aria-hidden="true"></span>
 			<% end %>
 		<% else %>
-			<%= link_to request_favorite_stars_path(request), method: :post do %>
-			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #ddd;"></span>
+			<%= link_to request_favorite_stars_path(request), method: :post, class: "bm", remote: true do %>
+			<span class="glyphicon glyphicon-bookmark bookmark-0 <%= request.id %>"  aria-hidden="true"></span>
 			<% end %>
 		<% end %>
 	<!-- company でログインしている場合 -->

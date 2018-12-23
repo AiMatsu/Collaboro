@@ -11,7 +11,7 @@ class CropsCalendarsController < ApplicationController
 		@crops_calendar = CropsCalendar.new(crops_calendar_params)
 		@crops_calendar.f_user_id = current_f_user.id
 		if @crops_calendar.save
-			redirect_to f_user_path(current_f_user)
+			redirect_to f_user_path(current_f_user), notice: '作物情報を更新しました！'
 		else
 			render :new
 		end
@@ -24,7 +24,7 @@ class CropsCalendarsController < ApplicationController
 	def update
 		@crops_calendar = CropsCalendar.find(params[:id])
 		if @crops_calendar.update(crops_calendar_params)
-		   redirect_to f_user_path(current_f_user),notice: '作物情報を更新しました！'
+		   redirect_to f_user_path(current_f_user), notice: '作物情報を更新しました！'
 		else
 			render :edit
 		end

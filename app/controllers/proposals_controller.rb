@@ -46,7 +46,7 @@ class ProposalsController < ApplicationController
 	def index
 
 		@proposals = Proposal.all.reverse_order
-	
+
 		#favorite_heartsに登録したやつ
 		@favorites = FavoriteHeart.where("c_user_id = ?", current_c_user).reverse_order
 		@proposals_fav = []
