@@ -43,67 +43,22 @@
 
 
 	<!-- -- メッセージ一覧 -- -->
-	<div class="messages ">
-		<% if @messages.empty? %>
-			<p align="center">
-				※ まだトークがありません。下記のフォームからメッセージを送信してください。 ※
-			</p>
-		<% end %>
-		<% @messages.each do |message|%>
-			<div class="row">
-				<% if current_f_user %>
-					<!-- チャット相手からのメッセージ -->
-					<% if message.f_user == false %>
-						<div class="col-md-1 col-md-offset-1 col-sm-1">
-							<%= render 'messages/c_user_image',c_user:@c_user %>
-						</div>
-						<div class="balloon-left col-md-7 col-sm-8">
-							<%= render 'messages/messages',message:message %>
-						</div>
-					<!-- 自分が送ったメッセージ -->
-					<% else %>
-						<div class="balloon-right col-md-offset-3 col-md-7 col-sm-8 col-sm-offset-2">
-							<%= render 'messages/messages',message:message %>
-						</div>
-						<div class="col-md-1 col-sm-1">
-							<%= render 'messages/f_user_image',f_user:@f_user %>
-						</div>
-					<% end %>
-				<% elsif current_c_user %>
-				　　<!-- チャット相手からのメッセージ -->
-					<% if message.f_user == true %>
-						<div class="col-md-1 col-md-offset-1 col-sm-1">
-							<%= render 'messages/f_user_image',f_user:@f_user %>
-						</div>
-						<div class="balloon-left col-md-7 col-sm-8">
-							<%= render 'messages/messages',message:message %>
-						</div>
-					<!-- 自分が送ったメッセージ -->
-					<% else %>
-						<div class="balloon-right col-md-offset-3 col-md-7 col-sm-8 col-sm-offset-2">
-							<%= render 'messages/messages',message:message %>
-						</div>
-						<div class="col-md-1 col-sm-1">
-							<%= render 'messages/c_user_image',c_user:@c_user %>
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-		<% end %>
+	<div id="messages-area" class="messages ">
+		<%= render partial:'messages/messages', locals: { messages: @messages } %>
 	</div>
 
 	<!-- -- メッセージ入力欄 -- -->
 	<div class="message-form form-group row">
-		<%= form_for @message,url:chatroom_messages_path(@chatroom) do |f| %>
+		<%= form_with model:@message,url:chatroom_messages_path(@chatroom), id: "posts" do |f| %>
 			<div class="field">
 				<%= f.label :text, "◆ メッセージ入力" %>
 				<%= f.text_area :text, rows:"2", class: "form-control" %>
 			</div>
 			<p>
-				<%= button_tag(type: 'submit', class: "message-send") do %>
-				<span class="glyphicon glyphicon-send"></span>&emsp;送信
-				<% end %>
+				<%= f.submit "送信",class: "message-send"  %>
 			</p>
 		<% end %>
 	</div>
 </div>
+
+
