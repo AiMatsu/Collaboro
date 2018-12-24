@@ -38,7 +38,7 @@
 			<% @favorited_users.each do |favorited_user| %>
 			<tr class="col-md-offset-1 col-md-10">
 				<td class="col-md-1 col-md-offset-1">
-					<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "farmer.png" ,class: "img-responsive img-thumbnail") %>
+					<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "/images/farmer.png" ,class: "img-responsive img-thumbnail") %>
 				</td>
 				<td class="col-md-10">
 					<b><%= link_to "#{favorited_user.farm} / #{favorited_user.name}",f_user_path(favorited_user) %>

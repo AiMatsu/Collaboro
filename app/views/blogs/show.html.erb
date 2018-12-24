@@ -23,11 +23,11 @@
 				<div class=" blog-show">
 					<div class="col-md-6 blog_image">
 						<% if @blog.b_category == "レシピ紹介" %>
-							<%= attachment_image_tag @blog,:b_image,fallback:"recipe.jpg",class: "img-responsive" %>
+							<%= attachment_image_tag @blog,:b_image,fallback:"/images/recipe.jpg",class: "img-responsive" %>
 						<% elsif @blog.b_category == "コラボ情報" %>
-							<%= attachment_image_tag @blog,:b_image,fallback:"collabo.png",class: "img-responsive" %>
+							<%= attachment_image_tag @blog,:b_image,fallback:"/images/collabo.png",class: "img-responsive" %>
 						<% else %>
-							<%= attachment_image_tag @blog,:b_image,fallback:"Vegetables.png",class: "img-responsive" %>
+							<%= attachment_image_tag @blog,:b_image,fallback:"/images/Vegetables.png",class: "img-responsive" %>
 						<% end %>
 					</div>
 					<div class="col-md-6 blog_detail">

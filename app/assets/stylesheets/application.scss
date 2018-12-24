@@ -17,7 +17,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
+/*========================= 共通 =========================*/
 
  * {
   margin: 0;
@@ -35,12 +35,12 @@
 }
 
 body {
-    background-image: image-url("004-Fantasy-Paper.png");
+    background-image: image-url("/images/004-Fantasy-Paper.png");
 }
 a:hover {
   color: red;
 }
-/*------header------*/
+/*--------------- header ---------------*/
 header {
 	height: 60px;
 	width: 100%;
@@ -50,7 +50,6 @@ header {
   left: 0;
   right: 0;
   z-index: 9999;
-/*  background-color: white;*/
   border-top: solid 1px #085F63;
   border-bottom: solid 1px #085F63;
 }
@@ -81,7 +80,7 @@ header {
 .nav-list-item a{
   color: black;
 }
-/*------ 各indexのTOPへ戻るボタン ------*/
+/*---------- 各indexのTOPへ戻るボタン ----------*/
 #back{
   position: fixed;
   right: 20px;
@@ -92,12 +91,12 @@ header {
   width: 50px;
 }
 
-/*------ submitボタン ------*/
+/*--------------- submitボタン ---------------*/
 
 .actions {
   margin: 10px auto;
 }
-/*------タブメニュー/ タイトル関連------*/
+/*---------- タブメニュー/ タイトル関連 ----------*/
 #tab-menu {
   margin-top: 20px;
 }
@@ -131,7 +130,7 @@ h3 {
 .index-headline {
   display: inline-block;
 }
-/*------ bookmark(fav)関連 ------*/
+/*---------- bookmark(fav)関連 ----------*/
 .bookmark {
   display: inline-block;
 }
@@ -145,4 +144,6 @@ h3 {
 .bookmark-0 {
   color: #ddd;
 }
+
+
 
