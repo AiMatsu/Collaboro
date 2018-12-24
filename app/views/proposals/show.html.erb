@@ -21,9 +21,9 @@
 			<!-- 画像 -->
 			<div class="col-md-3 proposal-image">
 				<% if @proposal.category == "体験/イベント" %>
-				<%= attachment_image_tag @proposal, :p_image, fallback:"Experience.png",class: "img-responsive img-thumbnail" %>
+				<%= attachment_image_tag @proposal, :p_image, fallback:"/images/Experience.png",class: "img-responsive img-thumbnail" %>
 				<% else %>
-				<%= attachment_image_tag @proposal, :p_image, fallback:"Vegetables.png",class: "img-responsive img-thumbnail" %>
+				<%= attachment_image_tag @proposal, :p_image, fallback:"/images/Vegetables.png",class: "img-responsive img-thumbnail" %>
 				<% end %>
 			</div>
 
@@ -48,7 +48,7 @@
 			<% @favorited_users.each do |favorited_user| %>
 			<tr class="col-md-offset-1 col-md-10">
 				<td class="col-md-1 col-md-offset-1">
-					<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "company.png" ,class: "img-responsive img-thumbnail") %>
+					<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "/images/company.png" ,class: "img-responsive img-thumbnail") %>
 				</td>
 				<td class="col-md-10">
 					<b><%= link_to "#{favorited_user.company} / #{favorited_user.name}",c_user_path(favorited_user) %>

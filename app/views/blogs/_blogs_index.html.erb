@@ -7,21 +7,21 @@
 			<% if blog.b_category == "収穫情報" %>
 			<!-- リボン -->
 			<span class="blogCard-ribbon ribbon0"><%= blog.b_category%></span>
-			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"Vegetables.png",class: "img-responsive "),blog_path(blog)  %>
+			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/Vegetables.png",class: "img-responsive "),blog_path(blog)  %>
 			<% elsif blog.b_category == "レシピ紹介" %>
 			<!-- リボン -->
 			<span class="blogCard-ribbon ribbon1"><%= blog.b_category%></span>
-			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"recipe.jpg",class: "img-responsive "),blog_path(blog) %>
+			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/recipe.jpg",class: "img-responsive "),blog_path(blog) %>
 
 			<% elsif blog.b_category == "コラボ情報" %>
 			<!-- リボン -->
 			<span class="blogCard-ribbon ribbon2"><%= blog.b_category%></span>
-			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"collabo.png",class: "img-responsive "),blog_path(blog)  %>
+			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/collabo.png",class: "img-responsive "),blog_path(blog)  %>
 
 			<% else %>
 			<!-- リボン -->
 			<span class="blogCard-ribbon ribbon3"><%= blog.b_category%></span>
-			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450,  fallback:"Vegetables.png",class: "img-responsive "),blog_path(blog)  %>
+			<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450,  fallback:"/images/Vegetables.png",class: "img-responsive "),blog_path(blog)  %>
 			<% end %>
 		</div>
 

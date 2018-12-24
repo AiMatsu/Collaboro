@@ -18,7 +18,7 @@
 					<% if @f_user %>
 						<!--  アイコン -->
 						<td class="col-md-1 col-sm-2">
-							<%= attachment_image_tag(chatroom.c_user, :image, :fill, 70, 70, fallback: "company.png" ,class: "img-responsive img-circle") %>
+							<%= attachment_image_tag(chatroom.c_user, :image, :fill, 70, 70, fallback: "/images/company.png" ,class: "img-responsive img-circle") %>
 						</td>
 						<!-- サムネイル -->
 						<td class="chatRoomUser col-md-11 col-sm-10">
@@ -32,7 +32,7 @@
 					<% else %>
 						<!--  アイコン -->
 						<td class="col-md-1 col-sm-2">
-							<%= attachment_image_tag(chatroom.f_user, :image, :fill, 70, 70, fallback: "farmer.png" ,class: "img-responsive img-circle") %>
+							<%= attachment_image_tag(chatroom.f_user, :image, :fill, 70, 70, fallback: "/images/farmer.png" ,class: "img-responsive img-circle") %>
 						</td>
 						<!-- サムネイル -->
 						<td class="chatRoomUser col-md-11 col-sm-10">
