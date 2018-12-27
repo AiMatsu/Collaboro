@@ -14,7 +14,7 @@ class CUser < ApplicationRecord
 
     validates :company   ,presence: true
     validates :name      ,presence: true
-    validates :tell      ,presence: true
+    validates :tell      ,presence: true ,numericality: { only_integer: true } ,length: {maximum: 11}
     validates :post_code ,presence: true ,numericality: { only_integer: true } ,length: {maximum: 7}
     validates :address   ,presence: true
     validates :industry  ,presence: true

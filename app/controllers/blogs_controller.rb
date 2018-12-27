@@ -8,11 +8,12 @@ class BlogsController < ApplicationController
 	end
 
 	def create
-		@blog = Blog.new(@blog_params)
+		@blog = Blog.new(blog_params)
 		@blog.f_user_id = current_f_user.id
 		if @blog.save
 			redirect_to blog_path(@blog), notice:'旬ネタを投稿しました！'
 		else
+
 			render :new
 		end
 	end
@@ -52,11 +53,6 @@ class BlogsController < ApplicationController
 	    end
 	end
 
-	private
-	def blog_params
-		params.require(:blog).permit(:f_user_id,:b_title,:b_category,:b_body,:b_image)
-	end
-
 	def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
@@ -68,5 +64,11 @@ class BlogsController < ApplicationController
 		@user = Blog.find(params[:id]).f_user
 		redirect_to root_path unless @user == current_f_user
 	end
+
+	private
+	def blog_params
+		params.require(:blog).permit(:f_user_id,:b_title,:b_category,:b_body,:b_image)
+	end
+
 end
 

@@ -56,7 +56,7 @@ $(function(){
 		$('#messages-area').html(e.detail[2]["response"]);
 		$('textarea').val('');
 
-		// メッセ時送信後、最下部までスクロールさせる
+		// メッセ送信後、最下部までスクロールさせる
 		var element = document.getElementById("last");
 		var positionY = element.offsetTop;
 		console.log(positionY);
@@ -69,7 +69,7 @@ $(function(){
 		// var targetOffset = $('#last').offset().top;
 		// $('#messages-area').animate({scrollTop: targetOffset});
 	})
-	
+
 
 
 	// DM非同期送信　　部分テンプレートで上手くいかなかったやつ。

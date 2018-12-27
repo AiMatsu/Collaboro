@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
     t.text "profile"
     t.text "hp_url"
     t.string "conv_time"
-    t.integer "tell", null: false
+    t.string "tell", null: false
     t.integer "post_code", null: false
     t.text "address", null: false
     t.float "latitude"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2018_12_05_122136) do
     t.text "profile"
     t.text "hp_url"
     t.string "conv_time"
-    t.integer "tell", null: false
+    t.string "tell", null: false
     t.integer "post_code", null: false
     t.text "address", null: false
     t.float "latitude"
