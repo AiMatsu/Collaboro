@@ -38,7 +38,7 @@ class DeviseCreateFUsers < ActiveRecord::Migration[5.2]
       t.text     :profile
       t.text     :hp_url
       t.string   :conv_time
-      t.integer  :tell      , null: false
+      t.string   :tell      , null: false
       t.integer  :post_code , null: false
       t.text     :address   , null: false
       t.float    :latitude

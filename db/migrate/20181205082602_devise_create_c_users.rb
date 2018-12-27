@@ -34,12 +34,12 @@ class DeviseCreateCUsers < ActiveRecord::Migration[5.2]
       
       t.string  :company  , null: false
       t.string  :name     , null: false
-      t.string :industry , null: false
+      t.string  :industry , null: false
       t.text    :image_id
       t.text    :profile
       t.text    :hp_url
       t.string  :conv_time
-      t.integer :tell     , null: false
+      t.string  :tell     , null: false
       t.integer :post_code, null: false
       t.text    :address  , null: false
       t.float   :latitude
