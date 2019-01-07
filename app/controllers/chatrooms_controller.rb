@@ -9,7 +9,6 @@ class ChatroomsController < ApplicationController
 		@c_user = CUser.find(@chatroom.c_user.id)
 		@message = Message.new
 		@messages = @chatroom.messages
-
 	end
 
 	def index

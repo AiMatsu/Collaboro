@@ -1,4 +1,4 @@
-<!-- エラーメッセージ -->
+<!-- ===== エラーメッセージ ===== -->
 <% if @proposal.errors.any? %>
 	<div id="error_explanation" class="alert alert-danger">
 		<ul>
@@ -10,6 +10,7 @@
 	</div>
 <% end %>
 
+<!-- ===== 入力フォーム ===== -->
 <div class="field ">
 	<%= f.label :title ,"◇ タイトル" %>
 	<%= f.text_field :title, class: "form-control" %>

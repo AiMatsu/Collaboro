@@ -32,16 +32,10 @@ class CUsersController < ApplicationController
 		redirect_to root_path
 	end
 
-	private
-	def c_user_params
-		params.require(:c_user).permit(:name,:image, :company, :industry, :profile, :hp_url, :email, :tell, :post_code, :address, :conv_time, :password, :encrypted_password)
-	end
-
 	def room_user
 		@c_user = CUser.find(params[:id])
 		if @c_user != current_c_user && current_f_user
         	Chatroom.find_or_create_by(c_user_id: @c_user.id ,f_user_id: current_f_user.id)
-        else
     	end
     end
 
@@ -55,6 +49,11 @@ class CUsersController < ApplicationController
     def correct_user
 		@user = CUser.with_deleted.find(params[:id])
 		redirect_to root_path unless @user == current_c_user
+	end
+
+	private
+	def c_user_params
+		params.require(:c_user).permit(:name,:image, :company, :industry, :profile, :hp_url, :email, :tell, :post_code, :address, :conv_time, :password, :encrypted_password)
 	end
 
 end

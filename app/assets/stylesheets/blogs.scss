@@ -6,7 +6,6 @@
 /*------------------------------------*/
 /*                show                */
 /*------------------------------------*/
-
 .blog-box {
     background-color: white;
     border-radius: 5px;
@@ -33,6 +32,7 @@
 .blog-info i {
 	color: #996
 }
+
 /*----------titleの色/カテゴリー別--------*/
 .color0 {
     border-left: solid 5px #f30;
@@ -70,7 +70,7 @@
     font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
 
 }
-/*----------- カード -----------*/
+/*---------------- カード ----------------*/
 .blogCard {
 	width: 100%;
 	border: solid 1px #ddd;
@@ -105,7 +105,7 @@
 	overflow: hidden;
 }
 
-/*----------- indexのリボン -----------*/
+/*---------------- indexのリボン ----------------*/
 .ribbon_box {
     position: relative;
   }

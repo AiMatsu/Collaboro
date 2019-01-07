@@ -11,7 +11,7 @@ class FUsersController < ApplicationController
 	def update
 		@user = FUser.find(params[:id])
 		if @user.update(f_user_params)
-		   redirect_to f_user_path(@user),notice: '基本情報を編集しました！'
+			redirect_to f_user_path(@user),notice: '基本情報を編集しました！'
 		else
 			render :edit
 		end
@@ -26,21 +26,13 @@ class FUsersController < ApplicationController
 			@chatroom = Chatroom.find_by(f_user_id: @user.id ,c_user_id: @c_user)
 	    end
 	    @crops_calendars = @user.crops_calendars
-
 	end
-
 
 	def destroy
 		user = FUser.find(params[:id])
 		user.destroy
 		redirect_to root_path
 	end
-
-	private
-	def f_user_params
-		params.require(:f_user).permit(:name, :image, :farm, :profile, :hp_url, :tell, :post_code, :address, :conv_time, )
-	end
-
 
 	def room_user
 		@f_user = FUser.find(params[:id])
@@ -52,13 +44,18 @@ class FUsersController < ApplicationController
     def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-		 redirect_to root_path
+			redirect_to root_path
 		end
 	end
 
     def correct_user
 		@user = FUser.with_deleted.find(params[:id])
 		redirect_to root_path unless @user == current_f_user
+	end
+
+	private
+	def f_user_params
+		params.require(:f_user).permit(:name, :image, :farm, :profile, :hp_url, :tell, :post_code, :address, :conv_time, )
 	end
 
 end

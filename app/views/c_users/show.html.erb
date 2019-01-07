@@ -5,22 +5,23 @@
 		<% end %>
 	</h3>
 
-	<!-- サクセスメッセージ -->
+	<!-- ===== サクセスメッセージ ===== -->
 	<%= notice %>
 
-	<!-- - - 情報別タブボタン- - -->
+	<!-- ===== 情報別タブボタン ===== -->
 	<div class="row">
-		<div class="row">
 		<div id="tab-menu" class="col-md-6 col-md-offset-6 clearfix" >
 			<a href="#tab-all" class="tab-btn active btn col-md-4 col-md-offset-4">基本情報</a>
 			<a href="#tab-request" class="tab-btn btn col-md-4">コラボリクエスト</a>
 		</div>
 	</div>
 
+	<!-- ===== 情報別の内容 ===== -->
 	<div id="tab-contents">
-		<!-- - - 基本情報 - - -->
+
+		<!-- === 基本情報 === -->
 		<div id="tab-all" class="tab">
-			<!-- 基本情報 -->
+			<!-- ----- ユーザー基本情報 ----- -->
 			<div class="basic row item">
 				<p class="item-title color-base">基本情報</p>
 				<div class="col-md-4">
@@ -57,6 +58,7 @@
 							<td width="70%"><%= @user.conv_time %></td>
 						</tr>
 					</table>
+					<!-- リンクボタン -->
 					<div class="link-btn">
 						<% if @user == current_c_user %>
 							<%= link_to "基本情報を編集する",
@@ -71,7 +73,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- google map表示 -->
+			<!-- ----- google map表示 ----- -->
 			<div class="map row item">
 				<p class="item-title color-base">所在地</p>
 					<iframe
@@ -82,16 +84,18 @@
 			</div>
 		</div>
 
-		<!-- -- コラボリクエスト -- -->
+		<!-- === コラボリクエスト === -->
 		<div id="tab-request" class="tab">
+			<!-- ----- ユーザーが投稿したコラボリクエスト一覧 ----- -->
 			<div class="row item">
 				<p class="item-title color-base">
 					コラボリクエスト
-					<span class="link-btn">
+					<!-- 新規投稿ページへのボタン -->
 					<% if @user == current_c_user %>
-						&emsp;<%= link_to "",new_request_path,class: "far fa-plus-square" %>
+						<span class="link-btn">
+							&emsp;<%= link_to "",new_request_path,class: "far fa-plus-square" %>
+						</span>
 					<% end %>
-					</span>
 				</p>
 				<div class=" row c_user_requests">
 					<% if @requests.empty? %>
@@ -104,6 +108,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 </div>
 

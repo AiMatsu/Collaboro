@@ -4,21 +4,19 @@
 			<h3 class="glyphicon glyphicon-cog">マイファーム・基本情報編集</h3>
 			<%= form_for(@user) do |f| %>
 
-				<!-- エラーメッセージ -->
-
+				<!-- ===== エラーメッセージ ===== -->
 				<% if @user.errors.any? %>
-				<div id="error_explanation">
-					<h2><%= pluralize(@user.errors.count, "error") %> prohibited this map from being saved:</h2>
-
-					<ul>
-						<% @user.errors.full_messages.each do |message| %>
-						<li><%= message %></li>
-						<% end %>
-					</ul>
-				</div>
+					<div id="error_explanation">
+						<h2><%= pluralize(@user.errors.count, "error") %> prohibited this map from being saved:</h2>
+						<ul>
+							<% @user.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+							<% end %>
+						</ul>
+					</div>
 				<% end %>
 
-				<!-- 入力フォーム -->
+				<!-- ===== 入力フォーム ===== -->
 				<div class="field ">
 					<%= f.label :image,"◇ プロフィール写真" %>
 					<%= f.attachment_field :image %>
@@ -63,7 +61,7 @@
 					<%= f.label :tell,"◇ 電話番号 ※非公開" %>
 					<%= f.text_field :tell, autofocus: true, autocomplete: "tell" ,placeholder:"00000000000",class: "form-control" %>
 				</div>
-				
+
 				<div class="field ">
 					<%= f.label :email,"◇ メールアドレス ※非公開" %>
 					<%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control" %>
@@ -72,7 +70,8 @@
 				<p class="actions">
 					<%= f.submit "基本情報を更新する" ,class: "btn btn-block btn-default btn-xs"%>
 				</p>
-	    <% end %>
+
+	    	<% end %>
 		</div>
 	</div>
 </div>

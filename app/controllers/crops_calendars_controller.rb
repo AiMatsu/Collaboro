@@ -24,7 +24,7 @@ class CropsCalendarsController < ApplicationController
 	def update
 		@crops_calendar = CropsCalendar.find(params[:id])
 		if @crops_calendar.update(crops_calendar_params)
-		   redirect_to f_user_path(current_f_user), notice: '作物情報を更新しました！'
+			redirect_to f_user_path(current_f_user), notice: '作物情報を更新しました！'
 		else
 			render :edit
 		end
@@ -44,7 +44,7 @@ class CropsCalendarsController < ApplicationController
 	def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-		 redirect_to root_path
+			redirect_to root_path
 		end
 	end
 

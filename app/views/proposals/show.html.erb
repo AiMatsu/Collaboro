@@ -1,16 +1,19 @@
 <div class="container">
 
-	<!-- サクセスメッセージ -->
+	<!-- ===== サクセスメッセージ ===== -->
 	<p id="notice"><%= notice %></p>
 
-	<!-- puroposal -->
+	<!-- ===== proposalの内容 ===== -->
 	<div class=" row">
+		<!-- === 投稿ユーザー表示 === -->
 		<% if @f_user != current_f_user %>
-		<h3 class="item-title color-base"><%= link_to @proposal.f_user.farm,f_user_path(@proposal.f_user)%>&ensp;からのプロポーザル</h3>
+			<h3 class="item-title color-base"><%= link_to @proposal.f_user.farm,f_user_path(@proposal.f_user)%>&ensp;からのプロポーザル</h3>
 		<% end %>
+		<!-- === 詳細内容 === -->
 		<div class="col-md-12 proposal_show">
+			<!-- bookmark -->
 			<%= render 'favorite_hearts/bookmarks',proposal:@proposal %>
-			<!-- 詳細内容 -->
+			<!-- テキスト -->
 			<div class="col-md-7 col-md-offset-1">
 			    <h3><%= @proposal.title %></h3>
 				<p class="proposal-category"><%= @proposal.category %></p>
@@ -26,7 +29,7 @@
 				<%= attachment_image_tag @proposal, :p_image, fallback:"/images/Vegetables.png",class: "img-responsive img-thumbnail" %>
 				<% end %>
 			</div>
-
+			<!-- 削除・編集ボタン -->
 			<% if @f_user == current_f_user %>
 				<span class="pro-edit-link">
 					&ensp;<%= link_to "",edit_proposal_path(@proposal),class: "glyphicon glyphicon-pencil" %>
@@ -34,29 +37,30 @@
 				</span>
 			<% end %>
 		</div>
+		<!-- === backボタン === -->
 		<%= link_to '戻る', :back ,class: "col-md-1 col-md-offset-11 btn  btn-default btn-xs"%>
 	</div>
 
 
-	<!-- favorite(bookmark) した人一覧-->
+	<!-- ===== favorite(bookmark) した人一覧 ===== -->
 	<% if @f_user == current_f_user %>
-	<div class="row favorited-users">
-		<p class="item-title color-base col-md-offset-1">
-			<span class="glyphicon glyphicon-bookmark"aria-hidden="true" style="color: orangered;"> </span>しているユーザー
-		</p>
-		<table class="table table-hover">
-			<% @favorited_users.each do |favorited_user| %>
-			<tr class="col-md-offset-1 col-md-10">
-				<td class="col-md-1 col-md-offset-1">
-					<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "/images/company.png" ,class: "img-responsive img-thumbnail") %>
-				</td>
-				<td class="col-md-10">
-					<b><%= link_to "#{favorited_user.company} / #{favorited_user.name}",c_user_path(favorited_user) %>
-				</td>
-			</tr>
-			<% end %>
-		</table>
-	</div>
+		<div class="row favorited-users">
+			<p class="item-title color-base col-md-offset-1">
+				<span class="glyphicon glyphicon-bookmark"aria-hidden="true" style="color: orangered;"> </span>しているユーザー
+			</p>
+			<table class="table table-hover">
+				<% @favorited_users.each do |favorited_user| %>
+					<tr class="col-md-offset-1 col-md-10">
+						<td class="col-md-1 col-md-offset-1">
+							<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "/images/company.png" ,class: "img-responsive img-thumbnail") %>
+						</td>
+						<td class="col-md-10">
+							<b><%= link_to "#{favorited_user.company} / #{favorited_user.name}",c_user_path(favorited_user) %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
 	<% end %>
 
 </div>

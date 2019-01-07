@@ -3,18 +3,18 @@
 	<% if current_c_user%>
 		<% if proposal.favorited_by?(current_c_user) %>
 			<%= link_to proposal_favorite_hearts_path(proposal), method: :delete, class: "bm",remote: true do %>
-			<span class="glyphicon glyphicon-bookmark bookmark-1 <%= proposal.id %>" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-bookmark bookmark-1 <%= proposal.id %>" aria-hidden="true"></span>
 			<% end %>
 		<% else %>
 			<%= link_to proposal_favorite_hearts_path(proposal), method: :post, class: "bm", remote: true do %>
-			<span class="glyphicon glyphicon-bookmark bookmark-0 <%= proposal.id %>"  aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-bookmark bookmark-0 <%= proposal.id %>"  aria-hidden="true"></span>
 			<% end %>
 		<% end %>
 	<!-- farmeｒ でログインしている場合 -->
 	<% else%>
 		<%= link_to proposal_path(proposal), method: :get do %>
-		<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #996;"></span>
-		<%= proposal.favorite_hearts.count %>
+			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #996;"></span>
+			<%= proposal.favorite_hearts.count %>
 		<% end %>
 	<% end %>
 </div>

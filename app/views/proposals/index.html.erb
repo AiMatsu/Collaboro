@@ -1,3 +1,4 @@
+<!-- ===== 画像 ===== -->
 <div class="pro-main-visual">
 	<div class="pro-main-visual-content">
 		<p class="pro-main-visual-text">
@@ -6,19 +7,19 @@
 		</p>
 	</div>
 </div>
-<div class="container ">
 
+<div class="container ">
 	<div class="row">
 		<h3 class=" index-headline"><b>生産者からのプロポーザル</b></h3>
 
-		<!-- 検索フォーム -->
+		<!-- === 検索フォーム === -->
 		<%= render 'proposals/search_form' %>
 
-		<!-- タブメニュー -->
+		<!-- === カテゴリ別タブメニュー === -->
 		<%= render 'proposals/tab_menu' %>
 	</div>
 
-
+	<!-- ===== カテゴリ別index ===== -->
 	<div id="tab-contents" class="row">
 		<!-- -- All -- -->
 		<div id="tab-all" class="tab ">
@@ -83,9 +84,9 @@
 			<% end %>
 		</div>
 	</div>
-
 </div>
 
+<!-- ===== topへ戻るボタン(ビューーンて動くやつ) ===== -->
 <span id="back">
 	<a href="#">
 		<%= image_tag('arrow.png') %>

@@ -1,5 +1,6 @@
 <%= form_for (crops_calendar) do |f|%>
-<!-- エラーメッセージ -->
+
+	<!-- ===== エラーメッセージ ===== -->
 	<% if @crops_calendar.errors.any? %>
 		<div id="error_explanation" class="alert alert-danger">
 			<ul>
@@ -10,84 +11,86 @@
 			</ul>
 		</div>
 	<% end %>
-<div class="row">
-	<div class="col-md-10 col-md-offset-1 col-sm-12">
 
-		<div class="field">
-			<%= f.label :crops ,"◇ 作物名" %>
-			<%= f.text_field :crops, class: "form-control " %>
+	<!-- ===== 入力フォーム ===== -->
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 col-sm-12">
+			<div class="field">
+				<%= f.label :crops ,"◇ 作物名" %>
+				<%= f.text_field :crops, class: "form-control " %>
+			</div>
+			<div class="calenders">
+				<%= f.label :jan,"◇ 作物収穫カレンダー" %>
+				<table>
+					<tbody>
+						<tr>
+							<td class="crop"></td>
+							<td class="month">1月</td>
+							<td class="month">2月</td>
+							<td class="month">3月</td>
+							<td class="month">4月</td>
+							<td class="month">5月</td>
+							<td class="month">6月</td>
+							<td class="month">7月</td>
+							<td class="month">8月</td>
+							<td class="month">9月</td>
+							<td class="month">10月</td>
+							<td class="month">11月</td>
+							<td class="month">12月</td>
+						</tr>
+						<tr class="bestSeason">
+							<td class="crop">Best Season</td>
+							<td><label><%= f.radio_button :Jan, "2" %></label></td>
+							<td><label><%= f.radio_button :Feb, "2" %></label></td>
+							<td><label><%= f.radio_button :Mar, "2" %></label></td>
+							<td><label><%= f.radio_button :Apr, "2" %></label></td>
+							<td><label><%= f.radio_button :May, "2" %></label></td>
+							<td><label><%= f.radio_button :Jun, "2" %></label></td>
+							<td><label><%= f.radio_button :Jul, "2" %></label></td>
+							<td><label><%= f.radio_button :Aug, "2" %></label></td>
+							<td><label><%= f.radio_button :Sep, "2" %></label></td>
+							<td><label><%= f.radio_button :Oct, "2" %></label></td>
+							<td><label><%= f.radio_button :Nov, "2" %></label></td>
+							<td><label><%= f.radio_button :Dec, "2" %></label></td>
+						</tr>
+						<tr class="season">
+							<td class="crop">Season</td>
+							<td><label><%= f.radio_button :Jan, "1" %></label></td>
+							<td><label><%= f.radio_button :Feb, "1" %></label></td>
+							<td><label><%= f.radio_button :Mar, "1" %></label></td>
+							<td><label><%= f.radio_button :Apr, "1" %></label></td>
+							<td><label><%= f.radio_button :May, "1" %></label></td>
+							<td><label><%= f.radio_button :Jun, "1" %></label></td>
+							<td><label><%= f.radio_button :Jul, "1" %></label></td>
+							<td><label><%= f.radio_button :Aug, "1" %></label></td>
+							<td><label><%= f.radio_button :Sep, "1" %></label></td>
+							<td><label><%= f.radio_button :Oct, "1" %></label></td>
+							<td><label><%= f.radio_button :Nov, "1" %></label></td>
+							<td><label><%= f.radio_button :Dec, "1" %></label></td>
+						</tr>
+						<tr class="offSeason">
+							<td class="crop">Off Season</td>
+							<td><label><%= f.radio_button :Jan, "0" %></label></td>
+							<td><label><%= f.radio_button :Feb, "0" %></label></td>
+							<td><label><%= f.radio_button :Mar, "0" %></label></td>
+							<td><label><%= f.radio_button :Apr, "0" %></label></td>
+							<td><label><%= f.radio_button :May, "0" %></label></td>
+							<td><label><%= f.radio_button :Jun, "0" %></label></td>
+							<td><label><%= f.radio_button :Jul, "0" %></label></td>
+							<td><label><%= f.radio_button :Aug, "0" %></label></td>
+							<td><label><%= f.radio_button :Sep, "0" %></label></td>
+							<td><label><%= f.radio_button :Oct, "0" %></label></td>
+							<td><label><%= f.radio_button :Nov, "0" %></label></td>
+							<td><label><%= f.radio_button :Dec, "0" %></label></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="actions">
+				<%= f.submit "更新する" ,class: "btn btn-block btn-default btn-xs"%>
+				<%= link_to '戻る', :back ,class: "btn btn-block btn-default btn-xs"%>
+			</p>
 		</div>
-		<div class="calenders">
-			<%= f.label :jan,"◇ 作物収穫カレンダー" %>
-			<table>
-				<tbody>
-					<tr>
-						<td class="crop"></td>
-						<td class="month">1月</td>
-						<td class="month">2月</td>
-						<td class="month">3月</td>
-						<td class="month">4月</td>
-						<td class="month">5月</td>
-						<td class="month">6月</td>
-						<td class="month">7月</td>
-						<td class="month">8月</td>
-						<td class="month">9月</td>
-						<td class="month">10月</td>
-						<td class="month">11月</td>
-						<td class="month">12月</td>
-					</tr>
-					<tr class="bestSeason">
-						<td class="crop">Best Season</td>
-						<td><label><%= f.radio_button :Jan, "2" %></label></td>
-						<td><label><%= f.radio_button :Feb, "2" %></label></td>
-						<td><label><%= f.radio_button :Mar, "2" %></label></td>
-						<td><label><%= f.radio_button :Apr, "2" %></label></td>
-						<td><label><%= f.radio_button :May, "2" %></label></td>
-						<td><label><%= f.radio_button :Jun, "2" %></label></td>
-						<td><label><%= f.radio_button :Jul, "2" %></label></td>
-						<td><label><%= f.radio_button :Aug, "2" %></label></td>
-						<td><label><%= f.radio_button :Sep, "2" %></label></td>
-						<td><label><%= f.radio_button :Oct, "2" %></label></td>
-						<td><label><%= f.radio_button :Nov, "2" %></label></td>
-						<td><label><%= f.radio_button :Dec, "2" %></label></td>
-					</tr>
-					<tr class="season">
-						<td class="crop">Season</td>
-						<td><label><%= f.radio_button :Jan, "1" %></label></td>
-						<td><label><%= f.radio_button :Feb, "1" %></label></td>
-						<td><label><%= f.radio_button :Mar, "1" %></label></td>
-						<td><label><%= f.radio_button :Apr, "1" %></label></td>
-						<td><label><%= f.radio_button :May, "1" %></label></td>
-						<td><label><%= f.radio_button :Jun, "1" %></label></td>
-						<td><label><%= f.radio_button :Jul, "1" %></label></td>
-						<td><label><%= f.radio_button :Aug, "1" %></label></td>
-						<td><label><%= f.radio_button :Sep, "1" %></label></td>
-						<td><label><%= f.radio_button :Oct, "1" %></label></td>
-						<td><label><%= f.radio_button :Nov, "1" %></label></td>
-						<td><label><%= f.radio_button :Dec, "1" %></label></td>
-					</tr>
-					<tr class="offSeason">
-						<td class="crop">Off Season</td>
-						<td><label><%= f.radio_button :Jan, "0" %></label></td>
-						<td><label><%= f.radio_button :Feb, "0" %></label></td>
-						<td><label><%= f.radio_button :Mar, "0" %></label></td>
-						<td><label><%= f.radio_button :Apr, "0" %></label></td>
-						<td><label><%= f.radio_button :May, "0" %></label></td>
-						<td><label><%= f.radio_button :Jun, "0" %></label></td>
-						<td><label><%= f.radio_button :Jul, "0" %></label></td>
-						<td><label><%= f.radio_button :Aug, "0" %></label></td>
-						<td><label><%= f.radio_button :Sep, "0" %></label></td>
-						<td><label><%= f.radio_button :Oct, "0" %></label></td>
-						<td><label><%= f.radio_button :Nov, "0" %></label></td>
-						<td><label><%= f.radio_button :Dec, "0" %></label></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<p class="actions">
-			<%= f.submit "更新する" ,class: "btn btn-block btn-default btn-xs"%>
-			<%= link_to '戻る', :back ,class: "btn btn-block btn-default btn-xs"%>
-		</p>
 	</div>
-</div>
+
 <% end %>

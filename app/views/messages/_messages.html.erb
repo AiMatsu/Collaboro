@@ -5,6 +5,8 @@
 <% end %>
 <% @messages.each do |message|%>
 	<div class="row">
+
+		<!-- === farmer でログインしている場合　=== -->
 		<% if current_f_user %>
 			<!-- チャット相手からのメッセージ -->
 			<% if message.f_user == false %>
@@ -25,6 +27,8 @@
 					<%= render 'messages/f_user_image',f_user:@f_user %>
 				</div>
 			<% end %>
+
+		<!-- === company でログインしている場合　=== -->
 		<% elsif current_c_user %>
 		　　<!-- チャット相手からのメッセージ -->
 			<% if message.f_user == true %>
@@ -46,8 +50,11 @@
 				</div>
 			<% end %>
 		<% end %>
+
 	</div>
 <% end %>
+
+<!-- jsで下部までスクロールさせる際に必要な記述 -->
 <div id="last"></div>
 
 

@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-/*- - - 作物収穫カレンダー/post - - -*/
+/*----------- 作物収穫カレンダー/post -----------*/
 .calenders table {
 	width: 100%;
 }
@@ -14,7 +14,6 @@
 .season {
 	background-color: #ffcc66;
 }
-
 .calenders table,.calenders tr,.calenders td,.calenders th {
 	border: 1px solid #595959;
 	border-collapse: collapse; /*隣接するセルのボーダーを間隔をあけて表示*/

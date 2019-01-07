@@ -1,13 +1,17 @@
+<!-- ===== カード ===== -->
 <div class="col-md-4 col-sm-6">
 	<div class="requestCard ribbon_box">
-		<!-- リボン -->
+		<!-- リボン(赤) -->
 		<% if request.category == "農作物出荷" %>
-		<span class="requestCard-ribbon ribbon0"><%= request.category%></span>
+			<span class="requestCard-ribbon ribbon0"><%= request.category%></span>
+		<!-- リボン(水色) -->
 		<% elsif request.category == "体験/イベント" %>
-		<span class="requestCard-ribbon ribbon2"><%= request.category%></span>
+			<span class="requestCard-ribbon ribbon2"><%= request.category%></span>
+		<!-- リボン(緑) -->
 		<% else %>
-		<span class="requestCard-ribbon ribbon3"><%= request.category%></span>
+			<span class="requestCard-ribbon ribbon3"><%= request.category%></span>
 		<% end %>
+
 		<!-- リクエスト概要 -->
 		<div class="request-content">
 			<h4>
@@ -25,6 +29,7 @@
 		<div class="requestCard-user">
 			<i class="fas fa-home"></i>&ensp;<%= link_to request.c_user.company,c_user_path(request.c_user)%>
 		</div>
+
 		<!-- bookmarkマーク -->
 		<%= render 'favorite_stars/bookmarks',request:request %>
 	</div>

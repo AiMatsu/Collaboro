@@ -1,6 +1,7 @@
 class FUser < ApplicationRecord
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :validatable
 
@@ -23,4 +24,5 @@ class FUser < ApplicationRecord
     attachment :image
 
     acts_as_paranoid
+
 end

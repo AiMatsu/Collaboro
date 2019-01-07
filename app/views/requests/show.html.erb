@@ -1,15 +1,19 @@
 <div class="container">
 
-	<!-- サクセスメッセージ -->
+	<!-- ===== サクセスメッセージ ===== -->
 	<p id="notice"><%= notice %></p>
 
+	<!-- ===== requestの内容 ===== -->
 	<div class="row">
+		<!-- === 投稿ユーザー表示 === -->
 		<% if @c_user != current_c_user %>
 			<h3 class="item-title color-base"><%= link_to @request.c_user.company,c_user_path(@request.c_user)%>&ensp;からのプロポーザル</h3>
 		<% end %>
+		<!-- === 詳細内容 === -->
 		<div class="request-show col-md-12">
+			<!-- bookmark -->
 			<%= render 'favorite_stars/bookmarks',request:@request %>
-			<!-- 詳細内容 -->
+			<!-- テキスト -->
 			<div class="col-md-10 col-md-offset-1">
 				<h3><%= @request.title %></h3>
 				<p class="request-category"><%= @request.category %></p>
@@ -18,6 +22,7 @@
 				<p><i class="fas fa-map-marker-alt"></i>&ensp;出荷先/開催地&emsp;<%= @request.location %></p>
 				<p><i class="far fa-clipboard"></i>&ensp;リクエスト内容<br><%= simple_format(@request.body) %></p>
 			</div>
+			<!-- 削除・編集ボタン -->
 			<% if @c_user == current_c_user %>
 				<span class="pro-edit-link">
 					&ensp;<%= link_to "",edit_request_path(@request),class: "glyphicon glyphicon-pencil" %>
@@ -25,27 +30,29 @@
 				</span><br>
 			<% end %>
 		</div>
+		<!-- === backボタン === -->
 		<%= link_to '戻る', :back ,class: "col-md-1 col-md-offset-11 btn  btn-default btn-xs"%>
 	</div>
 
-	<!-- favorite(bookmark) した人一覧-->
+	<!-- ===== favorite(bookmark) した人一覧 ===== -->
 	<% if @c_user == current_c_user %>
-	<div class="row favorited-users">
-		<p class="item-title color-base col-md-offset-1">
-			<span class="glyphicon glyphicon-bookmark"aria-hidden="true" style="color: orangered;"> </span>しているユーザー
-		</p>
-		<table class="table table-hover">
-			<% @favorited_users.each do |favorited_user| %>
-			<tr class="col-md-offset-1 col-md-10">
-				<td class="col-md-1 col-md-offset-1">
-					<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "/images/farmer.png" ,class: "img-responsive img-thumbnail") %>
-				</td>
-				<td class="col-md-10">
-					<b><%= link_to "#{favorited_user.farm} / #{favorited_user.name}",f_user_path(favorited_user) %>
-				</td>
-			</tr>
-			<% end %>
-		</table>
-	</div>
+		<div class="row favorited-users">
+			<p class="item-title color-base col-md-offset-1">
+				<span class="glyphicon glyphicon-bookmark"aria-hidden="true" style="color: orangered;"> </span>しているユーザー
+			</p>
+			<table class="table table-hover">
+				<% @favorited_users.each do |favorited_user| %>
+					<tr class="col-md-offset-1 col-md-10">
+						<td class="col-md-1 col-md-offset-1">
+							<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "/images/farmer.png" ,class: "img-responsive img-thumbnail") %>
+						</td>
+						<td class="col-md-10">
+							<b><%= link_to "#{favorited_user.farm} / #{favorited_user.name}",f_user_path(favorited_user) %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
 	<% end %>
+
 </div>

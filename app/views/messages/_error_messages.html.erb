@@ -1,13 +1,13 @@
 
 <%= render partial:'messages/messages', locals: { messages: @messages } %>
-<!-- エラーメッセージ -->
-	<% if @message.errors.any? %>
-		<div id="error_explanation" class="alert alert-danger">
-			<ul>
-				<%= @message.errors.count %>件のエラーが発生しました。
-				<% @message.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
+<!-- ===== エラーメッセージ ===== -->
+<% if @message.errors.any? %>
+	<div id="error_explanation" class="alert alert-danger">
+		<ul>
+			<%= @message.errors.count %>件のエラーが発生しました。
+			<% @message.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

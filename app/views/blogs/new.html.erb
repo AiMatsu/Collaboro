@@ -3,14 +3,11 @@
 		<div class="col-md-6 col-md-offset-3 form-group">
 			<h3><b>ファーム旬ネタ・新規投稿</b></h3>
 			<%= form_for(@blog) do |f| %>
-
-			<%= render 'blogs/blog_post',f:f %>
-
-			<p class="actions">
-				<%= f.submit "投稿する" ,class: "btn btn-block btn-default btn-xs"%>
-				<%= link_to '戻る', :back ,class: "btn btn-block btn-default btn-xs"%>
-			</p>
-
+				<%= render 'blogs/blog_post',f:f %>
+				<p class="actions">
+					<%= f.submit "投稿する" ,class: "btn btn-block btn-default btn-xs"%>
+					<%= link_to '戻る', :back ,class: "btn btn-block btn-default btn-xs"%>
+				</p>
 			<% end %>
 		</div>
 	</div>
