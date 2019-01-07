@@ -22,7 +22,6 @@
 /*------------------------------------*/
 /*                show                */
 /*------------------------------------*/
-
 .chatUserName a{
 	color :black;
 }
@@ -50,10 +49,6 @@
     text-align: center;
     background-color: white;
 }
-/*.message-send:hover {
-	color:white;
-	background-color: #ef255f;
-}*/
 
 /*- - - - メッセージ - - - -*/
 .messages {
@@ -67,7 +62,7 @@
 	left: 100%;
  	margin-top: 0px;
 	border: 10px solid transparent;
-	border-left: 15px solid #ffc;/* #faffb8*/
+	border-left: 15px solid #ffc;
 }
 .balloon-left:before{
 	content: "";
@@ -79,7 +74,7 @@
 	border-right: 15px solid #EFEBE9;
 }
 .balloon-right{
-	background: #ffc;/* #faffb8*/
+	background: #ffc;
 }
 .balloon-left{
 	background: #EFEBE9;

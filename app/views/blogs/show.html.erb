@@ -1,26 +1,26 @@
 <div class="container">
-
-	<!-- サクセスメッセージ -->
+	<!-- ===== サクセスメッセージ ===== -->
 	<p id="notice"><%= notice %></p>
 
+	<!-- ===== 内容 ===== -->
 	<div class="row ">
 		<div class="blog-box col-md-12">
 			<div class="col-md-10 col-md-offset-1">
-				<!-- ブログのタイトル -->
+				<!-- -- ブログのタイトル カテゴリ別に色分け -- -->
 				<% if @blog.b_category == "収穫情報" %>
-				<h4 class=" item-title color0">
+					<h4 class=" item-title color0">
 				<% elsif @blog.b_category == "レシピ紹介" %>
-				<h4 class=" item-title color1">
+					<h4 class=" item-title color1">
 				<% elsif @blog.b_category == "コラボ情報" %>
-				<h4 class=" item-title color2">
+					<h4 class=" item-title color2">
 				<% else %>
-				<h4 class=" item-title colo3">
+					<h4 class=" item-title colo3">
 				<% end %>
-				<%= @blog.b_title %>
-				</h4>
+				<%= @blog.b_title %></h4>
 
-				<!-- ブログの詳細内容 -->
+				<!--   ブログの詳細内容   -->
 				<div class=" blog-show">
+					<!-- 画像 -->
 					<div class="col-md-6 blog_image">
 						<% if @blog.b_category == "レシピ紹介" %>
 							<%= attachment_image_tag @blog,:b_image,fallback:"/images/recipe.jpg",class: "img-responsive" %>
@@ -30,6 +30,7 @@
 							<%= attachment_image_tag @blog,:b_image,fallback:"/images/Vegetables.png",class: "img-responsive" %>
 						<% end %>
 					</div>
+					<!-- テキスト -->
 					<div class="col-md-6 blog_detail">
 						<div class="blog-name">
 							<i class="fas fa-home"></i>&emsp;
@@ -42,6 +43,7 @@
 							<span>
 								<i class="fas fa-layer-group"></i>&emsp;<%= @blog.b_category %>&emsp;&emsp;
 								<i class="fas fa-clock"></i>&emsp;<%= @blog.created_at.strftime('%Y年%m月%d日') %>
+								<!-- 編集・削除ボタン -->
 								<% if @f_user == current_f_user %>
 									<span>&emsp;||&emsp;
 										&ensp;<%= link_to "",edit_blog_path(@blog),class: "glyphicon glyphicon-pencil"%>

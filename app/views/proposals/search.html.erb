@@ -1,13 +1,12 @@
 <div class="container">
-
 	<div class="row">
 		<h3><b>プロポーザル [<%= "#{params[:search]}" %>] 検索結果</b></h3>
-		<!-- 検索フォーム -->
+		<!-- === 検索フォーム === -->
 		<%= render 'proposals/search_form' %>
 	</div>
 
 	<div class="row">
-		<!-- 検索結果一覧 -->
+		<!-- === 検索結果一覧 === -->
 		<% @proposals.each do |proposal| %>
 			<%= render 'proposals/proposals_index',proposal:proposal %>
 		<% end %>

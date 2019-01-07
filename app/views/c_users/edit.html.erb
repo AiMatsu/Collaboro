@@ -4,8 +4,7 @@
 			<h3 class="glyphicon glyphicon-cog">マイページ・基本情報編集</h3>
 			<%= form_for(@user) do |f| %>
 
-				<!-- エラーメッセージ -->
-
+				<!-- ===== エラーメッセージ ===== -->
 				<% if @user.errors.any? %>
 				<div id="error_explanation">
 					<h2><%= pluralize(@user.errors.count, "error") %> prohibited this map from being saved:</h2>
@@ -18,7 +17,7 @@
 				</div>
 				<% end %>
 
-				<!-- 入力フォーム -->
+				<!-- ===== 入力フォーム ===== -->
 				<div class="field ">
 					<%= f.label :image,"◇ プロフィール写真" %>
 					<%= f.attachment_field :image %>

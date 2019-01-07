@@ -40,6 +40,7 @@ body {
 a:hover {
   color: red;
 }
+
 /*--------------- header ---------------*/
 header {
 	height: 60px;
@@ -80,6 +81,7 @@ header {
 .nav-list-item a{
   color: black;
 }
+
 /*---------- 各indexのTOPへ戻るボタン ----------*/
 #back{
   position: fixed;
@@ -96,6 +98,7 @@ header {
 .actions {
   margin: 10px auto;
 }
+
 /*---------- タブメニュー/ タイトル関連 ----------*/
 #tab-menu {
   margin-top: 20px;
@@ -130,6 +133,7 @@ h3 {
 .index-headline {
   display: inline-block;
 }
+
 /*---------- bookmark(fav)関連 ----------*/
 .bookmark {
   display: inline-block;

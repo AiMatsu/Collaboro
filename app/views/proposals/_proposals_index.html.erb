@@ -1,23 +1,26 @@
+<!-- ===== カード ===== -->
 <div class="col-md-4 col-sm-6">
 	<div class="proposalCard">
-		<div class="proposalCard-image ribbon_box">
 
-			<!-- 画像 & リボン-->
+		<!-- === 画像 & リボン === -->
+		<div class="proposalCard-image ribbon_box">
+			<!-- リボン(赤) -->
 			<% if proposal.category == "農作物出荷" %>
 				<span class="proposalCard-ribbon ribbon0"><%= proposal.category%></span>
 				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Vegetables.png",class: "img-responsive"),proposal_path(proposal)  %>
+			<!-- リボン(水色) -->
 			<% elsif proposal.category == "体験/イベント" %>
 				<span class="proposalCard-ribbon ribbon2"><%= proposal.category%></span>
 				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Experience.png",class: "img-responsive"),proposal_path(proposal) %>
+			<!-- リボン(緑) -->
 			<% else %>
 				<span class="proposalCard-ribbon ribbon3"><%= proposal.category%></span>
 				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Vegetables.png",class: "img-responsive"),proposal_path(proposal)  %>
 			<% end %>
 		</div>
 
+		<!-- === テキスト === -->
 		<div class="proposalCard-thum">
-
-			<!-- プロポーザル概要 -->
 			<div class="content">
 				<h4>
 					<%= link_to proposal_path(proposal) do%>
@@ -37,6 +40,7 @@
 			<!-- bookmarkマーク -->
 			<%= render 'favorite_hearts/bookmarks',proposal:proposal %>
 		</div>
+
 	</div>
 </div>
 

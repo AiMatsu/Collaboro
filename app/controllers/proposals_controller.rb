@@ -34,7 +34,7 @@ class ProposalsController < ApplicationController
 		@proposal = Proposal.find(params[:id])
 		@f_user = @proposal.f_user
 
-		# #favorite_heartsに登録した人一覧
+		# favorite_hearts(bookmark)した人一覧を出したい
 		@favorited_users = []
 		@favorited = FavoriteHeart.where(proposal_id: @proposal).reverse_order
 		@favorited.each do |f|
@@ -44,17 +44,15 @@ class ProposalsController < ApplicationController
 	end
 
 	def index
-
 		@proposals = Proposal.all.reverse_order
 
-		#favorite_heartsに登録したやつ
+		#favorite_hearts(bookmark)に登録したプロポーザルを取り出したい
 		@favorites = FavoriteHeart.where("c_user_id = ?", current_c_user).reverse_order
 		@proposals_fav = []
 		@favorites.each do |f|
 			@proposal = Proposal.find_by(id: f.proposal_id)
 			@proposals_fav.push(@proposal)
 		end
-
 
 		# カテゴリー別
 		@proposals_shipment = Proposal.where(category: "0").reverse_order
@@ -91,21 +89,21 @@ class ProposalsController < ApplicationController
 		@proposals = Proposal.all.reverse_order.search(params[:search])
 	end
 
-	private
-	def proposal_params
-		params.require(:proposal).permit(:title, :body, :p_image, :location, :category, :status, :start_season, :finish_season, )
-	end
-
 	def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-		 redirect_to root_path
+			redirect_to root_path
 		end
 	end
 
 	def correct_user
 		@user = Proposal.find(params[:id]).f_user
 		redirect_to root_path unless @user == current_f_user
+	end
+
+	private
+	def proposal_params
+		params.require(:proposal).permit(:title, :body, :p_image, :location, :category, :status, :start_season, :finish_season, )
 	end
 
 end

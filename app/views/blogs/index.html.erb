@@ -1,3 +1,4 @@
+<!-- ===== 画像 ===== -->
 <div class="blog-main-visual">
 	<div class="blog-main-visual-content">
 		<p class="blog-main-visual-text">
@@ -9,15 +10,12 @@
 	</div>
 </div>
 
-
 <div class="container">
-
-
-	<!-- -- 固定 カテゴリ別タブボタン -- -->
 	<div class="row">
 		<div class="col-md-6">
 			<h3><b>旬ネタ情報</b></h3>
 		</div>
+		<!-- ===== カテゴリ別タブメニュー ===== -->
 		<div id="tab-menu" class="col-md-6 clearfix" >
 			<a href="#tab-harvest" class="tab-btn btn col-md-2">収穫情報</a>
 			<a href="#tab-recipe" class="tab-btn btn col-md-2">レシピ情報</a>
@@ -27,6 +25,7 @@
 		</div>
 	</div>
 
+	<!-- ===== カテゴリ別index ===== -->
 	<div id="tab-contents" class="row">
 		<!-- -- All -- -->
 		<div id="tab-all" class="tab">
@@ -59,30 +58,13 @@
 			<% end %>
 		</div>
 	</div>
+
 </div>
+
+<!-- ===== topへ戻るボタン(ビューーンて動くやつ) ===== -->
 <span id="back">
 	<a href="#">
 		<%= image_tag('arrow.png') %>
 	</a>
 </span>
 
-<!-- -- JS/TABU切り替え/top戻るボタン -- -->
-<script>
-	$(function(){
-		$('#tab-contents .tab[id != "tab-all"]').hide();
-		$('#tab-menu a').on('click', function() {
-			$("#tab-contents .tab").hide();
-			$("#tab-menu .active").removeClass("active");
-			$(this).addClass("active");
-			$($(this).attr("href")).show();
-			return false;
-		});
-		$('#back a').on('click',function(){
-			$('body, html').animate({
-				scrollTop:0
-			}, 300);
-			return false;
-		});
-	});
-
-</script>

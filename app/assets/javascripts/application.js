@@ -60,8 +60,10 @@ $(function(){
 		var element = document.getElementById("last");
 		var positionY = element.offsetTop;
 		console.log(positionY);
-		// 　element.scrollTo(0, positionY);
 		$('#messages-area').animate({scrollTop: positionY});
+
+		//上手くいかなかったやつ。なんでかあとで調べる
+		// 　element.scrollTo(0, positionY);
 		// $('#messages-area').scrollTop(positionY);
 		// var positionY = $('#last').offset().top;
 		// $('#messages-area').scrollTop(positionY);
@@ -69,8 +71,6 @@ $(function(){
 		// var targetOffset = $('#last').offset().top;
 		// $('#messages-area').animate({scrollTop: targetOffset});
 	})
-
-
 
 	// DM非同期送信　　部分テンプレートで上手くいかなかったやつ。
 	// $("#messages-area").html("<%= j(render 'messages/messages',messages:@messages) %>")

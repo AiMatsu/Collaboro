@@ -13,7 +13,6 @@ class BlogsController < ApplicationController
 		if @blog.save
 			redirect_to blog_path(@blog), notice:'旬ネタを投稿しました！'
 		else
-
 			render :new
 		end
 	end

@@ -1,3 +1,4 @@
+<!-- ===== 画像 ===== -->
 <div class="req-main-visual">
 	<div class="req-main-visual-content">
 		<p class="req-main-visual-text">
@@ -6,18 +7,18 @@
 		</p>
 	</div>
 </div>
+
 <div class="container">
 
 	<div class="row">
 		<h3 class=" index-headline"><b>企業からのコラボリクエスト</b></h3>
 
-		<!-- 検索フォーム -->
+		<!-- === 検索フォーム === -->
 		<%= render 'requests/search_form' %>
 
-		<!-- タブメニュー -->
+		<!-- === カテゴリ別タブメニュー === -->
 		<%= render 'proposals/tab_menu' %>
 	</div>
-
 
 	<div id="tab-contents" class="row">
 		<!-- -- All -- -->
@@ -83,8 +84,9 @@
 			<% end %>
 		</div>
 	</div>
-
 </div>
+
+<!-- ===== topへ戻るボタン(ビューーンて動くやつ) ===== -->
 <span id="back">
 	<a href="#">
 		<%= image_tag('arrow.png') %>

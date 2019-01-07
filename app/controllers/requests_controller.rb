@@ -34,7 +34,7 @@ class RequestsController < ApplicationController
 		@request = Request.find(params[:id])
 		@c_user = @request.c_user
 
-		# #favorite_starsに登録した人一覧
+		# #favorite_stars(bookmark)した人一覧を出したい
 		@favorited_users = []
 		@favorites = FavoriteStar.where(request_id: @request).reverse_order
 		@favorites.each do |f|
@@ -47,7 +47,7 @@ class RequestsController < ApplicationController
 
 		@requests = Request.all.reverse_order
 
-		#favorite_starsに登録したやつ
+		#favorite_stars(bookmark)に登録したリクエストを取り出したい
 		@favorites = FavoriteStar.where("f_user_id = ?", current_f_user).reverse_order
 		@requests_fav = []
 		@favorites.each do |f|
@@ -90,11 +90,6 @@ class RequestsController < ApplicationController
 		@requests = Request.page(params[:page]).reverse_order.search(params[:search])
 	end
 
-	private
-	def request_params
-		params.require(:request).permit(:title, :body, :location, :category, :status, :start_season, :finish_season, )
-	end
-
 	def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
@@ -105,6 +100,11 @@ class RequestsController < ApplicationController
 	def correct_user
 		@user = Request.find(params[:id]).c_user
 		redirect_to root_path unless @user == current_c_user
+	end
+
+	private
+	def request_params
+		params.require(:request).permit(:title, :body, :location, :category, :status, :start_season, :finish_season, )
 	end
 
 end

@@ -3,15 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-/*------top page ------*/
+/*-----------top page -----------*/
 @import url('https://fonts.googleapis.com/css?family=Courgette');
 
-/* Animation */
+/*----- Animation----- */
 @keyframes border-animation {
-to { transform: rotate(360deg); }
+	to { transform: rotate(360deg); }
 }
 
-/* Positioning */
+/*----- Positioning -----*/
 
 .top-image {
 	padding: 50px;
@@ -26,7 +26,6 @@ to { transform: rotate(360deg); }
 .circle {
 	position: absolute;
 }
-
 .top-image p {
 	font: 50px/1.2 'Courgette', cursive;
 	color: #fff;
@@ -55,9 +54,8 @@ to { transform: rotate(360deg); }
 	border-radius: 60% 30%/30% 60%;
 	animation: border-animation 5s infinite linear;
 }
-
 .f-btn {
-	border :1px solid #085F63!important;
+	border :1px solid #085F63!important; /* !important でbootstrap打ち消し */
 	color: black!important;
 	background-color: rgba(0,204,51,0.3)
 }
