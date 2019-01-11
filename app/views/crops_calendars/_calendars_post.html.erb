@@ -25,63 +25,27 @@
 					<tbody>
 						<tr>
 							<td class="crop"></td>
-							<td class="month">1月</td>
-							<td class="month">2月</td>
-							<td class="month">3月</td>
-							<td class="month">4月</td>
-							<td class="month">5月</td>
-							<td class="month">6月</td>
-							<td class="month">7月</td>
-							<td class="month">8月</td>
-							<td class="month">9月</td>
-							<td class="month">10月</td>
-							<td class="month">11月</td>
-							<td class="month">12月</td>
+							<% ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"].each do |month| %>
+									<td class="month"><%= month %></td>
+							<% end %>
 						</tr>
 						<tr class="bestSeason">
 							<td class="crop">Best Season</td>
-							<td><label><%= f.radio_button :Jan, "2" %></label></td>
-							<td><label><%= f.radio_button :Feb, "2" %></label></td>
-							<td><label><%= f.radio_button :Mar, "2" %></label></td>
-							<td><label><%= f.radio_button :Apr, "2" %></label></td>
-							<td><label><%= f.radio_button :May, "2" %></label></td>
-							<td><label><%= f.radio_button :Jun, "2" %></label></td>
-							<td><label><%= f.radio_button :Jul, "2" %></label></td>
-							<td><label><%= f.radio_button :Aug, "2" %></label></td>
-							<td><label><%= f.radio_button :Sep, "2" %></label></td>
-							<td><label><%= f.radio_button :Oct, "2" %></label></td>
-							<td><label><%= f.radio_button :Nov, "2" %></label></td>
-							<td><label><%= f.radio_button :Dec, "2" %></label></td>
+							<% [:Jan,:Feb,:Mar,:Apr,:May,:Jun,:Jul,:Aug,:Sep,:Oct,:Nov,:Dec].each do |month| %>
+								<td><label><%= f.radio_button month, "2" %></label></td>
+							<% end %>
 						</tr>
 						<tr class="season">
 							<td class="crop">Season</td>
-							<td><label><%= f.radio_button :Jan, "1" %></label></td>
-							<td><label><%= f.radio_button :Feb, "1" %></label></td>
-							<td><label><%= f.radio_button :Mar, "1" %></label></td>
-							<td><label><%= f.radio_button :Apr, "1" %></label></td>
-							<td><label><%= f.radio_button :May, "1" %></label></td>
-							<td><label><%= f.radio_button :Jun, "1" %></label></td>
-							<td><label><%= f.radio_button :Jul, "1" %></label></td>
-							<td><label><%= f.radio_button :Aug, "1" %></label></td>
-							<td><label><%= f.radio_button :Sep, "1" %></label></td>
-							<td><label><%= f.radio_button :Oct, "1" %></label></td>
-							<td><label><%= f.radio_button :Nov, "1" %></label></td>
-							<td><label><%= f.radio_button :Dec, "1" %></label></td>
+							<% [:Jan,:Feb,:Mar,:Apr,:May,:Jun,:Jul,:Aug,:Sep,:Oct,:Nov,:Dec].each do |month| %>
+								<td><label><%= f.radio_button month, "1" %></label></td>
+							<% end %>
 						</tr>
 						<tr class="offSeason">
 							<td class="crop">Off Season</td>
-							<td><label><%= f.radio_button :Jan, "0" %></label></td>
-							<td><label><%= f.radio_button :Feb, "0" %></label></td>
-							<td><label><%= f.radio_button :Mar, "0" %></label></td>
-							<td><label><%= f.radio_button :Apr, "0" %></label></td>
-							<td><label><%= f.radio_button :May, "0" %></label></td>
-							<td><label><%= f.radio_button :Jun, "0" %></label></td>
-							<td><label><%= f.radio_button :Jul, "0" %></label></td>
-							<td><label><%= f.radio_button :Aug, "0" %></label></td>
-							<td><label><%= f.radio_button :Sep, "0" %></label></td>
-							<td><label><%= f.radio_button :Oct, "0" %></label></td>
-							<td><label><%= f.radio_button :Nov, "0" %></label></td>
-							<td><label><%= f.radio_button :Dec, "0" %></label></td>
+							<% [:Jan,:Feb,:Mar,:Apr,:May,:Jun,:Jul,:Aug,:Sep,:Oct,:Nov,:Dec].each do |month| %>
+								<td><label><%= f.radio_button month, "0" %></label></td>
+							<% end %>
 						</tr>
 					</tbody>
 				</table>
