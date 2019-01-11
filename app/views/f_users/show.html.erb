@@ -96,128 +96,34 @@
 							&emsp;<%= link_to "",new_crops_calendar_path,class: "far fa-plus-square" %>
 						</span>
 					<% end %>
-			    </p>
+			  </p>
+				<!-- カレンダーの表示 -->
 				<div class="col-md-12 col-sm-12">
 					<% if @crops_calendars.empty? %>
 						<p align="center">※ 登録されている作物はありません ※</p>
 					<% else %>
 						<table class="">
-				    		<thead>
-				    			<tr>
-				    				<th class="crop">作物名</th>
-				    				<th class="month">1月</th>
-				    				<th class="month">2月</th>
-				    				<th class="month">3月</th>
-				    				<th class="month">4月</th>
-				    				<th class="month">5月</th>
-				    				<th class="month">6月</th>
-				    				<th class="month">7月</th>
-				    				<th class="month">8月</th>
-				    				<th class="month">9月</th>
-				    				<th class="month">10月</th>
-				    				<th class="month">11月</th>
-				    				<th class="month">12月</th>
-				    			</tr>
-				    		</thead>
-				    		<tbody>
-				    			<% @crops_calendars.each do |cc| %>
+			    		<thead>
+			    			<tr>
+			    				<th class="crop">作物名</th>
+									<% ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"].each do |month| %>
+											<th class="month"><%= month %></th>
+									<% end %>
+			    			</tr>
+			    		</thead>
+			    		<tbody>
+			    			<% @crops_calendars.each do |cc| %>
 				    			<tr>
 				    				<th class="crop"><%= cc.crops %></th>
-				    				<%if cc.Jan == 2%>
-				    				<td class="bestSeason""></td>
-				    				<%elsif cc.Jan == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Feb == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Feb == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Mar == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Mar == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Apr == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Apr == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.May == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.May == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Jun == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Jun == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Jul == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Jul == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Aug == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Aug == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Sep == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Sep == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Oct == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Oct == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Nov == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Nov == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
-
-				    				<%if cc.Dec == 2%>
-				    				<td class="bestSeason"></td>
-				    				<%elsif cc.Dec == 1%>
-				    				<td class="season"></td>
-				    				<% else %>
-				    				<td></td>
-				    				<% end %>
+										<% [cc.Jan,cc.Feb,cc.Mar,cc.Apr,cc.May,cc.Jun,cc.Jul,cc.Aug,cc.Sep,cc.Oct,cc.Nov,cc.Dec].each do |c| %>
+											<%if c == 2%>
+											<td class="bestSeason""></td>
+											<%elsif c == 1%>
+											<td class="season"></td>
+											<% else %>
+											<td></td>
+											<% end %>
+										<% end %>
 
 				    				<!-- 編集・削除ボタン -->
 				    				<% if @f_user == current_f_user %>
@@ -232,13 +138,13 @@
 				    				</td>
 				    				<% end %>
 				    			</tr>
-				    			<% end %>
-				    		</tbody>
-				    	</table>
-				    	<p align="right" class="cc-color">
-				    		<span class="bestSeason"></span>&ensp;BestSeason&emsp;
-				    		<span class="season"></span>&ensp;Season
-				    	</p>
+			    			<% end %>
+			    		</tbody>
+				    </table>
+			    	<p align="right" class="cc-color">
+			    		<span class="bestSeason"></span>&ensp;BestSeason&emsp;
+			    		<span class="season"></span>&ensp;Season
+			    	</p>
 					<% end %>
 				</div>
 			</div>
@@ -294,5 +200,3 @@
 
 	</div>
 </div>
-
-
