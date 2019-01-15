@@ -24,8 +24,8 @@ class FUsersController < ApplicationController
 		@proposals = @user.proposals.reverse_order
 		if @user != current_f_user && @c_user
 			@chatroom = Chatroom.find_by(f_user_id: @user.id ,c_user_id: @c_user)
-	    end
-	    @crops_calendars = @user.crops_calendars
+		end
+		@crops_calendars = @user.crops_calendars
 	end
 
 	def destroy
@@ -41,14 +41,14 @@ class FUsersController < ApplicationController
         end
     end
 
-  def login_user
-		if f_user_signed_in? || c_user_signed_in?
-		else
-			redirect_to :root
-		end
-	end
+    def login_user
+    	if f_user_signed_in? || c_user_signed_in?
+    	else
+    		redirect_to :root
+    	end
+    end
 
-  def correct_user
+    def correct_user
 		@user = FUser.with_deleted.find(params[:id])
 		redirect_to :root unless @user == current_f_user
 	end

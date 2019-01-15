@@ -16,15 +16,15 @@ class Proposal < ApplicationRecord
 
 	def favorited_by?(c_user)
 		favorite_hearts.where(c_user_id: c_user.id).exists?
-  end
+	end
 
-  # 検索機能
-  def self.search(search) #ここでのself.はProposal.を意味する
+	# 検索機能
+	def self.search(search) #ここでのself.はProposal.を意味する
 		if search
 			where(['body LIKE ? OR location LIKE ?', "%#{search}%", "%#{search}%"]) #検索との部分一致を表示。#Proposal.は省略
-	  else
-	    all #全て表示。#Proposal.は省略
-	  end
+		else
+			all #全て表示。#Proposal.は省略
+		end
 	end
-	
+
 end
