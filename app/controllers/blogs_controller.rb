@@ -49,7 +49,7 @@ class BlogsController < ApplicationController
 			redirect_to f_user_path(blog.f_user), notice:'旬ネタを削除しました！'
 		else
 			render :show
-	    end
+	  end
 	end
 
 	def login_user
@@ -70,4 +70,3 @@ class BlogsController < ApplicationController
 	end
 
 end
-

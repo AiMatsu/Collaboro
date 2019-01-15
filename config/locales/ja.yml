@@ -1,0 +1,43 @@
+ja:
+  activerecord:
+    attributes:
+      c_user:
+        image_id: プロフィール写真
+        name: お名前
+        company: 企業名
+        industry: 業種
+        profile: 企業紹介文
+        hp_url: 企業のHP
+        post_code: 企業の郵便番号
+        address: 企業の所在地
+        conv_time: 連絡の取りやすい時間
+        tell: 電話番号
+        email: メールアドレス
+        password: パスワード
+      f_user:
+        image_id: プロフィール写真
+        name: お名前
+        farm: ファーム名
+        profile: ファーム紹介文
+        hp_url: ファームのHP
+        post_code: ファームの郵便番号
+        address: ファームの所在地
+        conv_time: 連絡の取りやすい時間
+        tell: 電話番号
+        email: メールアドレス
+        password: パスワード
+      blog:
+        b_title: タイトル
+        b_body: 本文
+      crops_calendar:
+        crops: 作物名
+      message:
+        text: メッセージ本文
+      proposal:
+        title: タイトル
+        body: 本文
+        location: 都道府県
+      request:
+        title: タイトル
+        body: 本文
+        location: 都道府県

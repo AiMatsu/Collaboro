@@ -46,8 +46,8 @@
 								<!-- 編集・削除ボタン -->
 								<% if @f_user == current_f_user %>
 									<span>&emsp;||&emsp;
-										&ensp;<%= link_to "",edit_blog_path(@blog),class: "glyphicon glyphicon-pencil"%>
-										&ensp;|&ensp;<%= link_to "",blog_path(@blog),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
+										&ensp;<%= link_to "",[:edit,@blog],class: "glyphicon glyphicon-pencil"%>
+										&ensp;|&ensp;<%= link_to "",@blog,method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
 									</span>
 								<% end %>
 							</span>

@@ -8,19 +8,19 @@
 			<!-- リボン(赤) -->
 			<% if blog.b_category == "収穫情報" %>
 				<span class="blogCard-ribbon ribbon0"><%= blog.b_category%></span>
-				<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/Vegetables.png",class: "img-responsive "),blog_path(blog)  %>
+				<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/Vegetables.png",class: "img-responsive "),blog %>
 			<!-- リボン(オレンジ) -->
 			<% elsif blog.b_category == "レシピ紹介" %>
 				<span class="blogCard-ribbon ribbon1"><%= blog.b_category%></span>
-				<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/recipe.jpg",class: "img-responsive "),blog_path(blog) %>
+				<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/recipe.jpg",class: "img-responsive "),blog %>
 			<!-- リボン(水色) -->
 			<% elsif blog.b_category == "コラボ情報" %>
 				<span class="blogCard-ribbon ribbon2"><%= blog.b_category%></span>
-				<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/collabo.png",class: "img-responsive "),blog_path(blog)  %>
+				<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450, fallback:"/images/collabo.png",class: "img-responsive "),blog %>
 			<!-- リボン(緑) -->
 			<% else %>
 				<span class="blogCard-ribbon ribbon3"><%= blog.b_category%></span>
-				<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450,  fallback:"/images/Vegetables.png",class: "img-responsive "),blog_path(blog)  %>
+				<%= link_to attachment_image_tag(blog, :b_image,:fill,450,450,  fallback:"/images/Vegetables.png",class: "img-responsive "),blog %>
 			<% end %>
 		</div>
 
@@ -35,7 +35,7 @@
 			</div>
 			<div class="blogCard-info">
 				<span class="">
-					<i class="fas fa-home"></i>&emsp;<%= link_to blog.f_user.farm,f_user_path(blog.f_user)%><br>
+					<i class="fas fa-home"></i>&emsp;<%= link_to blog.f_user.farm, blog.f_user %><br>
 					<i class="fas fa-clock"></i>&emsp;<%= blog.created_at.strftime('%Y年%m月%d日') %>
 				</span>
 			</div>

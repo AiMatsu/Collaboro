@@ -64,42 +64,4 @@ ja:
         too_long: "は%{count}文字以下に設定して下さい。"
         invalid: "は有効でありません。"
         confirmation: "が内容とあっていません。"
-  ja:
-    activerecord:
-      attributes:
-        c_user:
-          name: '名前'
-          password: パスワード
-          password_confirmation: パスワード確認
-          email: メールアドレス
-          industry: 業種
-          company: 会社名
-          tell: 電話番号
-          poss_code: 郵便番号
-          address: 会社の所在地
-        f_user:
-          name: 名前
-          password: パスワード
-          password_confirmation: パスワード確認
-          email: メールアドレス
-          farm: 農園名・団体名
-          tell: 電話番号
-          poss_code: 郵便番号
-          address: 会社の所在地
-        blog:
-          b_title: タイトル
-          b_body: 本文
-        crops_calendar:
-          crops: 作物名
-        message:
-          text: メッセージ本文
-        proposal:
-          title: タイトル
-          body: 本文
-          location: 都道府県
-        request:
-          title: タイトル
-          body: 本文
-          location: 都道府県
-
-
+  

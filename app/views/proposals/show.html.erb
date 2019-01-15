@@ -7,7 +7,7 @@
 	<div class=" row">
 		<!-- === 投稿ユーザー表示 === -->
 		<% if @f_user != current_f_user %>
-			<h3 class="item-title color-base"><%= link_to @proposal.f_user.farm,f_user_path(@proposal.f_user)%>&ensp;からのプロポーザル</h3>
+			<h3 class="item-title color-base"><%= link_to @proposal.f_user.farm, @proposal.f_user %>&ensp;からのプロポーザル</h3>
 		<% end %>
 		<!-- === 詳細内容 === -->
 		<div class="col-md-12 proposal_show">
@@ -32,8 +32,8 @@
 			<!-- 削除・編集ボタン -->
 			<% if @f_user == current_f_user %>
 				<span class="pro-edit-link">
-					&ensp;<%= link_to "",edit_proposal_path(@proposal),class: "glyphicon glyphicon-pencil" %>
-					&ensp;|&ensp;<%= link_to "",proposal_path(@proposal),method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
+					&ensp;<%= link_to "",[:edit, @proposal], class: "glyphicon glyphicon-pencil" %>
+					&ensp;|&ensp;<%= link_to "", @proposal, method: :delete, data: { confirm: '本当に削除しますか？'} ,class: "glyphicon glyphicon-trash" %>
 				</span>
 			<% end %>
 		</div>
@@ -55,7 +55,7 @@
 							<%= attachment_image_tag(favorited_user, :image, :fill, 70, 70, fallback: "/images/company.png" ,class: "img-responsive img-thumbnail") %>
 						</td>
 						<td class="col-md-10">
-							<b><%= link_to "#{favorited_user.company} / #{favorited_user.name}",c_user_path(favorited_user) %>
+							<b><%= link_to "#{favorited_user.company} / #{favorited_user.name}", favorited_user %>
 						</td>
 					</tr>
 				<% end %>
