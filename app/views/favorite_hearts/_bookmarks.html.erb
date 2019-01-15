@@ -12,10 +12,9 @@
 		<% end %>
 	<!-- farmeｒ でログインしている場合 -->
 	<% else%>
-		<%= link_to proposal_path(proposal), method: :get do %>
+		<%= link_to_unless_current(proposal_path(proposal)) do %>
 			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #996;"></span>
 			<%= proposal.favorite_hearts.count %>
 		<% end %>
 	<% end %>
 </div>
-

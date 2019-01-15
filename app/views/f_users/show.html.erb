@@ -58,16 +58,12 @@
 					<!-- リンクボタン -->
 					<div class="link-btn">
 						<% if @user == current_f_user %>
-							<%= link_to "基本情報を編集する",
-								edit_f_user_path(current_f_user),
-								class: "btn btn-default col-md-7 " %>
+							<%= link_to "基本情報を編集する",[:edit,current_f_user],class: "btn btn-default col-md-7 " %>
 							<%= link_to "退会する",f_user_path(@user),
 								method: :delete, data: { confirm: '本当に退会しますか？'},
 								class: "btn btn-default col-md-4 col-md-offset-1" %>
 						<% elsif  @user != current_f_user && @c_user  %>
-							<%= link_to "担当者と連絡を取る",
-								chatroom_path(@chatroom),
-								class: "btn btn-block btn-default" %>
+							<%= link_to "担当者と連絡を取る",@chatroom,class: "btn btn-block btn-default" %>
 						<% end %>
 					</div>
 				</div>
@@ -93,7 +89,7 @@
 					<!-- 新規投稿ページへのリンク -->
 					<% if @user == current_f_user %>
 						<span class="link-btn">
-							&emsp;<%= link_to "",new_crops_calendar_path,class: "far fa-plus-square" %>
+							&emsp;<%= link_to "",:new_crops_calendar, class: "far fa-plus-square" %>
 						</span>
 					<% end %>
 			  </p>
@@ -128,13 +124,8 @@
 				    				<!-- 編集・削除ボタン -->
 				    				<% if @f_user == current_f_user %>
 				    				<td class="cc-edit">
-				    					<%= link_to "",
-				    						edit_crops_calendar_path(cc),
-				    						class: "glyphicon glyphicon-pencil" %>
-				    					<%= link_to "",
-					    					crops_calendar_path(cc),
-					    					method: :delete, data: { confirm: '本当に削除しますか？'} ,
-					    					class: "glyphicon glyphicon-trash" %>
+				    					<%= link_to "",[:edit, cc], class: "glyphicon glyphicon-pencil" %>
+				    					<%= link_to "", cc, method: :delete, data: { confirm: '本当に削除しますか？'}, class: "glyphicon glyphicon-trash" %>
 				    				</td>
 				    				<% end %>
 				    			</tr>
@@ -156,7 +147,7 @@
 					<!-- 新規投稿ページへのボタン -->
 					<% if @user == current_f_user %>
 						<span class="link-btn">
-							&emsp;<%= link_to "",new_proposal_path,class: "far fa-plus-square" %>
+							&emsp;<%= link_to "", :new_proposal, class: "far fa-plus-square" %>
 						</span>
 					<% end %>
 				</p>
@@ -182,7 +173,7 @@
 					<!-- 新規投稿ページへのボタン -->
 					<% if @user == current_f_user %>
 						<span class="link-btn">
-							&emsp;<%= link_to "",new_blog_path, class: "far fa-plus-square" %>
+							&emsp;<%= link_to "", :new_blog, class: "far fa-plus-square" %>
 						</span>
 					<% end %>
 				</p>

@@ -12,7 +12,7 @@
 		<% end %>
 	<!-- company でログインしている場合 -->
 	<% else%>
-		<%= link_to request_path(request), method: :get do %>
+		<%= link_to_unless_current (request_path(request)) do %>
 			<span class="glyphicon glyphicon-bookmark" aria-hidden="true" style="color: #996;"></span>
 			<%= request.favorite_stars.count %>
 		<% end %>

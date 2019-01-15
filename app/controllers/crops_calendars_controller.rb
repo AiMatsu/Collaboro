@@ -11,7 +11,7 @@ class CropsCalendarsController < ApplicationController
 		@crops_calendar = CropsCalendar.new(crops_calendar_params)
 		@crops_calendar.f_user_id = current_f_user.id
 		if @crops_calendar.save
-			redirect_to f_user_path(current_f_user), notice: '作物情報を更新しました！'
+			redirect_to current_f_user, notice: '作物情報を更新しました！'
 		else
 			render :new
 		end
@@ -24,7 +24,7 @@ class CropsCalendarsController < ApplicationController
 	def update
 		@crops_calendar = CropsCalendar.find(params[:id])
 		if @crops_calendar.update(crops_calendar_params)
-			redirect_to f_user_path(current_f_user), notice: '作物情報を更新しました！'
+			redirect_to current_f_user, notice: '作物情報を更新しました！'
 		else
 			render :edit
 		end
@@ -33,7 +33,7 @@ class CropsCalendarsController < ApplicationController
 	def destroy
 		crops_calendar = CropsCalendar.find(params[:id])
 		crops_calendar.destroy
-		redirect_to f_user_path(current_f_user),notice: '作物情報を更新しました！'
+		redirect_to current_f_user,notice: '作物情報を更新しました！'
 	end
 
 	private
@@ -44,13 +44,13 @@ class CropsCalendarsController < ApplicationController
 	def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-			redirect_to root_path
+			redirect_to :root
 		end
 	end
 
 	def correct_user
 		@user = CropsCalendar.find(params[:id]).f_user
-		redirect_to root_path unless @user == current_f_user
+		redirect_to :root unless @user == current_f_user
 	end
 
 end
