@@ -83,7 +83,7 @@ class RequestsController < ApplicationController
 		request = Request.find(params[:id])
 		if request.destroy
 			redirect_to current_c_user, notice:"リクエストを削除しました！"
-	    end
+		end
 	end
 
 	def search

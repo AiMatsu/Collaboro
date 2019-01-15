@@ -36,17 +36,17 @@ class CUsersController < ApplicationController
 		@c_user = CUser.find(params[:id])
 		if @c_user != current_c_user && current_f_user
         	Chatroom.find_or_create_by(c_user_id: @c_user.id ,f_user_id: current_f_user.id)
-    	end
+        end
     end
 
-  def login_user
+    def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
 		 redirect_to :root
 		end
 	end
 
-  def correct_user
+	def correct_user
 		@user = CUser.with_deleted.find(params[:id])
 		redirect_to :root unless @user == current_c_user
 	end

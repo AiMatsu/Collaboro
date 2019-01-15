@@ -82,7 +82,7 @@ class ProposalsController < ApplicationController
 		proposal = Proposal.find(params[:id])
 		if proposal.destroy
 			redirect_to current_f_user, notice:"プロポーザルを削除しました！"
-	    end
+		end
 	end
 
 	def search
