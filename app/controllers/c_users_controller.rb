@@ -11,7 +11,7 @@ class CUsersController < ApplicationController
 	def update
 		@user = CUser.find(params[:id])
 		if @user.update(c_user_params)
-		   redirect_to c_user_path(@user),notice: '基本情報を編集しました！'
+		   redirect_to @user, notice: '基本情報を編集しました！'
 		else
 			render :edit
 		end
@@ -29,7 +29,7 @@ class CUsersController < ApplicationController
 	def destroy
 		user = CUser.find(params[:id])
 		user.destroy
-		redirect_to root_path
+		redirect_to :root
 	end
 
 	def room_user
@@ -39,16 +39,16 @@ class CUsersController < ApplicationController
     	end
     end
 
-    def login_user
+  def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-		 redirect_to root_path
+		 redirect_to :root
 		end
 	end
 
-    def correct_user
+  def correct_user
 		@user = CUser.with_deleted.find(params[:id])
-		redirect_to root_path unless @user == current_c_user
+		redirect_to :root unless @user == current_c_user
 	end
 
 	private

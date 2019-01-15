@@ -11,7 +11,7 @@ class FUsersController < ApplicationController
 	def update
 		@user = FUser.find(params[:id])
 		if @user.update(f_user_params)
-			redirect_to f_user_path(@user),notice: '基本情報を編集しました！'
+			redirect_to @user,notice: '基本情報を編集しました！'
 		else
 			render :edit
 		end
@@ -31,7 +31,7 @@ class FUsersController < ApplicationController
 	def destroy
 		user = FUser.find(params[:id])
 		user.destroy
-		redirect_to root_path
+		redirect_to :root
 	end
 
 	def room_user
@@ -41,16 +41,16 @@ class FUsersController < ApplicationController
         end
     end
 
-    def login_user
+  def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-			redirect_to root_path
+			redirect_to :root
 		end
 	end
 
-    def correct_user
+  def correct_user
 		@user = FUser.with_deleted.find(params[:id])
-		redirect_to root_path unless @user == current_f_user
+		redirect_to :root unless @user == current_f_user
 	end
 
 	private
@@ -59,5 +59,3 @@ class FUsersController < ApplicationController
 	end
 
 end
-
-

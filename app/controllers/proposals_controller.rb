@@ -11,7 +11,7 @@ class ProposalsController < ApplicationController
 		@proposal = Proposal.new(proposal_params)
 		@proposal.f_user_id = current_f_user.id
 		if @proposal.save
-			redirect_to proposal_path(@proposal),notice:'プロポーザルを追加しました！'
+			redirect_to @proposal, notice:'プロポーザルを追加しました！'
 		else
 			render :new
 		end
@@ -24,7 +24,7 @@ class ProposalsController < ApplicationController
 	def update
 		@proposal = Proposal.find(params[:id])
 		if @proposal.update(proposal_params)
-			redirect_to proposal_path(@proposal),notice:'プロポーザル内容を変更しました！'
+			redirect_to @proposal, notice:'プロポーザル内容を変更しました！'
 		else
 			render :edit
 		end
@@ -81,7 +81,7 @@ class ProposalsController < ApplicationController
 	def destroy
 		proposal = Proposal.find(params[:id])
 		if proposal.destroy
-			redirect_to f_user_path(current_f_user),notice:"プロポーザルを削除しました！"
+			redirect_to current_f_user, notice:"プロポーザルを削除しました！"
 	    end
 	end
 
@@ -92,13 +92,13 @@ class ProposalsController < ApplicationController
 	def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-			redirect_to root_path
+			redirect_to :root
 		end
 	end
 
 	def correct_user
 		@user = Proposal.find(params[:id]).f_user
-		redirect_to root_path unless @user == current_f_user
+		redirect_to :root unless @user == current_f_user
 	end
 
 	private

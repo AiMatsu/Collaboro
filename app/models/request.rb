@@ -24,5 +24,5 @@ class Request < ApplicationRecord
 	    all #全て表示。#Request.は省略
 	  end
 	end
-	
+
 end

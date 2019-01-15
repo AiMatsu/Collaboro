@@ -24,7 +24,7 @@ class ChatroomsController < ApplicationController
 	def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-		 redirect_to root_path
+		 redirect_to :root
 		end
 	end
 

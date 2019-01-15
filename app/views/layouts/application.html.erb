@@ -16,57 +16,57 @@
         <header>
             <div class="container">
                 <div class="header-left clearfix">
-                    <%= link_to "Collaboro!!",blogs_path ,class: "logo"%>
+                    <%= link_to "Collaboro!!",:blogs ,class: "logo"%>
                 </div>
                 <ul class="header-right nav-list clearfix">
 
                     <!-- ログインユーザー -->
                     <% if f_user_signed_in? %>
                         <li class="nav-list-item">
-                            <%= link_to "マイファーム",f_user_path(current_f_user.id) %>
+                            <%= link_to "マイファーム",current_f_user %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "コラボ先を探す", requests_path %>
+                            <%= link_to "コラボ先を探す", :requests %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "商談ルーム",chatrooms_path %>
+                            <%= link_to "商談ルーム", :chatrooms %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "旬ネタ",blogs_path %>
+                            <%= link_to "旬ネタ", :blogs %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "ログアウト",destroy_f_user_session_path,method: :delete %>
+                            <%= link_to "ログアウト", :destroy_f_user_session, method: :delete %>
                         </li>
                         <% elsif c_user_signed_in? %>
                         <li class="nav-list-item">
-                            <%= link_to "マイページ",c_user_path(current_c_user.id) %>
+                            <%= link_to "マイページ", current_c_user %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "コラボ先を探す", proposals_path %>
+                            <%= link_to "コラボ先を探す", :proposals %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "商談ルーム",chatrooms_path%>
+                            <%= link_to "商談ルーム", :chatrooms %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "旬ネタ",blogs_path %>
+                            <%= link_to "旬ネタ", :blogs %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "ログアウト",destroy_c_user_session_path,method: :delete %>
+                            <%= link_to "ログアウト", :destroy_c_user_session,method: :delete %>
                         </li>
 
                     <!-- 未ログインユーザー -->
                     <% else %>
                         <li class="nav-list-item">
-                            <%= link_to  "農家の方はこちら",new_f_user_session_path %>
+                            <%= link_to  "農家の方はこちら", :new_f_user_session %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "企業の方はこちら", new_c_user_session_path %>
+                            <%= link_to "企業の方はこちら", :new_c_user_session %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "旬ネタ",blogs_path %>
+                            <%= link_to "旬ネタ", :blogs %>
                         </li>
                         <li class="nav-list-item">
-                            <%= link_to "コラボ先を探す", root_path %>
+                            <%= link_to "コラボ先を探す", :root %>
                         </li>
                     <% end %>
 

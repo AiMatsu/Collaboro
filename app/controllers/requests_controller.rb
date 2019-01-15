@@ -11,7 +11,7 @@ class RequestsController < ApplicationController
 		@request = Request.new(request_params)
 		@request.c_user_id = current_c_user.id
 		if @request.save
-			redirect_to request_path(@request),notice:'リクエストを追加しました！'
+			redirect_to @request, notice:'リクエストを追加しました！'
 		else
 			render :new
 		end
@@ -24,7 +24,7 @@ class RequestsController < ApplicationController
 	def update
 		@request = Request.find(params[:id])
 		if @request.update(request_params)
-			redirect_to request_path(@request),notice:'リクエスト内容を変更しました！'
+			redirect_to @request, notice:'リクエスト内容を変更しました！'
 		else
 			render :edit
 		end
@@ -82,24 +82,24 @@ class RequestsController < ApplicationController
 	def destroy
 		request = Request.find(params[:id])
 		if request.destroy
-			redirect_to c_user_path(current_c_user),notice:"リクエストを削除しました！"
+			redirect_to current_c_user, notice:"リクエストを削除しました！"
 	    end
 	end
 
 	def search
-		@requests = Request.page(params[:page]).reverse_order.search(params[:search])
+		@requests = Request.all.reverse_order.search(params[:search])
 	end
 
 	def login_user
 		if f_user_signed_in? || c_user_signed_in?
 		else
-		 redirect_to root_path
+		 redirect_to :root
 		end
 	end
 
 	def correct_user
 		@user = Request.find(params[:id]).c_user
-		redirect_to root_path unless @user == current_c_user
+		redirect_to :root unless @user == current_c_user
 	end
 
 	private

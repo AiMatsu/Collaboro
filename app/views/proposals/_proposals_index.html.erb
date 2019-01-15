@@ -7,15 +7,15 @@
 			<!-- リボン(赤) -->
 			<% if proposal.category == "農作物出荷" %>
 				<span class="proposalCard-ribbon ribbon0"><%= proposal.category%></span>
-				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Vegetables.png",class: "img-responsive"),proposal_path(proposal)  %>
+				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Vegetables.png",class: "img-responsive"), proposal  %>
 			<!-- リボン(水色) -->
 			<% elsif proposal.category == "体験/イベント" %>
 				<span class="proposalCard-ribbon ribbon2"><%= proposal.category%></span>
-				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Experience.png",class: "img-responsive"),proposal_path(proposal) %>
+				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Experience.png",class: "img-responsive"), proposal %>
 			<!-- リボン(緑) -->
 			<% else %>
 				<span class="proposalCard-ribbon ribbon3"><%= proposal.category%></span>
-				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Vegetables.png",class: "img-responsive"),proposal_path(proposal)  %>
+				<%= link_to attachment_image_tag(proposal, :p_image, fallback:"/images/Vegetables.png",class: "img-responsive"), proposal  %>
 			<% end %>
 		</div>
 
@@ -35,7 +35,7 @@
 				</p>
 			</div>
 			<div class="proposalCard-user">
-				<i class="fas fa-home"></i>&ensp;<%= link_to proposal.f_user.farm,f_user_path(proposal.f_user)%>
+				<i class="fas fa-home"></i>&ensp;<%= link_to proposal.f_user.farm, proposal.f_user %>
 			</div>
 			<!-- bookmarkマーク -->
 			<%= render 'favorite_hearts/bookmarks',proposal:proposal %>
@@ -43,4 +43,3 @@
 
 	</div>
 </div>
-
