@@ -13,16 +13,16 @@ class Request < ApplicationRecord
 	validates :finish_season ,presence: true
 
 	def favorited_by?(f_user)
-        favorite_stars.where(f_user_id: f_user.id).exists?
-    end
+		favorite_stars.where(f_user_id: f_user.id).exists?
+  end
 
-    # 検索機能
-    def self.search(search) #ここでのself.はRequest.を意味する
-	    if search
-	     	where(['body LIKE ? OR location LIKE ?', "%#{search}%", "%#{search}%"]) #検索との部分一致を表示。#Request.は省略
-	    else
-	     	all #全て表示。#Request.は省略
-	    end
+  # 検索機能
+  def self.search(search) #ここでのself.はRequest.を意味する
+	  if search
+			where(['body LIKE ? OR location LIKE ?', "%#{search}%", "%#{search}%"]) #検索との部分一致を表示。#Request.は省略
+	  else
+	    all #全て表示。#Request.は省略
+	  end
 	end
-
+	
 end
