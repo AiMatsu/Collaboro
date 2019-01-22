@@ -82,6 +82,12 @@ header {
   color: black;
 }
 
+// *---------- エラーを起こした入力欄 ----------*/
+div.field_with_errors {
+  background-color: #fcc;
+  padding: 2px;
+}
+
 /*---------- 各indexのTOPへ戻るボタン ----------*/
 #back{
   position: fixed;
@@ -148,6 +154,3 @@ h3 {
 .bookmark-0 {
   color: #ddd;
 }
-
-
-
